@@ -191,6 +191,12 @@ const PAGES_CSS = `
   .re-evento-foto { position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 3px; background: ${PAGE_COLORS.photo}; display: grid; place-items: center; }
   .re-evento-foto img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
   .re-evento:hover .re-evento-foto img { transform: scale(1.03); }
+  .re-evento-thumbs { display: flex; gap: 8px; margin-top: 8px; }
+  .re-evento-thumb { width: 64px; aspect-ratio: 3 / 2; padding: 0; border: 2px solid transparent; border-radius: 3px; overflow: hidden; background: ${PAGE_COLORS.photo}; cursor: pointer; opacity: 0.6; transition: opacity .2s, border-color .2s; }
+  .re-evento-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .re-evento-thumb:hover { opacity: 1; }
+  .re-evento-thumb[aria-pressed="true"] { opacity: 1; border-color: ${PAGE_COLORS.accent}; }
+  .re-evento-thumb:focus-visible { outline: 2px solid ${PAGE_COLORS.accent}; outline-offset: 2px; }
   .re-evento-sem-foto { color: ${PAGE_COLORS.navy}; opacity: 0.22; }
   .re-evento-sem-foto svg { width: 48px; height: 48px; }
   .re-evento-info { display: flex; gap: 22.5px; min-width: 0; }
@@ -624,26 +630,38 @@ function useReveal() {
  * COMPONENTES DE MARCA E UI
  * ========================================================================== */
 
-/* Símbolo: ponte em arco formada por nós de rede */
-function BrandMark({ className = "h-9 w-9" }) {
+/* Símbolo oficial da FGV Crypto: octógono de nós ligados (traçado a partir do PNG
+ * da marca, em coordenadas de 1024 px). Usa currentColor, então herda a cor do texto. */
+const LOGO_NODES = {
+  A: [388, 237], B: [623, 237], C: [786, 406], D: [786, 634], E: [623, 800],
+  F: [389, 800], G: [223, 635], H: [223, 405], I: [504, 521], J: [669, 521],
+};
+const LOGO_LINES = ["AB", "BC", "CD", "DE", "EF", "FG", "GH", "HA", "AE", "AD", "BF", "CF", "AC", "BD", "CE", "DF", "HI", "GI"];
+const LOGO_VIEWBOX = "189 203 632 632";
+
+function LogoGlyph() {
   return (
-    <svg viewBox="0 0 40 40" className={className} fill="none" aria-hidden="true">
-      <g stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M4 30 L10 18 L20 12 L30 18 L36 30" />
-        <path d="M4 30 H36" />
-        <path d="M10 18 V30 M20 12 V30 M30 18 V30" opacity="0.55" />
-        <path d="M10 18 L20 30 L30 18" opacity="0.35" />
+    <>
+      <g stroke="currentColor" strokeWidth="12" strokeLinecap="round">
+        {LOGO_LINES.map((l) => {
+          const [x1, y1] = LOGO_NODES[l[0]];
+          const [x2, y2] = LOGO_NODES[l[1]];
+          return <line key={l} x1={x1} y1={y1} x2={x2} y2={y2} />;
+        })}
       </g>
       <g fill="currentColor">
-        <circle cx="4" cy="30" r="2.2" />
-        <circle cx="10" cy="18" r="2.2" />
-        <circle cx="30" cy="18" r="2.2" />
-        <circle cx="36" cy="30" r="2.2" />
-        <circle cx="10" cy="30" r="1.6" />
-        <circle cx="20" cy="30" r="1.6" />
-        <circle cx="30" cy="30" r="1.6" />
+        {Object.entries(LOGO_NODES).map(([k, [cx, cy]]) => (
+          <circle key={k} cx={cx} cy={cy} r="29" />
+        ))}
       </g>
-      <circle cx="20" cy="12" r="3" fill="#60A5FA" />
+    </>
+  );
+}
+
+function BrandMark({ className = "h-9 w-9" }) {
+  return (
+    <svg viewBox={LOGO_VIEWBOX} className={className} fill="none" aria-hidden="true">
+      <LogoGlyph />
     </svg>
   );
 }
@@ -829,32 +847,14 @@ function ParticleNetwork({ animate, subtle }) {
   return <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />;
 }
 
-/* Logo principal da abertura (~250px, branco). Substituível por imagem em SITE_DATA.hero.logo */
+/* Logo principal da abertura (~250px, branco): símbolo + "FGV DIGITAL ASSETS". Substituível por imagem em SITE_DATA.hero.logo */
 function HeroLogo({ src, alt }) {
   if (isSet(src)) return <img src={src} alt={alt} width="250" className="mx-auto block" />;
-  const arch = [
-    [35, 88], [62, 54], [94, 32], [125, 24], [156, 32], [188, 54], [215, 88],
-  ];
   return (
     <svg viewBox="0 0 250 154" width="250" className="mx-auto block max-w-full" role="img" aria-label={alt}>
-      <g stroke="#fff" strokeWidth="1.4" strokeLinecap="round" fill="none">
-        <path d={arch.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join(" ")} strokeOpacity="0.95" />
-        <path d="M20 88 H230" strokeOpacity="0.95" />
-        {arch.slice(1, -1).map(([x, y]) => (
-          <line key={`h${x}`} x1={x} y1={y} x2={x} y2={88} strokeOpacity="0.5" />
-        ))}
-        {arch.slice(0, -1).map(([x, y], i) => (
-          <line key={`d${x}`} x1={x} y1={y} x2={arch[i + 1][0]} y2={88} strokeOpacity="0.3" />
-        ))}
-      </g>
-      <g fill="#fff">
-        {arch.map(([x, y]) => (
-          <circle key={`n${x}`} cx={x} cy={y} r={x === 125 ? 4.5 : 3.2} />
-        ))}
-        {arch.slice(1, -1).map(([x]) => (
-          <circle key={`b${x}`} cx={x} cy={88} r="2" />
-        ))}
-      </g>
+      <svg x="83" y="0" width="84" height="84" viewBox={LOGO_VIEWBOX} color="#fff" aria-hidden="true">
+        <LogoGlyph />
+      </svg>
       <text x="125" y="124" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="300" fontSize="30" letterSpacing="9">
         FGV
       </text>
@@ -1207,6 +1207,42 @@ function SelectionPage({ data, photo, selection, labels, notify }) {
 }
 
 /* --- Eventos --- */
+// Foto principal (ev.photo) e fotos extras (ev.morePhotos). Com mais de uma, aparecem
+// miniaturas clicáveis abaixo da foto.
+function EventGallery({ ev }) {
+  const photos = [ev.photo, ...(ev.morePhotos || [])].filter((src) => isSet(src));
+  const [current, setCurrent] = useState(0);
+  return (
+    <div>
+      <div className="re-evento-foto">
+        {photos.length > 0 ? (
+          <img src={photos[current]} alt={`${ev.title}: foto ${current + 1} de ${photos.length}`} loading="lazy" />
+        ) : (
+          <span className="re-evento-sem-foto" aria-hidden="true">
+            <BrandMark />
+          </span>
+        )}
+      </div>
+      {photos.length > 1 && (
+        <div className="re-evento-thumbs">
+          {photos.map((src, i) => (
+            <button
+              key={src}
+              type="button"
+              className="re-evento-thumb"
+              aria-pressed={i === current}
+              aria-label={`Ver foto ${i + 1} de ${photos.length}`}
+              onClick={() => setCurrent(i)}
+            >
+              <img src={src} alt="" loading="lazy" />
+            </button>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 function EventsPage({ data, photo }) {
   return (
     <main className="pg">
@@ -1221,15 +1257,7 @@ function EventsPage({ data, photo }) {
                   const d = parseDate(ev.date);
                   return (
                     <article key={`${ev.date}-${ev.title}`} className="re-evento">
-                      <div className="re-evento-foto">
-                        {isSet(ev.photo) ? (
-                          <img src={ev.photo} alt={ev.title} loading="lazy" />
-                        ) : (
-                          <span className="re-evento-sem-foto" aria-hidden="true">
-                            <BrandMark />
-                          </span>
-                        )}
-                      </div>
+                      <EventGallery ev={ev} />
                       <div className="re-evento-info">
                         <div className="re-evento-dia" aria-hidden="true">
                           <strong>{String(d.d).padStart(2, "0")}</strong>
@@ -1937,7 +1965,7 @@ export default function App() {
             className="flex items-center gap-3 py-1 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
             onClick={() => setMenuOpen(false)}
           >
-            <BrandMark className="h-8 w-10 text-white" />
+            <BrandMark className="h-8 w-8 text-white" />
             <span className="pg-heading text-base tracking-tight">{brand.name}</span>
             {isSet(nav.institutionLogo) && (
               <>

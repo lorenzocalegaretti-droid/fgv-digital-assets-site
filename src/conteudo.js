@@ -615,6 +615,14 @@ export const SITE_DATA = {
           semester: "2026.2",
           items: [
             {
+              date: "2026-11-18",
+              title: "Bate-papo com a Brasil Bitcoin",
+              photo: "/img/eventos/2026-11-brasil-bitcoin.webp",
+              text: [
+                "Jorge de Almeida, CEO, e Hugo Benício, Head of Operations and Sales da Brasil Bitcoin, conversaram com os membros sobre a operação de uma exchange brasileira de criptoativos.",
+              ],
+            },
+            {
               date: "2026-11-11",
               title: "Bate-papo com Henry Oyama (Hashdex)",
               photo: "",
@@ -625,7 +633,8 @@ export const SITE_DATA = {
             {
               date: "2026-10-19",
               title: "Cryptoweek 2026.2",
-              photo: "",
+              photo: "/img/eventos/2026-10-cryptoweek-pagos-vault.jpg",
+              morePhotos: ["/img/eventos/2026-10-cryptoweek-wesearch.jpg"], // fotos extras viram miniaturas
               text: [
                 "De 19 a 22 de outubro, na FGV EESP. A abertura reuniu Carlos Akira Sato (PAGOS) e Gabriel Della Torre (Vault Capital) para falar do impacto da blockchain e dos ativos digitais.",
                 "No segundo dia, um painel com André Haro, Lucas Oliveira, Bruno Liman e Rafael Puerari, em parceria com a WeSearch, discutiu o que os ETFs mudaram no mercado cripto. O encerramento foi com Murillo Bargas, Head of Crypto do Inter.",
@@ -634,7 +643,7 @@ export const SITE_DATA = {
             {
               date: "2026-10-06",
               title: "Workshop: uso de tokenização no mercado financeiro",
-              photo: "",
+              photo: "/img/eventos/2026-10-workshop-b3.jpg",
               text: [
                 "Em parceria com a B3 e a Z-Invest, como parte da World Investor Week. Eduardo Alexandre Marques Silva, head de digital assets da B3, explicou como a tokenização muda a emissão, a negociação e a liquidação de investimentos.",
               ],
@@ -642,7 +651,7 @@ export const SITE_DATA = {
             {
               date: "2026-09-16",
               title: "Bate-papo com Pedro Lorenzini (Itaú Unibanco)",
-              photo: "",
+              photo: "/img/eventos/2026-09-itau-pedro-lorenzini.jpg",
               text: [
                 "Pedro Lorenzini, Global Markets Treasury & Latam Head do Itaú Unibanco, falou sobre tesouraria, estratégia de produtos e operações na América Latina. Agradecemos ao Itaú Unibanco e à Z-Invest pela recepção.",
               ],
