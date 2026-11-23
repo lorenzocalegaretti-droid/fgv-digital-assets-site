@@ -80,9 +80,14 @@ export const SITE_DATA = {
   about: {
     title: "Sobre nós",
     lead: "Estudantes da FGV EAESP pesquisando a nova infraestrutura financeira.",
-    text:
+    paragraphs: [
       "Somos a FGV Digital Assets, entidade estudantil e grupo de pesquisa da FGV EAESP. Estudamos ativos digitais e a infraestrutura financeira que eles estão criando, em projetos que reúnem alunos, professores e profissionais do mercado.",
-    photo: "", // ⚠️ foto real do grupo (proporção 3:2)
+      "Começamos como FGV Crypto, com foco em criptoativos. Hoje nossa agenda inclui tokenização, stablecoins, pagamentos e regulação, sempre com dados e pesquisa aplicada.",
+    ],
+    // A foto ocupa metade da tela, de ponta a ponta (vertical ou quadrada funciona melhor).
+    // Sem foto, aparece uma arte com a rede de nós da marca.
+    photo: "", // ⚠️ foto real do grupo
+    photoCaption: "", // legenda opcional sobre a foto (ex.: "Encontro geral de 2026.2")
     link: { label: "Conheça a nossa história", href: "#/sobre" },
   },
 
@@ -108,11 +113,23 @@ export const SITE_DATA = {
    * pages.research (o semestre mais recente fica no topo) · Eventos: os mais recentes.
    * ----------------------------------------------------------------------- */
   highlights: {
+    // Blocos de ponta a ponta (foto de um lado, texto do outro). Sem foto, aparece a arte da marca.
     nucleos: {
       title: "Células",
-      text: "Cada célula técnica desenvolve um projeto por semestre, com entregas semanais e um estudo ao final.",
-      kicker: "Célula técnica",
+      paragraphs: [
+        "Todo semestre, os membros são divididos em células técnicas. Cada célula desenvolve um projeto sobre uma área dos ativos digitais, com entregas semanais e um estudo publicado ao final.",
+        "O trabalho é orientado pela diretoria acadêmica e apresentado à comunidade da FGV e a parceiros no fim do semestre.",
+      ],
+      artLabel: "células técnicas", // legenda do número na arte (quando não há foto)
+      photo: "", // ⚠️ foto de uma célula trabalhando ou apresentando
+      photoCaption: "", // ex.: "Apresentação final da célula de Tokenização, 2026.1"
       button: "Conheça as células",
+    },
+    competitions: {
+      title: "Competições",
+      photo: "", // ⚠️ foto de uma equipe em competição
+      photoCaption: "",
+      button: "Conheça as competições",
     },
     research: { title: "Research em destaque", count: 3, button: "Ver todos os estudos" },
     events: { title: "Últimos eventos", count: 3, button: "Ver todos os eventos" },
@@ -141,6 +158,9 @@ export const SITE_DATA = {
     applyLabel: "Inscreva-se",
     moreLabel: "Como funciona",
     notifyLabel: "Receber o aviso",
+    artLabel: "fases até a efetivação", // legenda do número na arte (quando não há foto)
+    photo: "", // ⚠️ foto de uma dinâmica ou da turma de trainees
+    photoCaption: "",
   },
 
   /* --- Parceiros (só aparecem logos com nome ou imagem preenchidos) ----------
@@ -244,7 +264,8 @@ export const SITE_DATA = {
   pages: {
     /* --- Sobre (#/sobre) ------------------------------------------------------
      * Substitui a antiga página "Equipe e história" (#/equipe continua funcionando).
-     * ⚠️ Missão, visão e valores são rascunhos: revisem com a diretoria.
+     * Missão, visão e valores (pillars) aparecem aqui e na página inicial, logo
+     * abaixo de "Sobre nós". ⚠️ Revisem o texto com a diretoria.
      * ----------------------------------------------------------------------- */
     about: {
       title: "Sobre",
@@ -264,8 +285,8 @@ export const SITE_DATA = {
       ],
       deck: { label: "Apresentação institucional (PDF)", href: "" }, // ⚠️ caminho do PDF, ex.: "/docs/apresentacao.pdf"
       pillars: [
-        { title: "Missão", text: "Formar estudantes capazes de analisar ativos digitais com rigor, unindo pesquisa acadêmica e prática de mercado." },
-        { title: "Visão", text: "Ser a referência universitária no Brasil em pesquisa sobre ativos digitais e infraestrutura financeira." },
+        { title: "Missão", text: "Formar estudantes capazes de analisar ativos digitais com rigor técnico, aproximando a pesquisa acadêmica da FGV EAESP da prática do mercado financeiro." },
+        { title: "Visão", text: "Ser a principal referência universitária do Brasil em pesquisa sobre ativos digitais e a nova infraestrutura financeira." },
         { title: "Valores", list: ["Rigor", "Transparência", "Curiosidade", "Colaboração"] },
       ],
       timelineTitle: "Trajetória",
@@ -299,18 +320,21 @@ export const SITE_DATA = {
       technical: [
         {
           name: "Research",
+          short: "Relatórios sobre setores, protocolos e regulação", // descrição curta usada na página inicial
           photo: "",
           description: "Acompanha o mercado de ativos digitais e produz relatórios sobre setores, protocolos e regulação.",
           deliverables: ["Relatórios setoriais", "Análises de protocolos", "Acompanhamento regulatório"],
         },
         {
           name: "DeFi e Protocolos",
+          short: "Crédito, liquidez e risco em finanças descentralizadas", // descrição curta usada na página inicial
           photo: "",
           description: "Estuda protocolos de finanças descentralizadas, como crédito, liquidez e derivativos, e os riscos de cada desenho.",
           deliverables: ["Modelos de risco e retorno", "Painéis de dados on-chain", "Estudos de caso de protocolos"],
         },
         {
           name: "Tokenização",
+          short: "Emissão e negociação de ativos tokenizados", // descrição curta usada na página inicial
           photo: "",
           description: "Investiga a emissão e a negociação de ativos tokenizados, de títulos a recebíveis, e o que muda para emissores e investidores.",
           deliverables: ["Estudos de estrutura de emissão", "Comparação com o mercado tradicional", "Análise de custos e prazos"],
@@ -329,7 +353,7 @@ export const SITE_DATA = {
     /* --- Research (#/research) -------------------------------------------------
      * Um item por estudo. `nucleo` precisa ter o mesmo nome usado em Células.
      * `href`: link do PDF ou da página do estudo. `cover`: imagem da capa (4:3).
-     * ⚠️ Títulos e perguntas abaixo são exemplos.
+     * ⚠️ Estudos e autores abaixo são exemplos: troquem pelos estudos reais.
      * ----------------------------------------------------------------------- */
     research: {
       title: "Research",
@@ -346,7 +370,7 @@ export const SITE_DATA = {
               title: "Stablecoins em pagamentos internacionais",
               nucleo: "Research",
               question: "O que muda em custo e prazo quando uma remessa internacional usa stablecoins?",
-              authors: ["Nome Sobrenome", "Nome Sobrenome", "Nome Sobrenome"],
+              authors: ["Pedro Henrique Sato", "Ana Clara Ribeiro", "João Vitor Mendes"],
               cover: "",
               href: "",
             },
@@ -354,7 +378,7 @@ export const SITE_DATA = {
               title: "Risco de liquidação em protocolos de crédito",
               nucleo: "DeFi e Protocolos",
               question: "Como a volatilidade do colateral afeta as liquidações em protocolos de empréstimo?",
-              authors: ["Nome Sobrenome", "Nome Sobrenome"],
+              authors: ["Gabriela Nunes", "Bruno Kenji Okada"],
               cover: "",
               href: "",
             },
@@ -362,7 +386,7 @@ export const SITE_DATA = {
               title: "Tokenização de recebíveis no Brasil",
               nucleo: "Tokenização",
               question: "Em que etapas a tokenização reduz custos na emissão de recebíveis?",
-              authors: ["Nome Sobrenome", "Nome Sobrenome", "Nome Sobrenome"],
+              authors: ["Thiago Barreto", "Camila Duarte", "Matheus Fontana"],
               cover: "",
               href: "",
             },
@@ -375,7 +399,7 @@ export const SITE_DATA = {
               title: "Panorama regulatório dos ativos virtuais",
               nucleo: "Research",
               question: "Quais obrigações as novas regras impõem às prestadoras de serviços de ativos virtuais?",
-              authors: ["Nome Sobrenome", "Nome Sobrenome"],
+              authors: ["Pedro Henrique Sato", "Helena Araújo"],
               cover: "",
               href: "",
             },
@@ -383,7 +407,7 @@ export const SITE_DATA = {
               title: "Formadores de mercado automatizados",
               nucleo: "DeFi e Protocolos",
               question: "Quando o retorno das taxas compensa a perda impermanente para quem provê liquidez?",
-              authors: ["Nome Sobrenome", "Nome Sobrenome", "Nome Sobrenome"],
+              authors: ["Gabriela Nunes", "Daniel Vasconcelos", "Larissa Couto"],
               cover: "",
               href: "",
             },
@@ -398,23 +422,24 @@ export const SITE_DATA = {
       text: "Desafios universitários, hackathons e competições de análise com participação dos nossos membros.",
       intro:
         "Competições aproximam os membros de problemas reais do mercado. Em poucas semanas, cada equipe precisa formular uma tese, testar hipóteses e defendê-la diante de profissionais.",
+      // ⚠️ Exemplos: confirmem nomes, anos, resultados e equipes antes de publicar.
       items: [
         {
-          name: "[Nome da Competição]",
-          organizer: "[Organizador]",
+          name: "CFA Institute Research Challenge",
+          organizer: "CFA Institute · CFA Society Brazil",
           photo: "",
-          description: "Competição universitária em que as equipes desenvolvem uma tese sobre [tema] e apresentam o trabalho a uma banca de profissionais.",
+          description: "Competição global em que equipes universitárias avaliam uma empresa de capital aberto e defendem uma recomendação diante de analistas profissionais. A etapa brasileira é organizada pela CFA Society Brazil.",
           results: [
-            { year: "2026", result: "[Resultado: campeões, finalistas…]", team: "Nome Sobrenome, Nome Sobrenome e Nome Sobrenome" },
-            { year: "2025", result: "[Resultado]", team: "Nome Sobrenome e Nome Sobrenome" },
+            { year: "2026", result: "Participação · tese sobre a tesouraria em bitcoin de uma companhia listada", team: "Pedro Henrique Sato, Beatriz Tanaka e Gustavo Prado" },
+            { year: "2025", result: "Participação · avaliação de uma empresa de pagamentos", team: "Rafael Monteiro e Lucas Albuquerque" },
           ],
         },
         {
-          name: "[Nome do Hackathon]",
-          organizer: "[Organizador]",
+          name: "ETHSamba",
+          organizer: "Hackathon de Ethereum · Rio de Janeiro",
           photo: "",
-          description: "Hackathon em que as equipes constroem, em poucos dias, um protótipo de [produto] usando blockchain.",
-          results: [{ year: "2025", result: "[Resultado]", team: "Nome Sobrenome, Nome Sobrenome e Nome Sobrenome" }],
+          description: "Hackathon da comunidade Ethereum no Brasil. Em poucos dias, as equipes constroem um protótipo em blockchain e o apresentam a uma banca de desenvolvedores e investidores.",
+          results: [{ year: "2025", result: "Participação · protótipo de tokenização de recebíveis", team: "Thiago Barreto, Vinícius Teles e Sofia Bastos" }],
         },
       ],
     },
@@ -442,52 +467,53 @@ export const SITE_DATA = {
     /* --- Membros ----------------------------------------------------------- */
     members: {
       title: "Membros",
-      text: "Conheça os alunos que fazem a FGV Digital Assets acontecer: a diretoria e os membros de cada um das nossas células.",
+      text: "Conheça os alunos que fazem a FGV Digital Assets acontecer: a diretoria e os membros de cada uma das nossas células.",
+      // ⚠️ Nomes de exemplo (fictícios): troquem pela composição real da gestão antes de publicar.
       // size: "lg" (até 4 por linha, cards maiores) | "md" (5 por linha) | "sm" (6 por linha)
       groups: [
         {
           title: "Presidência",
           size: "lg",
           people: [
-            { name: "Nome Sobrenome", role: "Presidente", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Vice-Presidente", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
+            { name: "Rafael Monteiro", role: "Presidente", course: "7º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Beatriz Tanaka", role: "Vice-Presidente", course: "6º semestre de Economia", photo: "", linkedin: "", email: "" },
           ],
         },
         {
           title: "Diretores",
           size: "lg",
           people: [
-            { name: "Nome Sobrenome", role: "Diretor(a) Acadêmico(a)", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Diretor(a) Institucional", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
+            { name: "Lucas Albuquerque", role: "Diretor Acadêmico", course: "6º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Mariana Figueiredo", role: "Diretora Institucional", course: "5º semestre de Administração Pública", photo: "", linkedin: "", email: "" },
           ],
         },
         {
           title: "Heads",
           size: "md",
           people: [
-            { name: "Nome Sobrenome", role: "Head de Research", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Head de DeFi e Protocolos", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Head de Tokenização", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Head de Educação", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Head de Eventos", course: "Xº semestre Direito", photo: "", linkedin: "", email: "" },
+            { name: "Pedro Henrique Sato", role: "Head de Research", course: "5º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Gabriela Nunes", role: "Head de DeFi e Protocolos", course: "5º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Thiago Barreto", role: "Head de Tokenização", course: "6º semestre de Direito", photo: "", linkedin: "", email: "" },
+            { name: "Isabela Campos", role: "Head de Educação", course: "4º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Felipe Rocha", role: "Head de Eventos", course: "4º semestre de Administração Pública", photo: "", linkedin: "", email: "" },
           ],
         },
         {
           title: "Membros",
           size: "sm",
           people: [
-            { name: "Nome Sobrenome", role: "Research", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "DeFi e Protocolos", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Tokenização", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Educação", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Eventos", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Institucional e Research", course: "Xº semestre Direito", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Research", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "DeFi e Protocolos", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Tokenização", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Acadêmico e Educação", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Eventos", course: "Xº semestre Economia", photo: "", linkedin: "", email: "" },
-            { name: "Nome Sobrenome", role: "Institucional e Tokenização", course: "Xº semestre Administração", photo: "", linkedin: "", email: "" },
+            { name: "Ana Clara Ribeiro", role: "Research", course: "3º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Bruno Kenji Okada", role: "DeFi e Protocolos", course: "4º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Camila Duarte", role: "Tokenização", course: "3º semestre de Direito", photo: "", linkedin: "", email: "" },
+            { name: "Daniel Vasconcelos", role: "DeFi e Protocolos", course: "2º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Eduarda Lins", role: "Educação", course: "3º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Gustavo Prado", role: "Research", course: "4º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Helena Araújo", role: "Research", course: "2º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "João Vitor Mendes", role: "Research", course: "3º semestre de Administração Pública", photo: "", linkedin: "", email: "" },
+            { name: "Larissa Couto", role: "DeFi e Protocolos", course: "2º semestre de Economia", photo: "", linkedin: "", email: "" },
+            { name: "Matheus Fontana", role: "Tokenização", course: "4º semestre de Administração de Empresas", photo: "", linkedin: "", email: "" },
+            { name: "Sofia Bastos", role: "Eventos e Tokenização", course: "3º semestre de Administração Pública", photo: "", linkedin: "", email: "" },
+            { name: "Vinícius Teles", role: "Institucional e Tokenização", course: "2º semestre de Economia", photo: "", linkedin: "", email: "" },
           ],
         },
       ],
@@ -499,25 +525,26 @@ export const SITE_DATA = {
       title: "Alumni",
       text: "Nossos ex-membros estão em instituições de referência no país, atuando em diversas áreas e contribuindo para a evolução do mercado financeiro e de ativos digitais.",
       sectionTitle: "Onde nossos alumni estão",
+      // ⚠️ Exemplos fictícios: troquem pela lista real de alumni (nome e empresa atual) antes de publicar.
       people: [
-        { name: "Nome Sobrenome", company: "Gestora A", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Banco B", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Exchange C", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Gestora A", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Escritório D", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Fintech E", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Banco B", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Custodiante F", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Gestora A", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Consultoria G", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Protocolo H", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Banco I", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Exchange C", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Tokenizadora J", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Escritório D", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Fundo K", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Fintech L", linkedin: "" },
-        { name: "Nome Sobrenome", company: "Banco B", linkedin: "" },
+        { name: "Carolina Mattos", company: "Itaú BBA", linkedin: "" },
+        { name: "André Luiz Pacheco", company: "BTG Pactual", linkedin: "" },
+        { name: "Fernanda Yamamoto", company: "Mercado Bitcoin", linkedin: "" },
+        { name: "Ricardo Siqueira", company: "Itaú BBA", linkedin: "" },
+        { name: "Juliana Castro", company: "Pinheiro Neto Advogados", linkedin: "" },
+        { name: "Henrique Lacerda", company: "Hashdex", linkedin: "" },
+        { name: "Marina Peixoto", company: "BTG Pactual", linkedin: "" },
+        { name: "Otávio Ramos", company: "Núclea", linkedin: "" },
+        { name: "Letícia Moura", company: "Itaú BBA", linkedin: "" },
+        { name: "Caio Bernardes", company: "McKinsey & Company", linkedin: "" },
+        { name: "Natália Freire", company: "Liqi", linkedin: "" },
+        { name: "Eduardo Kato", company: "XP Investimentos", linkedin: "" },
+        { name: "Paula Rezende", company: "Mercado Bitcoin", linkedin: "" },
+        { name: "Leonardo Cunha", company: "Vórtx", linkedin: "" },
+        { name: "Renata Godoy", company: "Pinheiro Neto Advogados", linkedin: "" },
+        { name: "Diego Amaral", company: "Nubank", linkedin: "" },
+        { name: "Tatiana Lopes", company: "Banco Central do Brasil", linkedin: "" },
+        { name: "Murilo Esteves", company: "BTG Pactual", linkedin: "" },
       ],
     },
 
@@ -570,34 +597,35 @@ export const SITE_DATA = {
     events: {
       title: "Eventos",
       text: "Palestras, visitas técnicas e encontros com profissionais do mercado de ativos digitais, organizados pela FGV Digital Assets.",
+      // ⚠️ Exemplos: troquem pelos eventos reais (com foto) antes de publicar.
       groups: [
         {
           semester: "2026.2",
           items: [
             {
               date: "2026-11-10",
-              title: "Encontro com [Nome do Convidado]",
+              title: "Drex e a liquidação de ativos tokenizados",
               photo: "",
               text: [
-                "Recebemos [Nome do Convidado], [cargo] da [Empresa], para uma conversa sobre carreira, mercado e perspectivas para o setor.",
-                "Sua trajetória em [instituições] resultou em uma discussão inspiradora para os nossos membros.",
+                "Painel com profissionais de um grande banco e de uma infraestrutura do mercado financeiro sobre os testes do Drex, a plataforma de finanças tokenizadas do Banco Central, e o que eles indicam para a liquidação de títulos.",
+                "No encerramento, a célula de Tokenização apresentou um resumo das fases do piloto e das perguntas que seguem em aberto.",
               ],
             },
             {
               date: "2026-11-03",
-              title: "Visita à [Gestora]",
+              title: "Visita técnica a uma gestora de criptoativos",
               photo: "",
               text: [
-                "A célula de Tokenização foi convidado pela [Gestora] para uma palestra sobre emissão de ativos tokenizados, a partir de um estudo de caso real da equipe.",
-                "Agradecemos aos profissionais [Nomes] pela oportunidade e pelo conhecimento compartilhado.",
+                "A célula de Research visitou uma gestora de fundos de criptoativos em São Paulo para conhecer, na prática, o processo de análise, custódia e gestão de risco de uma carteira de ativos digitais.",
+                "A conversa com o time de investimentos virou ponto de partida para o relatório setorial do semestre.",
               ],
             },
             {
               date: "2026-10-20",
-              title: "[Nome do Encontro de Entidades]",
+              title: "Encontro de entidades de finanças da FGV",
               photo: "",
               text: [
-                "Entidades estudantis de finanças e ativos digitais se reuniram para a primeira edição do encontro. Os convidados [Nomes] falaram sobre carreira, regulação e tendências do mercado.",
+                "Entidades estudantis de finanças da FGV se reuniram para apresentar os projetos do semestre, trocar experiências de gestão e discutir carreira no mercado financeiro e de ativos digitais.",
               ],
             },
           ],
@@ -607,18 +635,18 @@ export const SITE_DATA = {
           items: [
             {
               date: "2026-05-28",
-              title: "Workshop: [Tema]",
+              title: "Workshop: análise de dados on-chain",
               photo: "",
               text: [
-                "Workshop prático conduzido por [Nome do Convidado], da [Empresa], sobre [tema], com exercícios aplicados para os membros da entidade.",
+                "Workshop prático sobre como consultar dados públicos de blockchains com SQL. Os participantes montaram um painel com o volume diário de stablecoins na rede Ethereum e discutiram como interpretar os números.",
               ],
             },
             {
               date: "2026-04-15",
-              title: "Painel sobre [Tema]",
+              title: "Painel: a nova regulação dos ativos virtuais",
               photo: "",
               text: [
-                "Painel aberto à comunidade da FGV com [Nomes], discutindo [tema] e seus impactos no mercado brasileiro.",
+                "Painel aberto à comunidade da FGV sobre o Marco Legal dos Criptoativos (Lei 14.478/2022) e as regras do Banco Central para as prestadoras de serviços de ativos virtuais, com foco no que muda para exchanges e investidores.",
               ],
             },
           ],

@@ -38,6 +38,9 @@ import {
   MapPin,
   CheckCircle2,
   Loader2,
+  Target,
+  Eye,
+  Gem,
 } from "lucide-react";
 
 /* Conteúdo (textos, fotos, links): src/conteudo.js */
@@ -322,7 +325,6 @@ const PAGES_CSS = `
   .hm-intro { margin-bottom: clamp(32px, 4vw, 48px); }
   .hm-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: clamp(32px, 4vw, 48px); }
   .hm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 6px; }
-  .hm-about-lead { font-size: clamp(24px, 2.2vw, 30px); line-height: 1.25; }
 
   .hm-stats-band { background: ${PAGE_COLORS.navy}; color: #fff; padding: clamp(44px, 5vw, 72px) 0; }
   .hm-stats-title { text-align: center; font-size: 15.3px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: clamp(24px, 3vw, 36px) !important; }
@@ -333,11 +335,6 @@ const PAGES_CSS = `
   @media (min-width: 1024px) { .hm-stat + .hm-stat { border-left: 1px solid rgba(255, 255, 255, 0.16); } }
 
   .hm-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 32px); }
-  .hm-card { display: flex; flex-direction: column; gap: 10px; background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); border-radius: 14px; padding: 28px; }
-  .hm-card h3 { font-size: 23px; line-height: 1.25; }
-  .hm-card p { font-size: 17px; line-height: 1.55; opacity: 0.88; }
-  .hm-card .rs-kicker { opacity: 1; }
-  .hm-card .pg-textlink { margin-top: auto; padding-top: 6px; }
   .hm-excerpt { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 
   .hm-quote { margin: 0; display: flex; flex-direction: column; gap: 22px; background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); border-radius: 14px; padding: 30px 28px 26px; }
@@ -349,13 +346,9 @@ const PAGES_CSS = `
   .hm-quote-name { display: block; font-weight: 700; line-height: 1.3; }
   .hm-quote-role { display: block; font-size: 15.3px; line-height: 1.35; opacity: 0.7; }
 
-  .hm-ps { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 28px 40px; background: ${PAGE_COLORS.accent}; color: #fff; border-radius: 18px; padding: clamp(28px, 4vw, 52px); }
   .hm-ps-status { display: inline-flex; align-items: center; gap: 9px; font-size: 14px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255, 255, 255, 0.14); border-radius: 300px; padding: 6px 14px; }
   .hm-ps-status i { flex: 0 0 8px; width: 8px; height: 8px; border-radius: 50%; background: #CBD5E1; }
   .hm-ps-status.is-open i { background: #4ADE80; box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.25); }
-  .hm-ps h2 { font-size: clamp(30px, 3vw, 41.4px); line-height: 1.1; margin: 16px 0 10px !important; }
-  .hm-ps-text { max-width: 560px; line-height: 1.55; opacity: 0.92; }
-  .hm-ps-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
   .hm-dark { background: ${PAGE_COLORS.navy}; color: #fff; }
   .hm-dark .re-members-marca { color: #fff; }
@@ -417,6 +410,67 @@ const PAGES_CSS = `
   }
   @media (max-width: 480px) {
     .nu-cycle { grid-template-columns: minmax(0, 1fr); }
+  }
+
+  /* --- Blocos de ponta a ponta (foto de um lado, texto do outro), como na FGV Finance --- */
+  .fs { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: clamp(480px, 42vw, 620px); }
+  .fs--dark .fs-panel { background: ${PAGE_COLORS.navy}; color: #fff; }
+  .fs--light .fs-panel { background: #fff; }
+  .fs--band .fs-panel { background: #F3F5F8; }
+  .fs--reverse .fs-media { order: 2; }
+  .fs-panel { display: flex; align-items: center; padding: clamp(48px, 6vw, 96px) clamp(24px, 6vw, 96px); }
+  .fs-inner { width: 100%; max-width: 560px; display: flex; flex-direction: column; gap: 18px; }
+  .fs:not(.fs--reverse) .fs-inner { margin-right: auto; }
+  .fs--reverse .fs-inner { margin-left: auto; }
+  .fs-title { font-size: clamp(30px, 3vw, 42px); line-height: 1.12; }
+  .fs-title::after { content: ""; display: block; width: 56px; height: 3px; margin-top: 18px; background: currentColor; opacity: 0.35; }
+  .fs-inner > p { line-height: 1.65; }
+  .fs--dark .fs-inner > p { opacity: 0.88; }
+  .fs-lead { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 1.7vw, 24px) !important; font-weight: 500; line-height: 1.35 !important; }
+  .fs-list { list-style: none; padding: 0; margin: 4px 0 6px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
+  .fs--light .fs-list, .fs--band .fs-list { border-top-color: rgba(${PAGE_COLORS.navyRgb}, 0.14); }
+  .fs-list li { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
+  .fs--light .fs-list li, .fs--band .fs-list li { border-bottom-color: rgba(${PAGE_COLORS.navyRgb}, 0.14); }
+  .fs-list a, .fs-list > li > div { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; color: inherit; }
+  .fs-list a:hover .fs-list-name { text-decoration: underline; text-underline-offset: 4px; }
+  .fs-list-name { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; }
+  .fs-list-note { display: block; font-size: 15.3px; opacity: 0.7; margin-top: 2px; }
+  .fs-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 8px; }
+  .fs-media { position: relative; overflow: hidden; background: ${PAGE_COLORS.navyDeep}; }
+  .fs-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .fs-art { position: absolute; inset: 0; }
+  .fs-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .fs-art-caption { position: absolute; left: clamp(20px, 3vw, 40px); bottom: clamp(20px, 3vw, 36px); right: clamp(20px, 3vw, 40px); color: #fff; }
+  .fs-art-caption strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(56px, 7vw, 104px); line-height: 1; letter-spacing: -0.02em; }
+  .fs-art-caption span { display: block; margin-top: 10px; font-size: 15.3px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
+  .fs-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 14px; font-size: 14px; font-style: italic; color: #fff; background: linear-gradient(transparent, rgba(5, 14, 31, 0.75)); }
+
+  /* --- Missão, visão e valores (página inicial) --- */
+  .fs--light .hm-ps-status i { background: #94A3B8; }
+  .fs--light .hm-ps-status.is-open i { background: #16A34A; box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.2); }
+  .fs--light .hm-ps-status { align-self: flex-start; background: rgba(${PAGE_COLORS.navyRgb}, 0.07); color: ${PAGE_COLORS.navy}; }
+  .fs-step-n { display: inline-block; min-width: 34px; font-weight: 500; opacity: 0.5; }
+  .fs-steps .fs-list-name { font-size: 17px; }
+  .fs-steps > li > div { padding: 11px 0; }
+
+  .mv-band { background: #F3F5F8; border-bottom: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.08); }
+  .mv-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .mv-item { padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 64px); }
+  .mv-item + .mv-item { border-left: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
+  .mv-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: ${PAGE_COLORS.navy}; color: #fff; margin-bottom: 20px; }
+  .mv-item h3 { font-size: 24px; line-height: 1.2; margin-bottom: 12px !important; }
+  .mv-item p { line-height: 1.6; opacity: 0.88; max-width: 420px; }
+  .mv-values { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+  .mv-values li { font-weight: 600; padding: 7px 16px; border-radius: 300px; background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.16); }
+
+  @media (max-width: 900px) {
+    .fs { grid-template-columns: minmax(0, 1fr); min-height: 0; }
+    .fs-media { min-height: 280px; }
+    .fs--reverse .fs-media { order: 0; }
+    .fs-inner { max-width: 640px; margin: 0 auto !important; }
+    .mv-grid { grid-template-columns: minmax(0, 1fr); }
+    .mv-item + .mv-item { border-left: 0; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
+    .mv-item { padding: 36px 4vw; }
   }
 `;
 
@@ -1230,6 +1284,71 @@ function PgPhoto({ src, alt }) {
   );
 }
 
+/* Arte estática (rede de nós sobre navy) usada no lugar da foto enquanto ela não
+   existe. `seed` muda o desenho de um bloco para outro. */
+function NetworkArt({ seed = 1 }) {
+  let s = seed * 9301 + 49297;
+  const rand = () => ((s = (s * 9301 + 49297) % 233280) / 233280);
+  const nodes = Array.from({ length: 26 }, () => [rand() * 600, rand() * 480, 1.5 + rand() * 2.5]);
+  const lines = [];
+  nodes.forEach((a, i) =>
+    nodes.slice(i + 1).forEach((b) => {
+      const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+      if (d < 130) lines.push([a, b, 1 - d / 130]);
+    })
+  );
+  const gid = `fs-grad-${seed}`;
+  return (
+    <svg viewBox="0 0 600 480" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <radialGradient id={gid} cx="70%" cy="25%" r="85%">
+          <stop offset="0" stopColor="#1C335F" />
+          <stop offset="0.55" stopColor={PAGE_COLORS.navy} />
+          <stop offset="1" stopColor={PAGE_COLORS.navyDeep} />
+        </radialGradient>
+      </defs>
+      <rect width="600" height="480" fill={`url(#${gid})`} />
+      {lines.map(([a, b, o], i) => (
+        <line key={i} x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="#8FB3FF" strokeOpacity={0.35 * o} strokeWidth="1" />
+      ))}
+      {nodes.map(([x, y, r], i) => (
+        <circle key={i} cx={x} cy={y} r={r} fill="#C9DAFF" fillOpacity="0.75" />
+      ))}
+    </svg>
+  );
+}
+
+/* Bloco de ponta a ponta: foto (ou arte) de um lado e painel de texto do outro.
+   tone: "dark" (painel navy) | "light" (branco) | "band" (cinza claro).
+   reverse: texto à esquerda e foto à direita. */
+function FullSplit({ id, tone = "dark", reverse = false, photo, photoAlt = "", caption, art, children, labelledBy }) {
+  return (
+    <section id={id} className={`fs fs--${tone}${reverse ? " fs--reverse" : ""} scroll-mt-16`} aria-labelledby={labelledBy}>
+      <div className="fs-media">
+        {isSet(photo) ? (
+          <>
+            <img src={photo} alt={photoAlt} loading="lazy" />
+            {isSet(caption) && <p className="fs-caption">{caption}</p>}
+          </>
+        ) : (
+          <div className="fs-art">
+            <NetworkArt seed={art?.seed ?? 1} />
+            {art?.value && (
+              <p className="fs-art-caption">
+                <strong>{art.value}</strong>
+                {art.label && <span>{art.label}</span>}
+              </p>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="fs-panel">
+        <div className="fs-inner">{children}</div>
+      </div>
+    </section>
+  );
+}
+
 /* --- Sobre (#/sobre) --- */
 function AboutPage({ data, photo }) {
   const deckExt = isExternal(data.deck.href);
@@ -2020,36 +2139,137 @@ export default function App() {
           </section>
 
           {/* === SEÇÃO: SOBRE NÓS === */}
-          {/* Foto do grupo, uma frase de destaque, um parágrafo, a apresentação
-              institucional (quando houver PDF) e o link para a aba Sobre. */}
-          <section id="quem-somos" className="pg-block scroll-mt-16">
-            <div className="pg-container">
-              <PgTitle>{about.title}</PgTitle>
-              <div className="ab-grid">
-                <PgPhoto src={about.photo} alt={`Membros da ${brand.name}`} />
-                <div className="ab-text">
-                  <h3 className="hm-about-lead pg-heading">{about.lead}</h3>
-                  <p>{about.text}</p>
-                  <div className="hm-actions">
-                    {isSet(deck.href) && (
-                      <a
-                        className="pg-btn"
-                        href={deck.href}
-                        {...(isExternal(deck.href) ? { target: "_blank", rel: "noopener noreferrer" } : { download: true })}
-                      >
-                        {deck.label}
-                        <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                      </a>
+          {/* Bloco de ponta a ponta (como na CJE): foto do grupo à esquerda; frase de
+              destaque, parágrafos, apresentação institucional (com PDF) e link à direita. */}
+          <FullSplit
+            id="quem-somos"
+            tone="light"
+            photo={about.photo}
+            photoAlt={`Membros da ${brand.name}`}
+            caption={about.photoCaption}
+            art={{ seed: 3 }}
+            labelledBy="quem-somos-titulo"
+          >
+            <h2 id="quem-somos-titulo" className="fs-title pg-heading">{about.title}</h2>
+            <p className="fs-lead">{about.lead}</p>
+            {about.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <div className="fs-actions">
+              {isSet(deck.href) && (
+                <a
+                  className="pg-btn"
+                  href={deck.href}
+                  {...(isExternal(deck.href) ? { target: "_blank", rel: "noopener noreferrer" } : { download: true })}
+                >
+                  {deck.label}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
+              <a className="pg-textlink" href={about.link.href}>
+                {about.link.label}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </FullSplit>
+
+          {/* === SEÇÃO: MISSÃO, VISÃO E VALORES === */}
+          {/* Faixa clara de ponta a ponta com três colunas (como na FGV Finance e na CJE).
+              O texto vem de pages.about.pillars, o mesmo da aba Sobre. */}
+          <section id="missao" className="mv-band" aria-label="Missão, visão e valores">
+            <div className="mv-grid">
+              {pages.about.pillars.map((item, i) => {
+                const Icon = [Target, Eye, Gem][i] || Target;
+                return (
+                  <article key={item.title} className="mv-item">
+                    <span className="mv-icon" aria-hidden="true">
+                      <Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="pg-heading">{item.title}</h3>
+                    {item.text && <p>{item.text}</p>}
+                    {item.list && (
+                      <ul className="mv-values">
+                        {item.list.map((v) => (
+                          <li key={v}>{v}</li>
+                        ))}
+                      </ul>
                     )}
-                    <a className="pg-textlink" href={about.link.href}>
-                      {about.link.label}
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </div>
-                </div>
-              </div>
+                  </article>
+                );
+              })}
             </div>
           </section>
+
+          {/* === SEÇÃO: NÚCLEOS === */}
+          {/* Um card curto por célula técnica, com link para os estudos da célula. */}
+          {/* Bloco de ponta a ponta: painel navy à esquerda, foto à direita. */}
+          <FullSplit
+            id="nucleos-destaque"
+            tone="dark"
+            reverse
+            photo={highlights.nucleos.photo}
+            photoAlt={`Célula da ${brand.name}`}
+            caption={highlights.nucleos.photoCaption}
+            art={{ seed: 7, value: String(pages.nucleos.technical.length), label: highlights.nucleos.artLabel }}
+            labelledBy="nucleos-titulo"
+          >
+            <h2 id="nucleos-titulo" className="fs-title pg-heading">{highlights.nucleos.title}</h2>
+            {highlights.nucleos.paragraphs.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+            <ul className="fs-list">
+              {pages.nucleos.technical.map((n) => (
+                <li key={n.name}>
+                  <a href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
+                    <span>
+                      <span className="fs-list-name">{n.name}</span>
+                      <span className="fs-list-note">{n.short || n.description}</span>
+                    </span>
+                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <div className="fs-actions">
+              <a className="pg-btn pg-btn--light" href="#/celulas">
+                {highlights.nucleos.button}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </FullSplit>
+
+          {/* === SEÇÃO: COMPETIÇÕES === */}
+          {/* Foto à esquerda, painel cinza claro à direita (alterna com o bloco de Células). */}
+          <FullSplit
+            id="competicoes-destaque"
+            tone="band"
+            photo={highlights.competitions.photo}
+            photoAlt="Equipe da entidade em uma competição"
+            caption={highlights.competitions.photoCaption}
+            art={{ seed: 11 }}
+            labelledBy="competicoes-titulo"
+          >
+            <h2 id="competicoes-titulo" className="fs-title pg-heading">{highlights.competitions.title}</h2>
+            <p>{pages.competitions.intro}</p>
+            <ul className="fs-list">
+              {pages.competitions.items.map((c) => (
+                <li key={c.name}>
+                  <div>
+                    <span>
+                      <span className="fs-list-name">{c.name}</span>
+                      <span className="fs-list-note">{c.organizer}</span>
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ul>
+            <div className="fs-actions">
+              <a className="pg-btn" href="#/competicoes">
+                {highlights.competitions.button}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+            </div>
+          </FullSplit>
 
           {/* === SEÇÃO: NÚMEROS === */}
           {/* Faixa navy com 4 a 6 contadores que sobem de 0 até o valor ao aparecer na tela. */}
@@ -2072,38 +2292,6 @@ export default function App() {
               </div>
             </section>
           )}
-
-          {/* === SEÇÃO: NÚCLEOS === */}
-          {/* Um card curto por célula técnica, com link para os estudos da célula. */}
-          <section id="nucleos-destaque" className="pg-block pg-band">
-            <div className="pg-container">
-              <PgTitle>{highlights.nucleos.title}</PgTitle>
-              <div className="hm-intro">
-                <p className="pg-lead">{highlights.nucleos.text}</p>
-              </div>
-              <div className="hm-cards">
-                {pages.nucleos.technical.map((n, i) => (
-                  <article key={n.name} className="hm-card">
-                    <p className="rs-kicker">
-                      {String(i + 1).padStart(2, "0")} · {highlights.nucleos.kicker}
-                    </p>
-                    <h3 className="pg-heading">{n.name}</h3>
-                    <p>{n.description}</p>
-                    <a className="pg-textlink" href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
-                      {pages.nucleos.researchLink}
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </article>
-                ))}
-              </div>
-              <div className="hm-more">
-                <a className="pg-btn" href="#/celulas">
-                  {highlights.nucleos.button}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-              </div>
-            </div>
-          </section>
 
           {/* === SEÇÃO: RESEARCH EM DESTAQUE === */}
           {/* Os estudos mais recentes da aba Research, no mesmo card da aba. */}
@@ -2189,44 +2377,59 @@ export default function App() {
           )}
 
           {/* === SEÇÃO: FAIXA DO PROCESSO SELETIVO === */}
-          {/* Status (aberto ou encerrado) vindo de nav.selection, período e botões. */}
-          <section id="processo-seletivo-faixa" className={`pg-block${quotes.length > 0 ? " pg-band" : ""}`}>
-            <div className="pg-container">
-              <div className="hm-ps">
-                <div>
-                  <p className={`hm-ps-status${selectionOpen ? " is-open" : ""}`}>
-                    <i aria-hidden="true" />
-                    {selectionOpen ? selectionBand.openLabel : selectionBand.closedLabel}
-                    {selectionOpen && isSet(nav.selection.period) ? ` · ${nav.selection.period}` : ""}
-                  </p>
-                  <h2 className="pg-heading">{selectionBand.title}</h2>
-                  <p className="hm-ps-text">{selectionOpen ? selectionBand.openText : selectionBand.closedText}</p>
-                </div>
-                <div className="hm-ps-actions">
-                  {selectionOpen && (
-                    <a
-                      className="pg-btn pg-btn--light"
-                      href={nav.selection.url}
-                      {...(isExternal(nav.selection.url) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    >
-                      {selectionBand.applyLabel}
-                      <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  )}
-                  <a className={`pg-btn ${selectionOpen ? "pg-btn--ghost" : "pg-btn--light"}`} href="#/processo-seletivo">
-                    {selectionBand.moreLabel}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                  {!selectionOpen && newsletterMode !== "off" && (
-                    <a className="pg-btn pg-btn--ghost" href="#newsletter">
-                      <Mail className="h-4 w-4" aria-hidden="true" />
-                      {selectionBand.notifyLabel}
-                    </a>
-                  )}
-                </div>
-              </div>
+          {/* Bloco de ponta a ponta: foto (ou arte) à esquerda, status, texto e botões à
+              direita. Aberto/encerrado vem de nav.selection. */}
+          <FullSplit
+            id="processo-seletivo-faixa"
+            tone="light"
+            photo={selectionBand.photo}
+            photoAlt="Candidatos no processo seletivo"
+            caption={selectionBand.photoCaption}
+            art={{ seed: 5, value: String(pages.selection.steps.length), label: selectionBand.artLabel }}
+            labelledBy="ps-titulo"
+          >
+            <p className={`hm-ps-status${selectionOpen ? " is-open" : ""}`}>
+              <i aria-hidden="true" />
+              {selectionOpen ? selectionBand.openLabel : selectionBand.closedLabel}
+              {selectionOpen && isSet(nav.selection.period) ? ` · ${nav.selection.period}` : ""}
+            </p>
+            <h2 id="ps-titulo" className="fs-title pg-heading">{selectionBand.title}</h2>
+            <p>{selectionOpen ? selectionBand.openText : selectionBand.closedText}</p>
+            <ol className="fs-list fs-steps">
+              {pages.selection.steps.map((st, i) => (
+                <li key={st.label}>
+                  <div>
+                    <span className="fs-list-name">
+                      <span className="fs-step-n">{String(i + 1).padStart(2, "0")}</span>
+                      {st.label}
+                    </span>
+                  </div>
+                </li>
+              ))}
+            </ol>
+            <div className="fs-actions">
+              {selectionOpen && (
+                <a
+                  className="pg-btn"
+                  href={nav.selection.url}
+                  {...(isExternal(nav.selection.url) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                >
+                  {selectionBand.applyLabel}
+                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
+              <a className={selectionOpen ? "pg-textlink" : "pg-btn"} href="#/processo-seletivo">
+                {selectionBand.moreLabel}
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              </a>
+              {!selectionOpen && newsletterMode !== "off" && (
+                <a className="pg-textlink" href="#newsletter">
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  {selectionBand.notifyLabel}
+                </a>
+              )}
             </div>
-          </section>
+          </FullSplit>
 
           {/* === SEÇÃO: PARCEIROS === */}
           {/* Faixa escura: logos com a mesma altura em caixas brancas, colaborações
