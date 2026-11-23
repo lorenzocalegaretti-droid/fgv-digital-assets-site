@@ -136,6 +136,7 @@ const PAGES_CSS = `
   .re-alumni-lista { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: 45px; }
   .re-alumnus { display: flex; align-items: center; gap: 16.2px; padding: 17.1px 0; border-bottom: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.1); }
   .re-alumnus-info { flex: 1 1 0%; min-width: 0; }
+  .re-alumnus-papel { font-size: 13.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: ${PAGE_COLORS.accent}; margin-bottom: 2px !important; }
   .re-alumnus-nome { font-size: 18px; font-weight: 700; line-height: 1.3; }
   .re-alumnus-empresa { margin-top: 1.8px !important; font-size: 16.2px; line-height: 1.35; opacity: 0.72; }
   @media (max-width: 1023px) { .re-alumni-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -1046,7 +1047,7 @@ function MembersPage({ data, photo }) {
                   <div className="re-member-info">
                     <h3 className="re-member-name">{p.name}</h3>
                     <p className="re-member-cargo">{p.role}</p>
-                    <p className="re-member-curso">{p.course}</p>
+                    {isSet(p.course) && <p className="re-member-curso">{p.course}</p>}
                     <div className="re-member-links">
                       <IconButton href={p.linkedin} label={`LinkedIn de ${p.name}`}>
                         <LinkedInIcon />
@@ -1092,8 +1093,9 @@ function AlumniPage({ data, photo }) {
             {people.map((p, i) => (
               <article key={`${p.company}-${i}`} className="re-alumnus">
                 <div className="re-alumnus-info">
+                  {isSet(p.role) && <p className="re-alumnus-papel">{p.role}</p>}
                   <h3 className="re-alumnus-nome">{p.name}</h3>
-                  <p className="re-alumnus-empresa">{p.company}</p>
+                  <p className="re-alumnus-empresa">{[p.position, p.company].filter((v) => isSet(v)).join(" · ")}</p>
                 </div>
                 <IconButton href={p.linkedin} label={`LinkedIn de ${p.name}`}>
                   <LinkedInIcon />
@@ -1467,6 +1469,7 @@ function NucleosPage({ data, photo }) {
               <article key={n.name} id={`nucleo-${n.name}`} className="re-evento nu-row">
                 <PgPhoto src={n.photo} alt={`Célula de ${n.name}`} />
                 <div className="re-evento-corpo">
+                  {isSet(n.partner) && <p className="pg-kicker">{data.partnerLabel} {n.partner}</p>}
                   <h3 className="pg-row-title pg-heading">{n.name}</h3>
                   <p style={{ lineHeight: 1.6 }}>{n.description}</p>
                   <p className="pg-kicker">{data.deliverablesLabel}</p>
@@ -1475,12 +1478,14 @@ function NucleosPage({ data, photo }) {
                       <li key={d}>{d}</li>
                     ))}
                   </ul>
-                  <p>
-                    <a className="pg-textlink" href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
-                      {data.researchLink}
-                      <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                    </a>
-                  </p>
+                  {SITE_DATA.pages.research.groups.some((g) => g.items.some((it) => it.nucleo === n.name)) && (
+                    <p>
+                      <a className="pg-textlink" href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
+                        {data.researchLink}
+                        <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                      </a>
+                    </p>
+                  )}
                 </div>
               </article>
             ))}
@@ -1527,7 +1532,7 @@ function ResearchCard({ item, labels }) {
         <p className="rs-question">
           <strong>{labels.questionLabel}:</strong> {item.question}
         </p>
-        <p className="rs-authors">{item.authors.join(", ")}</p>
+        {item.authors && item.authors.length > 0 && <p className="rs-authors">{item.authors.join(", ")}</p>}
         {isSet(item.href) && (
           <a className="pg-textlink" href={item.href} {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}>
             {labels.linkLabel}
@@ -1803,7 +1808,8 @@ export default function App() {
   const heroPhotoOk = useImageAvailable(isSet(hero.backgroundImage) ? hero.backgroundImage : "");
   const pagePhoto = heroPhotoOk ? hero.backgroundImage : null;
   const hasEmail = isSet(brand.email);
-  const newsletterMode = isSet(newsletter.endpoint) ? "api" : hasEmail ? "mailto" : SHOW_PLACEHOLDERS ? "demo" : "off";
+  const newsletterMode =
+    newsletter.enabled === false ? "off" : isSet(newsletter.endpoint) ? "api" : hasEmail ? "mailto" : SHOW_PLACEHOLDERS ? "demo" : "off";
   const contactMode = isSet(pages.contact.endpoint) ? "api" : hasEmail ? "mailto" : SHOW_PLACEHOLDERS ? "demo" : "off";
   const newsletterCta = newsletterMode !== "off" ? nav.newsletterButton : null;
   // Link ativo: a aba da rota atual; "Início" na página inicial
@@ -2220,7 +2226,7 @@ export default function App() {
             <ul className="fs-list">
               {pages.nucleos.technical.map((n) => (
                 <li key={n.name}>
-                  <a href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
+                  <a href="#/celulas">
                     <span>
                       <span className="fs-list-name">{n.name}</span>
                       <span className="fs-list-note">{n.short || n.description}</span>
