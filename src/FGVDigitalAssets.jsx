@@ -452,6 +452,14 @@ const PAGES_CSS = `
   .fs-list a:hover .fs-list-name { text-decoration: underline; text-underline-offset: 4px; }
   .fs-list-name { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; }
   .fs-list-note { display: block; font-size: 15.3px; opacity: 0.7; margin-top: 2px; }
+  .fs--compact { min-height: 0; }
+  .fs--compact .fs-panel { padding-top: clamp(40px, 4.5vw, 64px); padding-bottom: clamp(40px, 4.5vw, 64px); }
+  .fs--compact .fs-inner { max-width: 640px; gap: 14px; }
+  .fs--compact .fs-title::after { margin-top: 14px; }
+  .fs--compact .fs-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin: 2px 0 4px; }
+  .fs--compact .fs-list a { padding: 12px 0; }
+  .fs--compact .fs-list-note { font-size: 14.4px; }
+  @media (max-width: 560px) { .fs--compact .fs-list { grid-template-columns: minmax(0, 1fr); } }
   .fs-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 8px; }
   .fs-media { position: relative; overflow: hidden; background: ${PAGE_COLORS.navyDeep}; }
   .fs-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
@@ -1445,9 +1453,9 @@ function Showcase({ data, competition, events, competitionsButton, eventsButton 
   );
 }
 
-function FullSplit({ id, tone = "dark", reverse = false, photo, photoAlt = "", photoPosition, caption, art, children, labelledBy }) {
+function FullSplit({ id, tone = "dark", reverse = false, compact = false, photo, photoAlt = "", photoPosition, caption, art, children, labelledBy }) {
   return (
-    <section id={id} className={`fs fs--${tone}${reverse ? " fs--reverse" : ""} scroll-mt-16`} aria-labelledby={labelledBy}>
+    <section id={id} className={`fs fs--${tone}${reverse ? " fs--reverse" : ""}${compact ? " fs--compact" : ""} scroll-mt-16`} aria-labelledby={labelledBy}>
       <div className="fs-media">
         {isSet(photo) ? (
           <>
@@ -2282,6 +2290,7 @@ export default function App() {
             id="nucleos-destaque"
             tone="dark"
             reverse
+            compact
             photo={highlights.nucleos.photo}
             photoAlt={`Célula da ${brand.name}`}
             caption={highlights.nucleos.photoCaption}
