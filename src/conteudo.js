@@ -24,7 +24,7 @@ export const SITE_DATA = {
   brand: {
     name: "FGV Digital Assets",
     formerName: "antiga FGV Crypto",
-    institution: "FGV EAESP",
+    institution: "FGV",
     // E-mail oficial (Linktree e posts da FGV Crypto). Usado no rodapé e no formulário de Contato.
     email: "fgvcrypto@gmail.com",
   },
@@ -72,7 +72,7 @@ export const SITE_DATA = {
     logo: "", // ⚠️ logo principal em branco (~250px). Vazio = logo SVG padrão.
     // Uma frase curta abaixo do logo. As três frases sobre o Viaduto do Chá estão
     // no início da aba Sobre (pages.about.opening).
-    tagline: "A liga de ativos digitais da FGV EAESP",
+    tagline: "A liga de ativos digitais da FGV",
   },
 
   /* --- Sobre nós (versão curta da página inicial) ------------------------- */

@@ -477,11 +477,11 @@ function GlobalStyles() {
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
       /* G da marca: o G da Montserrat com a barra horizontal (desenho da diretoria). A fonte
          public/fonts/montserrat-g-*.woff2 tem só a letra G; o resto do texto continua em Montserrat. */
-      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-300.woff2') format('woff2'); font-weight: 300; font-display: swap; unicode-range: U+0047; }
-      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-400.woff2') format('woff2'); font-weight: 400; font-display: swap; unicode-range: U+0047; }
-      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-500.woff2') format('woff2'); font-weight: 500; font-display: swap; unicode-range: U+0047; }
-      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-600.woff2') format('woff2'); font-weight: 600; font-display: swap; unicode-range: U+0047; }
-      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-700.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-300.woff2?v=2') format('woff2'); font-weight: 300; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-400.woff2?v=2') format('woff2'); font-weight: 400; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-500.woff2?v=2') format('woff2'); font-weight: 500; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-600.woff2?v=2') format('woff2'); font-weight: 600; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-700.woff2?v=2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0047; }
 
       html { scroll-behavior: smooth; }
       .fgv-root { font-family: 'Source Sans 3', 'Source Sans Pro', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: ${PAGE_COLORS.navy}; -webkit-font-smoothing: antialiased; }
