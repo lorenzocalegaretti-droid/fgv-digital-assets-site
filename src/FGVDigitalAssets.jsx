@@ -520,8 +520,9 @@ function GlobalStyles() {
 
       /* --- Navbar (navy) e botões de destaque (azul) --- */
       .fgv-nav-link { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; line-height: 25.6px; padding: 8px 7px; color: #fff; }
-      /* Menu de desktop: espaço entre as abas cresce com a largura da tela */
-      @media (min-width: 1280px) { .fgv-nav-desk .fgv-nav-link { padding: 8px clamp(7px, calc((100vw - 1180px) / 22), 20px); } }
+      /* As abas ocupam o espaço entre a marca e os ícones, com distâncias iguais entre si. */
+      .fgv-nav-desk { margin-inline: clamp(24px, 3vw, 56px); }
+      .fgv-nav-desk .fgv-nav-link { padding: 8px 6px; }
       .fgv-nav-cta { background: ${PAGE_COLORS.accent}; transition: background .2s; }
       .fgv-nav-cta:hover { background: ${PAGE_COLORS.accentHover}; }
       .fgv-to-top { background: ${PAGE_COLORS.accent}; }
@@ -600,7 +601,10 @@ function useImageAvailable(src) {
 }
 
 /* Rota simples por hash: cada aba é "#/nome". "#/equipe" (antiga página) leva a "Sobre". */
-const ROUTES = ["sobre", "celulas", "research", "competicoes", "eventos", "membros", "alumni", "processo-seletivo", "contato"];
+const RESEARCH_ON = SITE_DATA.pages.research.enabled !== false;
+const ROUTES = ["sobre", "celulas", "research", "competicoes", "eventos", "membros", "alumni", "processo-seletivo", "contato"].filter(
+  (r) => r !== "research" || RESEARCH_ON
+);
 const ROUTE_ALIASES = { equipe: "sobre", nucleos: "celulas" };
 function useRoute() {
   const read = () => {
@@ -1593,7 +1597,7 @@ function NucleosPage({ data, photo }) {
                       <li key={d}>{d}</li>
                     ))}
                   </ul>
-                  {SITE_DATA.pages.research.groups.some((g) => g.items.some((it) => it.nucleo === n.name)) && (
+                  {RESEARCH_ON && SITE_DATA.pages.research.groups.some((g) => g.items.some((it) => it.nucleo === n.name)) && (
                     <p>
                       <a className="pg-textlink" href={`#/research?nucleo=${encodeURIComponent(n.name)}`}>
                         {data.researchLink}
@@ -1929,7 +1933,7 @@ export default function App() {
   const newsletterCta = newsletterMode !== "off" ? nav.newsletterButton : null;
   // Link ativo: a aba da rota atual; "Início" na página inicial
   const isActive = (href) => (route === "home" ? href === "#inicio" : href === `#/${route}`);
-  const navLinks = nav.links;
+  const navLinks = nav.links.filter((l) => l.href !== "#/research" || RESEARCH_ON);
   const activeSocials = nav.socials.filter((s) => isSet(s.href));
 
   // Números: valor manual ou contagem do que já está cadastrado nas abas
@@ -2061,7 +2065,7 @@ export default function App() {
             )}
           </a>
 
-          <ul className="fgv-nav-desk ml-8 hidden items-center xl:flex">
+          <ul className="fgv-nav-desk hidden flex-1 items-center justify-evenly xl:flex">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <a

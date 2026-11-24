@@ -390,6 +390,9 @@ export const SITE_DATA = {
      * ⚠️ Faltam autores, títulos exatos e PDFs de alguns trabalhos: completem com a diretoria.
      * ----------------------------------------------------------------------- */
     research: {
+      // false esconde a aba: some do menu, o endereço #/research volta para o início
+      // e as células deixam de mostrar o link "Ver trabalhos da célula". O conteúdo fica guardado aqui.
+      enabled: false,
       title: "Research",
       text: "Trabalhos desenvolvidos pelos membros em projetos com parceiros, competições e no programa trainee.",
       questionLabel: "Sobre",
@@ -522,8 +525,8 @@ export const SITE_DATA = {
           // "triangulo": a primeira pessoa fica sozinha no topo e as outras duas lado a lado abaixo.
           layout: "triangulo",
           people: [
-            { name: "Pedro Giampietro", role: "Presidente", course: "", photo: "/img/membros/pedro-giampietro.jpg", linkedin: "", email: "" },
-            { name: "Felipe Souza", role: "Diretor Institucional", course: "", photo: "/img/membros/felipe-souza.jpg", linkedin: "", email: "" },
+            { name: "Pedro Giampietro", role: "Presidente", course: "", photo: "/img/membros/pedro-giampietro.jpg", linkedin: "https://www.linkedin.com/in/pedro-giampietro/", email: "" },
+            { name: "Felipe Souza", role: "Diretor Institucional", course: "", photo: "/img/membros/felipe-souza.jpg", linkedin: "https://www.linkedin.com/in/felipe-souza-santoro/", email: "" },
             { name: "Thales Haddad", role: "Diretor Acadêmico", course: "", photo: "", linkedin: "", email: "" },
           ],
         },
@@ -531,26 +534,26 @@ export const SITE_DATA = {
           title: "Coordenação",
           size: "md",
           people: [
-            { name: "Eduardo Holanda", role: "Coordenador da Célula de Consultoria", course: "", photo: "/img/membros/eduardo-holanda.jpg", linkedin: "", email: "" },
-            { name: "Lorenzo Calegaretti", role: "Coordenador da Célula de Asset", course: "", photo: "/img/membros/lorenzo-calegaretti.jpg", linkedin: "", email: "" },
-            { name: "Giovanni Fava", role: "Coordenador da Célula de Challenges", course: "", photo: "/img/membros/giovanni-fava.jpg", linkedin: "", email: "" },
-            { name: "Gabriel Cavasin", role: "Coordenador do Innovation Lab", course: "", photo: "/img/membros/gabriel-cavasin.jpg", linkedin: "", email: "" },
-            { name: "Natanael Spilla", role: "Coordenador do Processo Trainee", course: "", photo: "/img/membros/natanael-spilla.jpg", linkedin: "", email: "" },
+            { name: "Eduardo Holanda", role: "Coordenador da Célula de Consultoria", course: "", photo: "/img/membros/eduardo-holanda.jpg", linkedin: "https://www.linkedin.com/in/eduardo-holanda-152849327/", email: "" },
+            { name: "Lorenzo Calegaretti", role: "Coordenador da Célula de Asset", course: "", photo: "/img/membros/lorenzo-calegaretti.jpg", linkedin: "https://www.linkedin.com/in/lorenzo-calegaretti-8207ba295/", email: "" },
+            { name: "Giovanni Fava", role: "Coordenador da Célula de Challenges", course: "", photo: "/img/membros/giovanni-fava.jpg", linkedin: "https://www.linkedin.com/in/giovanni-fava-dias-melo/", email: "" },
+            { name: "Gabriel Cavasin", role: "Coordenador do Innovation Lab", course: "", photo: "/img/membros/gabriel-cavasin.jpg", linkedin: "https://www.linkedin.com/in/gabriel-cavasin-027843357/", email: "" },
+            { name: "Natanael Spilla", role: "Coordenador do Processo Trainee", course: "", photo: "/img/membros/natanael-spilla.jpg", linkedin: "https://www.linkedin.com/in/natanael-dalceno-spilla-neto-829ba93aa/", email: "" },
           ],
         },
         {
           title: "Membros",
           size: "md",
           people: [
-            { name: "André Brózios", role: "Membro", course: "", photo: "/img/membros/andre-brozios.jpg", linkedin: "", email: "" },
+            { name: "André Brózios", role: "Membro", course: "", photo: "/img/membros/andre-brozios.jpg", linkedin: "https://www.linkedin.com/in/andr%C3%A9-br%C3%B3zios-90b96335b/", email: "" },
             { name: "Bárbara Amorim", role: "Membro", course: "", photo: "/img/membros/barbara-amorim.jpg", linkedin: "", email: "" },
-            { name: "Guilherme Giuntini", role: "Membro da Célula de Asset", course: "", photo: "/img/membros/guilherme-giuntini.jpg", linkedin: "", email: "" },
-            { name: "João Ramos", role: "Membro", course: "", photo: "", linkedin: "", email: "" },
-            { name: "Maitê Botelho", role: "Membro", course: "", photo: "/img/membros/maite-botelho.jpg", linkedin: "", email: "" },
-            { name: "Matheus Deconto", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.jpg", linkedin: "", email: "" },
-            { name: "Matheus Viana", role: "Membro", course: "", photo: "", linkedin: "", email: "" },
-            { name: "Mirela Mota", role: "Membro", course: "", photo: "/img/membros/mirela-mota.jpg", linkedin: "", email: "" },
-            { name: "Rafael Sinieghi", role: "Membro", course: "", photo: "/img/membros/rafael-sinieghi.jpg", linkedin: "", email: "" },
+            { name: "Guilherme Giuntini", role: "Membro da Célula de Asset", course: "", photo: "/img/membros/guilherme-giuntini.jpg", linkedin: "https://www.linkedin.com/in/guilhermemoiagiuntini/", email: "" },
+            { name: "João Ramos", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/joao-barros-ramos-092715327/", email: "" },
+            { name: "Maitê Botelho", role: "Membro", course: "", photo: "/img/membros/maite-botelho.jpg", linkedin: "https://www.linkedin.com/in/mait%C3%AA-parrela-botelho-b48a42384/", email: "" },
+            { name: "Matheus Deconto", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.jpg", linkedin: "https://www.linkedin.com/in/mateus-deconto-azevedo-57668a44a/", email: "" },
+            { name: "Matheus Viana", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/matheus-de-andrade-viana/", email: "" },
+            { name: "Mirela Mota", role: "Membro", course: "", photo: "/img/membros/mirela-mota.jpg", linkedin: "https://www.linkedin.com/in/mirela-mota-83381a381/", email: "" },
+            { name: "Rafael Sinieghi", role: "Membro", course: "", photo: "/img/membros/rafael-sinieghi.jpg", linkedin: "https://www.linkedin.com/in/rafael-sinieghi-b8abab428/", email: "" },
           ],
         },
       ],
