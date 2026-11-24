@@ -514,17 +514,11 @@ function GlobalStyles() {
       .ft-social:hover { border-color: #fff; }
       .ft-divider { border-color: rgba(255, 255, 255, 0.12); }
 
+      /* Nome da marca no menu e no rodapé: mesma escrita da logo (Montserrat seminegrito, caixa-alta) */
+      .brand-word { font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.1; }
+
       /* --- Abertura (medidas da referência) --- */
       .fgv-hero-text { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 300; line-height: 26px; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.45); }
-      .fgv-hero-btn {
-        font-family: 'Montserrat', sans-serif;
-        display: inline-block; margin: 8px; padding: 8px 22px 6px;
-        border: 1.6px solid #fbfbfb; border-radius: 4px; color: #fbfbfb;
-        font-size: 12px; font-weight: 400; line-height: 18px; text-transform: uppercase;
-        transition: background-color .15s ease, box-shadow .15s ease;
-      }
-      .fgv-hero-btn:hover { background-color: rgba(255,255,255,0.12); box-shadow: 0 8px 9px -4px rgba(0,0,0,0.15), 0 4px 18px 0 rgba(0,0,0,0.1); }
-      .fgv-hero-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
       /* Altura da abertura: tela cheia, conteúdo centrado na área abaixo da navbar */
       .fgv-hero { height: 100vh; min-height: 620px; padding-top: 64px; }
 
@@ -849,16 +843,17 @@ function ParticleNetwork({ animate, subtle }) {
 
 /* Logo principal da abertura (~250px, branco): símbolo + "FGV DIGITAL ASSETS". Substituível por imagem em SITE_DATA.hero.logo */
 function HeroLogo({ src, alt }) {
-  if (isSet(src)) return <img src={src} alt={alt} width="250" className="mx-auto block" />;
+  const size = { width: "clamp(230px, 28vw, 400px)", height: "auto" };
+  if (isSet(src)) return <img src={src} alt={alt} className="mx-auto block max-w-full" style={size} />;
   return (
-    <svg viewBox="0 0 250 154" width="250" className="mx-auto block max-w-full" role="img" aria-label={alt}>
-      <svg x="83" y="0" width="84" height="84" viewBox={LOGO_VIEWBOX} color="#fff" aria-hidden="true">
+    <svg viewBox="0 0 300 262" className="mx-auto block max-w-full" style={size} role="img" aria-label={alt}>
+      <svg x="70" y="0" width="160" height="160" viewBox={LOGO_VIEWBOX} color="#fff" aria-hidden="true">
         <LogoGlyph />
       </svg>
-      <text x="125" y="124" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="300" fontSize="30" letterSpacing="9">
+      <text x="150" y="220" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="600" fontSize="48" letterSpacing="1">
         FGV
       </text>
-      <text x="125" y="146" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="300" fontSize="11" letterSpacing="4.5">
+      <text x="150" y="254" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="600" fontSize="22" letterSpacing="0.6">
         DIGITAL ASSETS
       </text>
     </svg>
@@ -1966,7 +1961,7 @@ export default function App() {
             onClick={() => setMenuOpen(false)}
           >
             <BrandMark className="h-8 w-8 text-white" />
-            <span className="pg-heading text-base tracking-tight">{brand.name}</span>
+            <span className="brand-word text-[15px]">{brand.name}</span>
             {isSet(nav.institutionLogo) && (
               <>
                 <span className="h-6 w-px bg-white opacity-30" aria-hidden="true" />
@@ -2121,8 +2116,8 @@ export default function App() {
         <main className="pg">
           {/* === SEÇÃO: HERO (ABERTURA) === */}
           {/* Foto do Viaduto do Chá em largura total com camada navy (a mesma cor das
-              aberturas das abas), rede de partículas atenuada, logo central, uma frase
-              curta e dois botões. As três frases sobre o viaduto ficam na aba Sobre. */}
+              aberturas das abas), rede de partículas atenuada, logo grande no centro
+              e uma frase curta (sem botões, como na CJE e na FGV Finance). As três frases sobre o viaduto ficam na aba Sobre. */}
           <section
             id="inicio"
             className="fgv-hero relative overflow-hidden"
@@ -2145,18 +2140,6 @@ export default function App() {
                 <p className="fgv-hero-text mx-auto max-w-3xl" style={{ marginTop: 28 }}>
                   {hero.tagline}
                 </p>
-                <div style={{ marginTop: 22 }}>
-                  {hero.buttons.map((btn) => (
-                    <a
-                      key={btn.label}
-                      href={btn.href}
-                      className="fgv-hero-btn"
-                      {...(isExternal(btn.href) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    >
-                      {btn.label}
-                    </a>
-                  ))}
-                </div>
               </div>
             </div>
 
@@ -2600,7 +2583,7 @@ export default function App() {
             <a href="#inicio" className="inline-flex items-center gap-3 text-white" style={{ color: "#fff" }}>
               <BrandMark className="h-10 w-10 text-white" />
               <span className="leading-tight">
-                <span className="pg-heading block text-lg tracking-tight">{brand.name}</span>
+                <span className="brand-word block text-lg">{brand.name}</span>
                 <span className="ft-label mt-1 block">{brand.formerName}</span>
               </span>
             </a>

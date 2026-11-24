@@ -73,10 +73,6 @@ export const SITE_DATA = {
     // Uma frase curta abaixo do logo. As três frases sobre o Viaduto do Chá estão
     // no início da aba Sobre (pages.about.opening).
     tagline: "A liga de ativos digitais da FGV EAESP",
-    buttons: [
-      { label: "Conheça a entidade", href: "#quem-somos" },
-      { label: "Participar do processo seletivo", href: "#/processo-seletivo" },
-    ],
   },
 
   /* --- Sobre nós (versão curta da página inicial) ------------------------- */
