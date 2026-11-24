@@ -491,19 +491,26 @@ export const SITE_DATA = {
     },
 
     /* --- Contato (#/contato) ----------------------------------------------------
+     * Layout como o do site do InFinance: formulário centralizado e, embaixo, faixa
+     * cinza com o endereço e o mapa.
      * Envio do formulário: se `endpoint` estiver preenchido, faz POST JSON
-     * { nome, email, assunto, mensagem }. Sem endpoint, usa brand.email (abre o
-     * e-mail do visitante). Sem nenhum dos dois, o formulário fica oculto.
+     * { nome, email, mensagem }. Sem endpoint, usa brand.email (abre o e-mail do
+     * visitante). Sem nenhum dos dois, o formulário fica oculto.
+     * `addresses`: os endereços do mapa; o primeiro abre selecionado.
      * ----------------------------------------------------------------------- */
     contact: {
       title: "Contato",
       text: "Fale com a FGV Digital Assets sobre parcerias, eventos, imprensa ou processo seletivo.",
       endpoint: "",
-      infoTitle: "Onde nos encontrar",
-      formTitle: "Envie uma mensagem",
-      subjects: ["Parcerias e projetos", "Eventos e Cryptoweek", "Processo seletivo", "Imprensa", "Outros"],
-      partnersTitle: "Para empresas",
-      partnersText: "Quer propor um projeto de consultoria, um painel ou um evento na Cryptoweek com estudantes da FGV-SP? Entre em contato e conte o tema.",
+      formTitle: "Entre em contato com a FGV Digital Assets",
+      formIntro: "ou preencha o formulário abaixo:",
+      button: "Enviar mensagem",
+      addressLine1: "Av. Nove de Julho, 2029",
+      addressLine2: "Bela Vista, São Paulo/SP — acesso também pela Rua Itapeva, 432",
+      addresses: [
+        { label: "Av. Nove de Julho, 2029", query: "Av. 9 de Julho, 2029 - Bela Vista, São Paulo - SP" },
+        { label: "Rua Itapeva, 432", query: "Rua Itapeva, 432 - Bela Vista, São Paulo - SP" },
+      ],
       sent: "Mensagem enviada. Responderemos pelo e-mail informado.",
       mailtoSent: "Abrimos seu aplicativo de e-mail com a mensagem pronta. É só enviar.",
       error: "Não foi possível enviar agora. Tente novamente em instantes.",

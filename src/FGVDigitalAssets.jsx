@@ -283,33 +283,37 @@ const PAGES_CSS = `
   .cp-team { font-size: 15.3px; line-height: 1.4; opacity: 0.7; }
 
   /* Contato */
-  .ct-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 72px); align-items: start; }
-  .ct-grid--single { grid-template-columns: minmax(0, 1fr); max-width: 640px; margin: 0 auto; }
-  .ct-title { font-size: clamp(26px, 2.4vw, 32px); line-height: 1.2; margin-bottom: 24px !important; }
-  .ct-info { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 20px; }
-  .ct-info li { display: flex; gap: 16px; align-items: flex-start; }
-  .ct-info .re-icon-btn { width: 40px; height: 40px; }
-  .ct-info .re-icon-btn svg { width: 17px; height: 17px; }
-  .ct-label { font-size: 15.3px; font-weight: 600; opacity: 0.7; }
-  .ct-socials { display: flex; gap: 10px; margin-top: 6px; }
-  .ct-box { margin-top: 32px; background: #F3F5F8; border-radius: 16px; padding: 24px 26px; }
-  .ct-box h3 { font-size: 20.7px; font-weight: 700; margin-bottom: 8px !important; }
-  .ct-box p { font-size: 17px; line-height: 1.55; opacity: 0.85; }
-  .ct-form { background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); border-radius: 16px; padding: clamp(22px, 3vw, 36px); box-shadow: 0 12px 32px -18px rgba(${PAGE_COLORS.navyRgb}, 0.35); }
-  .ct-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-  .ct-field { display: flex; flex-direction: column; gap: 6px; }
-  .ct-field--full { grid-column: 1 / -1; }
-  .ct-field label { font-size: 16px; font-weight: 600; }
-  .ct-field input, .ct-field select, .ct-field textarea { font-family: inherit; font-size: 17px; color: ${PAGE_COLORS.navy}; background: #fff; border: 1px solid #C9D0D8; border-radius: 10px; padding: 12px 14px; outline: none; transition: border-color .2s, box-shadow .2s; }
-  .ct-field textarea { resize: vertical; min-height: 140px; }
-  .ct-field input:focus, .ct-field select:focus, .ct-field textarea:focus { border-color: ${PAGE_COLORS.accent}; box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15); }
-  .ct-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; margin-top: 22px; }
-  .ct-actions .pg-btn { border: 0; cursor: pointer; font-family: inherit; }
-  .ct-actions .pg-btn:disabled { opacity: 0.6; cursor: progress; }
-  .ct-msg { font-size: 16px; line-height: 1.4; }
+  /* Contato no estilo do InFinance: tudo centralizado, campos só com linha embaixo */
+  .ct-section { padding: 40px 16px clamp(48px, 5vw, 64px); }
+  .ct-wrap { max-width: 680px; margin: 0 auto; }
+  .ct-head { text-align: center; margin-bottom: 14px; }
+  .ct-head h2 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 500; font-size: clamp(24px, 2.2vw, 31px); line-height: 1.2; color: ${PAGE_COLORS.accent}; }
+  .ct-head p { max-width: 330px; margin: 6px auto 0 !important; font-size: 18px; line-height: 1.4; }
+  .ct-head a { font-weight: 700; color: ${PAGE_COLORS.navy}; text-decoration: none; word-break: break-all; }
+  .ct-head a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .ct-fields { display: flex; flex-direction: column; gap: 22px; }
+  .ct-field { display: flex; flex-direction: column; }
+  .ct-field label { font-size: 15.5px; opacity: 0.8; }
+  .ct-field input, .ct-field textarea { font-family: inherit; font-size: 16px; color: ${PAGE_COLORS.navy}; background: transparent; border: 0; border-bottom: 1.5px solid ${PAGE_COLORS.navy}; border-radius: 0; padding: 10px 2px 6px; outline: none; transition: border-color .2s; }
+  .ct-field textarea { resize: vertical; min-height: 72px; }
+  .ct-field input:focus, .ct-field textarea:focus { border-bottom-color: ${PAGE_COLORS.accent}; }
+  .ct-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 28px; }
+  .ct-submit { font-family: inherit; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; min-width: 226px; padding: 10px 32px; border: 0; border-radius: 999px; background: ${PAGE_COLORS.navy}; color: #fff; cursor: pointer; transition: background .2s; }
+  .ct-submit:hover { background: ${PAGE_COLORS.accent}; }
+  .ct-submit:disabled { opacity: 0.6; cursor: progress; }
+  .ct-msg { font-size: 16px; line-height: 1.4; text-align: center; min-height: 1px; }
   .ct-msg.is-ok { color: #1F7A45; }
   .ct-msg.is-error { color: #B3261E; }
-  .ct-demo { margin-top: 14px !important; font-size: 14px; color: #92400E; }
+  .ct-demo { margin-top: 14px !important; font-size: 14px; color: #92400E; text-align: center; }
+  /* Faixa cinza com endereço e mapa */
+  .ct-place { background: #F0F0F0; padding: clamp(44px, 5vw, 64px) 16px clamp(40px, 5vw, 56px); }
+  .ct-place-inner { max-width: 1045px; margin: 0 auto; }
+  .ct-place h2 { text-align: center; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 500; font-size: clamp(20px, 2vw, 28px); line-height: 1.4; color: ${PAGE_COLORS.navy}; }
+  .ct-map-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 22px 0 18px; }
+  .ct-map-tab { font-family: inherit; font-size: 15px; padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.3); background: #fff; color: ${PAGE_COLORS.navy}; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .ct-map-tab:hover { border-color: ${PAGE_COLORS.navy}; }
+  .ct-map-tab[aria-pressed="true"] { background: ${PAGE_COLORS.navy}; border-color: ${PAGE_COLORS.navy}; color: #fff; }
+  .ct-map-frame { width: 100%; height: clamp(272px, 32vw, 416px); border: 0; display: block; background: #E3E3E3; }
 
   /* Sobre: frases de abertura (vieram da tela inicial) */
   .ab-opening { max-width: 820px; margin: 0 auto clamp(48px, 6vw, 72px); display: flex; flex-direction: column; gap: 14px; text-align: center; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.5; }
@@ -423,9 +427,8 @@ const PAGES_CSS = `
     .hm-news-form { flex-direction: column; }
   }
   @media (max-width: 767px) {
-    .ab-grid, .ab-timeline, .nu-areas, .ct-grid { grid-template-columns: minmax(0, 1fr); }
+    .ab-grid, .ab-timeline, .nu-areas { grid-template-columns: minmax(0, 1fr); }
     .ab-timeline { gap: 36px; }
-    .ct-fields { grid-template-columns: minmax(0, 1fr); }
     .pg-lead { font-size: 18px; }
   }
   @media (max-width: 480px) {
@@ -549,6 +552,28 @@ function GlobalStyles() {
 
       ${PAGES_CSS}
 
+      /* Troca de aba em duas etapas.
+         Saída: a página sobe um pouco e some sobre um fundo navy (a cor do topo de todas as abas),
+         então a tela nunca fica branca.
+         Entrada: o topo nasce todo navy e a foto vai aparecendo; o título sobe revelado de baixo
+         para cima, depois o texto e, por fim, o resto da página. Os estados finais usam
+         transform: none para não atrapalhar elementos fixos dentro da página. */
+      @keyframes pg-out { to { opacity: 0; transform: translateY(-24px); } }
+      .pg-swap--out { animation: pg-out .26s cubic-bezier(.4, 0, 1, 1) both; }
+      @keyframes pg-veil { from { opacity: 1; } to { opacity: .77; } }
+      @keyframes pg-title { from { opacity: 0; transform: translateY(56px); clip-path: inset(0 0 100% 0); } to { opacity: 1; transform: none; clip-path: inset(0 0 -20% 0); } }
+      @keyframes pg-rise { from { opacity: 0; transform: translateY(26px); } to { opacity: 1; transform: none; } }
+      @keyframes pg-logo { from { opacity: 0; transform: scale(.9) translateY(18px); } to { opacity: 1; transform: none; } }
+      .pg-swap--in .pg-hero::before { animation: pg-veil 1.2s ease-out both; }
+      .pg-swap--in .pg-hero h1 { animation: pg-title .95s cubic-bezier(.16, 1, .3, 1) .1s both; }
+      .pg-swap--in .pg-hero p { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .34s both; }
+      .pg-swap--in .pg > :not(:first-child) { animation: pg-rise .8s cubic-bezier(.16, 1, .3, 1) .45s both; }
+      .pg-swap--in .fgv-hero-logo { animation: pg-logo 1s cubic-bezier(.16, 1, .3, 1) .08s both; }
+      .pg-swap--in .fgv-hero-text { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .38s both; }
+      @media (prefers-reduced-motion: reduce) {
+        .pg-swap--out, .pg-swap--in .pg-hero::before, .pg-swap--in .pg-hero h1, .pg-swap--in .pg-hero p,
+        .pg-swap--in .pg > :not(:first-child), .pg-swap--in .fgv-hero-logo, .pg-swap--in .fgv-hero-text { animation: none; }
+      }
       @keyframes fgv-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
       .fgv-fade-in { animation: fgv-fade-in .45s ease both; }
 
@@ -621,6 +646,30 @@ function useRoute() {
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
   return route;
+}
+
+/* Transição entre abas: quando a rota muda, a página atual esmaece (fase "out") e,
+   em seguida, a nova página é montada e entra com fade e um leve deslize (fase "in").
+   Quem pede menos movimento no sistema (prefers-reduced-motion) troca sem animação. */
+const PAGE_OUT_MS = 260;
+function usePageTransition(route) {
+  const [shownRoute, setShownRoute] = useState(route);
+  const [pagePhase, setPagePhase] = useState("in");
+  useEffect(() => {
+    if (route === shownRoute) return undefined;
+    const reduce = typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setShownRoute(route);
+      return undefined;
+    }
+    setPagePhase("out");
+    const t = setTimeout(() => {
+      setShownRoute(route);
+      setPagePhase("in");
+    }, PAGE_OUT_MS);
+    return () => clearTimeout(t);
+  }, [route]); // eslint-disable-line react-hooks/exhaustive-deps
+  return [shownRoute, pagePhase];
 }
 
 function useReveal() {
@@ -895,9 +944,9 @@ function ParticleNetwork({ animate, subtle }) {
 /* Logo principal da abertura (~250px, branco): símbolo + "FGV DIGITAL ASSETS". Substituível por imagem em SITE_DATA.hero.logo */
 function HeroLogo({ src, alt }) {
   const size = { width: "clamp(230px, 28vw, 400px)", height: "auto" };
-  if (isSet(src)) return <img src={src} alt={alt} className="mx-auto block max-w-full" style={size} />;
+  if (isSet(src)) return <img src={src} alt={alt} className="fgv-hero-logo mx-auto block max-w-full" style={size} />;
   return (
-    <svg viewBox="0 0 300 262" className="mx-auto block max-w-full" style={size} role="img" aria-label={alt}>
+    <svg viewBox="0 0 300 262" className="fgv-hero-logo mx-auto block max-w-full" style={size} role="img" aria-label={alt}>
       <svg x="70" y="0" width="160" height="160" viewBox={LOGO_VIEWBOX} color="#fff" aria-hidden="true">
         <LogoGlyph />
       </svg>
@@ -1561,21 +1610,11 @@ function NucleosPage({ data, photo }) {
     <main className="pg">
       <PageHero title={data.title} text={data.text} photo={photo} />
 
-      {/* === SEÇÃO: NÚCLEOS — COMO FUNCIONA O SEMESTRE === */}
+      {/* === SEÇÃO: NÚCLEOS — INTRODUÇÃO === */}
+      {/* "Como funciona o semestre" saiu do site; os passos continuam em conteudo.js (pages.nucleos.cycle). */}
       <section className="pg-block">
         <div className="pg-container">
           <p className="pg-lead">{data.intro}</p>
-          <div style={{ marginTop: "clamp(48px, 6vw, 72px)" }}>
-            <PgTitle>{data.cycleTitle}</PgTitle>
-            <ol className="nu-cycle">
-              {data.cycle.map((step) => (
-                <li key={step.title}>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
         </div>
       </section>
 
@@ -1755,9 +1794,11 @@ function CompetitionsPage({ data, photo }) {
 }
 
 /* --- Contato (#/contato) --- */
-function ContactPage({ data, photo, mode, email, brandName, location, address, socials }) {
-  const [form, setForm] = useState({ nome: "", email: "", assunto: data.subjects[0], mensagem: "" });
+function ContactPage({ data, photo, mode, email, brandName }) {
+  const empty = { nome: "", email: "", mensagem: "" };
+  const [form, setForm] = useState(empty);
   const [status, setStatus] = useState("idle"); // idle | invalid | loading | sent | mailto | error
+  const [place, setPlace] = useState(0);
   const update = (key) => (e) => {
     setForm((f) => ({ ...f, [key]: e.target.value }));
     if (status === "invalid" || status === "error") setStatus("idle");
@@ -1765,12 +1806,12 @@ function ContactPage({ data, photo, mode, email, brandName, location, address, s
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!form.nome.trim() || !EMAIL_REGEX.test(form.email.trim()) || !form.mensagem.trim()) {
+    if (!form.nome.trim() || !EMAIL_REGEX.test(form.email.trim())) {
       setStatus("invalid");
       return;
     }
     if (mode === "mailto") {
-      const subject = encodeURIComponent(`[${form.assunto}] Contato pelo site`);
+      const subject = encodeURIComponent(`Contato pelo site — ${form.nome.trim()}`);
       const body = encodeURIComponent(`Nome: ${form.nome}\nE-mail: ${form.email}\n\n${form.mensagem}`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       setStatus("mailto");
@@ -1789,7 +1830,7 @@ function ContactPage({ data, photo, mode, email, brandName, location, address, s
         await new Promise((resolve) => setTimeout(resolve, 800)); // modo demonstração
       }
       setStatus("sent");
-      setForm({ nome: "", email: "", assunto: data.subjects[0], mensagem: "" });
+      setForm(empty);
     } catch (err) {
       setStatus("error");
     }
@@ -1798,7 +1839,7 @@ function ContactPage({ data, photo, mode, email, brandName, location, address, s
   const showForm = mode !== "off";
   const message =
     status === "invalid"
-      ? { cls: "is-error", text: "Preencha nome, um e-mail válido e a mensagem." }
+      ? { cls: "is-error", text: "Preencha seu nome e um e-mail válido." }
       : status === "error"
       ? { cls: "is-error", text: data.error }
       : status === "sent"
@@ -1807,93 +1848,45 @@ function ContactPage({ data, photo, mode, email, brandName, location, address, s
       ? { cls: "is-ok", text: data.mailtoSent }
       : null;
 
+  const addresses = data.addresses || [];
+  const current = addresses[place];
+
   return (
     <main className="pg">
       <PageHero title={data.title} text={data.text} photo={photo} />
-      <section className="pg-block">
+
+      {/* === SEÇÃO: CONTATO — CHAMADA E FORMULÁRIO (centralizados) === */}
+      <section className="ct-section">
         <div className="pg-container">
-          <div className={`ct-grid ${showForm ? "" : "ct-grid--single"}`}>
-            {/* === SEÇÃO: CONTATO — INFORMAÇÕES === */}
-            <div>
-              <h2 className="ct-title pg-heading">{data.infoTitle}</h2>
-              <ul className="ct-info">
-                <li>
-                  <span className="re-icon-btn" aria-hidden="true">
-                    <MapPin />
-                  </span>
-                  <div>
-                    <p className="ct-label">Endereço</p>
-                    <p>{location}</p>
-                    <p>{address}</p>
-                  </div>
-                </li>
-                {isSet(email) && (
-                  <li>
-                    <span className="re-icon-btn" aria-hidden="true">
-                      <Mail />
-                    </span>
-                    <div>
-                      <p className="ct-label">E-mail</p>
-                      <a className="pg-textlink" href={`mailto:${email}`} style={{ wordBreak: "break-all" }}>
-                        {email}
-                      </a>
-                    </div>
-                  </li>
-                )}
-                {socials.length > 0 && (
-                  <li>
-                    <span className="re-icon-btn" aria-hidden="true">
-                      <Users />
-                    </span>
-                    <div>
-                      <p className="ct-label">Redes</p>
-                      <div className="ct-socials">
-                        {socials.map((s) => (
-                          <IconButton key={s.id} href={s.href} label={s.label}>
-                            <SocialIcon id={s.id} />
-                          </IconButton>
-                        ))}
-                      </div>
-                    </div>
-                  </li>
-                )}
-              </ul>
-              <div className="ct-box">
-                <h3>{data.partnersTitle}</h3>
-                <p>{data.partnersText}</p>
-              </div>
+          <div className="ct-wrap">
+            <div className="ct-head">
+              <h2>{data.formTitle}</h2>
+              {isSet(email) && (
+                <p>
+                  <a href={`mailto:${email}`}>{email}</a> {showForm ? data.formIntro : ""}
+                </p>
+              )}
             </div>
 
-            {/* === SEÇÃO: CONTATO — FORMULÁRIO === */}
             {showForm && (
-              <form className="ct-form" onSubmit={onSubmit} noValidate aria-label={`Fale com a ${brandName}`}>
-                <h2 className="ct-title pg-heading">{data.formTitle}</h2>
+              <form onSubmit={onSubmit} noValidate aria-label={`Fale com a ${brandName}`}>
                 <div className="ct-fields">
                   <div className="ct-field">
-                    <label htmlFor="ct-nome">Nome</label>
-                    <input id="ct-nome" type="text" autoComplete="name" value={form.nome} onChange={update("nome")} />
+                    <label htmlFor="ct-nome">Nome *</label>
+                    <input id="ct-nome" type="text" autoComplete="name" required value={form.nome} onChange={update("nome")} />
                   </div>
                   <div className="ct-field">
-                    <label htmlFor="ct-email">E-mail</label>
-                    <input id="ct-email" type="email" inputMode="email" autoComplete="email" value={form.email} onChange={update("email")} />
+                    <label htmlFor="ct-email">Email *</label>
+                    <input id="ct-email" type="email" inputMode="email" autoComplete="email" required value={form.email} onChange={update("email")} />
                   </div>
-                  <div className="ct-field ct-field--full">
-                    <label htmlFor="ct-assunto">Assunto</label>
-                    <select id="ct-assunto" value={form.assunto} onChange={update("assunto")}>
-                      {data.subjects.map((s) => (
-                        <option key={s}>{s}</option>
-                      ))}
-                    </select>
-                  </div>
-                  <div className="ct-field ct-field--full">
+                  <div className="ct-field">
                     <label htmlFor="ct-mensagem">Mensagem</label>
-                    <textarea id="ct-mensagem" rows={6} value={form.mensagem} onChange={update("mensagem")} />
+                    <textarea id="ct-mensagem" rows={3} value={form.mensagem} onChange={update("mensagem")} />
                   </div>
                 </div>
                 <div className="ct-actions">
-                  <button type="submit" className="pg-btn" disabled={status === "loading"}>
-                    {status === "loading" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" /> : <ArrowRight className="h-4 w-4" aria-hidden="true" />}
-                    {status === "loading" ? "Enviando…" : "Enviar"}
+                  <button type="submit" className="ct-submit" disabled={status === "loading"}>
+                    {status === "loading" ? "Enviando…" : data.button}
                   </button>
                   <p className={`ct-msg ${message ? message.cls : ""}`} role="status" aria-live="polite">
                     {message ? message.text : ""}
@@ -1905,6 +1898,36 @@ function ContactPage({ data, photo, mode, email, brandName, location, address, s
           </div>
         </div>
       </section>
+
+      {/* === SEÇÃO: CONTATO — ENDEREÇO E MAPA (faixa cinza) === */}
+      {current && (
+        <section className="ct-place">
+          <div className="ct-place-inner">
+            <h2>
+              {data.addressLine1}
+              <br />
+              {data.addressLine2}
+            </h2>
+            {addresses.length > 1 && (
+              <div className="ct-map-tabs" role="group" aria-label="Escolha o endereço no mapa">
+                {addresses.map((a, i) => (
+                  <button key={a.label} type="button" className="ct-map-tab" aria-pressed={i === place} onClick={() => setPlace(i)}>
+                    {a.label}
+                  </button>
+                ))}
+              </div>
+            )}
+            <iframe
+              key={current.query}
+              className="ct-map-frame"
+              title={`Mapa: ${current.query}`}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(current.query)}&z=15&hl=pt-BR&output=embed`}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </section>
+      )}
     </main>
   );
 }
@@ -1920,6 +1943,7 @@ export default function App() {
   const [submittedEmail, setSubmittedEmail] = useState("");
   const reduceMotion = usePrefersReducedMotion();
   const route = useRoute();
+  const [shownRoute, pagePhase] = usePageTransition(route);
 
   const { brand, nav, hero, about, stats, highlights, testimonials, selectionBand, sponsors, ecosystem, newsletter, footer, pages } = SITE_DATA;
 
@@ -1987,16 +2011,19 @@ export default function App() {
   /* Ao trocar de página: topo na página da equipe; âncora certa ao voltar para o início */
   useEffect(() => {
     setMenuOpen(false);
-    if (route !== "home") {
-      window.scrollTo(0, 0);
+    // "instant": o site usa rolagem suave, mas aqui a página nova ainda está invisível
+    if (shownRoute !== "home") {
+      window.scrollTo({ top: 0, behavior: "instant" });
       return;
     }
     const hash = window.location.hash;
     if (hash && hash.length > 1 && !hash.startsWith("#/")) {
       const el = document.getElementById(hash.slice(1));
-      if (el) el.scrollIntoView();
+      if (el) el.scrollIntoView({ behavior: "instant" });
+      return;
     }
-  }, [route]);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, [shownRoute]);
 
   /* --- Newsletter --------------------------------------------------------- */
   const handleEmailChange = (e) => {
@@ -2042,7 +2069,7 @@ export default function App() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="fgv-root min-h-screen bg-white">
+    <div className="fgv-root min-h-screen bg-white" style={pagePhase === "out" ? { background: PAGE_COLORS.navy } : undefined}>
       <GlobalStyles />
 
       {/* === SEÇÃO: NAVBAR === */}
@@ -2174,19 +2201,21 @@ export default function App() {
       </header>
 
       {/* === PÁGINAS INTERNAS (uma por aba do menu) === */}
-      {route === "sobre" ? (
+      {/* Troca de aba suave: a página atual some rápido e a nova entra subindo de leve. */}
+      <div key={shownRoute} className={`pg-swap pg-swap--${pagePhase}`}>
+      {shownRoute === "sobre" ? (
         <AboutPage data={pages.about} photo={pagePhoto} />
-      ) : route === "celulas" ? (
+      ) : shownRoute === "celulas" ? (
         <NucleosPage data={pages.nucleos} photo={pagePhoto} />
-      ) : route === "research" ? (
+      ) : shownRoute === "research" ? (
         <ResearchPage data={pages.research} photo={pagePhoto} />
-      ) : route === "competicoes" ? (
+      ) : shownRoute === "competicoes" ? (
         <CompetitionsPage data={pages.competitions} photo={pagePhoto} />
-      ) : route === "membros" ? (
+      ) : shownRoute === "membros" ? (
         <MembersPage data={pages.members} photo={pagePhoto} />
-      ) : route === "alumni" ? (
+      ) : shownRoute === "alumni" ? (
         <AlumniPage data={pages.alumni} photo={pagePhoto} />
-      ) : route === "processo-seletivo" ? (
+      ) : shownRoute === "processo-seletivo" ? (
         <SelectionPage
           data={pages.selection}
           photo={pagePhoto}
@@ -2194,9 +2223,9 @@ export default function App() {
           labels={selectionBand}
           notify={newsletterMode !== "off"}
         />
-      ) : route === "eventos" ? (
+      ) : shownRoute === "eventos" ? (
         <EventsPage data={pages.events} photo={pagePhoto} />
-      ) : route === "contato" ? (
+      ) : shownRoute === "contato" ? (
         <ContactPage
           data={pages.contact}
           photo={pagePhoto}
@@ -2487,6 +2516,7 @@ export default function App() {
           )}
         </main>
       )}
+      </div>
 
       {/* === SEÇÃO: FOOTER === */}
       {/* Todas as abas, contato e apenas canais oficiais ativos. Fundo no tom mais
