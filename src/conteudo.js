@@ -519,6 +519,8 @@ export const SITE_DATA = {
         {
           title: "Diretoria",
           size: "lg",
+          // "triangulo": a primeira pessoa fica sozinha no topo e as outras duas lado a lado abaixo.
+          layout: "triangulo",
           people: [
             { name: "Pedro Giampietro", role: "Presidente", course: "", photo: "/img/membros/pedro-giampietro.jpg", linkedin: "", email: "" },
             { name: "Felipe Souza", role: "Diretor Institucional", course: "", photo: "/img/membros/felipe-souza.jpg", linkedin: "", email: "" },

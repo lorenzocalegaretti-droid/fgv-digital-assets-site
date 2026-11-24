@@ -94,9 +94,12 @@ const PAGES_CSS = `
   .re-members-grid--md { --cols: 5; }
   .re-members-grid > .re-member { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
   .re-members-grid--lg > .re-member { max-width: 225px; }
-  .re-members-grid--lg .re-member-photo { max-width: 215px; }
+  .re-members-grid--lg .re-member-photo { max-width: 170px; }
+  /* Diretoria em triângulo: presidente sozinho no topo, dois diretores lado a lado embaixo. */
+  .re-members-grid.re-members-grid--tri { display: grid; grid-template-columns: repeat(2, minmax(0, 225px)); justify-content: center; column-gap: clamp(40px, 9vw, 130px); row-gap: clamp(28px, 3vw, 40px); }
+  .re-members-grid--tri > .re-member:first-child { grid-column: 1 / -1; justify-self: center; width: 100%; max-width: 225px; }
   .re-member { min-width: 0; text-align: center; }
-  .re-member-photo { position: relative; width: 100%; max-width: 190px; margin: 0 auto; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 50%; background: ${PAGE_COLORS.photo}; display: grid; place-items: center; }
+  .re-member-photo { position: relative; width: 100%; max-width: 145px; margin: 0 auto; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 50%; background: ${PAGE_COLORS.photo}; display: grid; place-items: center; }
   .re-member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: saturate(0.9); transition: transform .5s, filter .5s; }
   .re-member:hover .re-member-photo img { transform: scale(1.03); filter: saturate(1); }
   .re-member-initials { font-size: 36px; font-weight: 600; letter-spacing: 0.04em; color: #7A8597; }
@@ -1070,7 +1073,7 @@ function MembersPage({ data, photo }) {
                 <BrandMark className="h-5 w-5" />
               </span>
             </h2>
-            <div className={`re-members-grid re-members-grid--${group.size || "sm"}`}>
+            <div className={`re-members-grid re-members-grid--${group.size || "sm"}${group.layout === "triangulo" ? " re-members-grid--tri" : ""}`}>
               {group.people.map((p, i) => (
                 <article key={`${p.role}-${i}`} className="re-member">
                   <div className="re-member-photo">
