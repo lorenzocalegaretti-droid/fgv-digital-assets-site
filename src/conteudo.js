@@ -63,12 +63,12 @@ export const SITE_DATA = {
 
   /* --- Abertura ----------------------------------------------------------- */
   hero: {
-    // Foto horizontal do Viaduto do Chá com o Anhangabaú e o Centro ao fundo.
-    // Sugestão (CC0, domínio público): https://commons.wikimedia.org/wiki/File:Viaduto_do_Ch%C3%A1_in_S%C3%A3o_Paulo.jpg
-    backgroundImage: "/img/viaduto-do-cha.jpg",
-    // Mantenha o viaduto em um dos terços laterais: "left center", "right center", "30% 50%"…
+    // Foto aérea da Av. 9 de Julho: prédio novo da FGV à esquerda e o MASP ao fundo.
+    // Teste: trocar por uma foto mais ampla (drone) quando houver.
+    backgroundImage: "/img/hero/fgv-9-de-julho.jpg",
+    // Ponto de foco do corte: "center", "30% 50%"…
     backgroundPosition: "center",
-    credit: { text: "Foto: Wilfredor / Wikimedia Commons (CC0)", href: "https://commons.wikimedia.org/wiki/File:Viaduto_do_Ch%C3%A1_in_S%C3%A3o_Paulo.jpg" },
+    credit: { text: "", href: "" }, // ⚠️ crédito do fotógrafo, se souber a origem
     logo: "", // ⚠️ logo principal em branco (~250px). Vazio = logo SVG padrão.
     // Uma frase curta abaixo do logo. As três frases sobre o Viaduto do Chá estão
     // no início da aba Sobre (pages.about.opening).

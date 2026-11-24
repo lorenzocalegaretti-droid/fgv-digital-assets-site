@@ -684,13 +684,13 @@ function ParticleNetwork({ animate, subtle }) {
     if (!canvas || !host || !ctx) return undefined;
 
     const CFG = {
-      count: subtle ? 22 : 30,
+      count: subtle ? 34 : 30,
       maxCount: 70,
       maxSize: 5,
-      maxOpacity: 0.5,
+      maxOpacity: subtle ? 0.75 : 0.5,
       linkDistance: 330,
-      linkOpacity: subtle ? 0.2 : 0.28,
-      linkWidth: 1,
+      linkOpacity: subtle ? 0.45 : 0.28,
+      linkWidth: subtle ? 1.3 : 1,
       speed: 6,
       repulseRadius: 80,
       refArea: 1440 * 900,
@@ -2114,7 +2114,7 @@ export default function App() {
             style={{
               backgroundColor: PAGE_COLORS.navy,
               backgroundImage: heroPhotoOk
-                ? `radial-gradient(ellipse 55% 50% at 50% 55%, rgba(${PAGE_COLORS.navyRgb}, 0.5), rgba(${PAGE_COLORS.navyRgb}, 0) 75%), linear-gradient(rgba(${PAGE_COLORS.navyRgb}, 0.5), rgba(${PAGE_COLORS.navyRgb}, 0.6)), url("${hero.backgroundImage}")`
+                ? `radial-gradient(ellipse 55% 50% at 50% 55%, rgba(${PAGE_COLORS.navyRgb}, 0.5), rgba(${PAGE_COLORS.navyRgb}, 0) 75%), linear-gradient(rgba(${PAGE_COLORS.navyRgb}, 0.64), rgba(${PAGE_COLORS.navyRgb}, 0.74)), url("${hero.backgroundImage}")`
                 : `radial-gradient(ellipse at 50% 30%, #1C335F 0%, ${PAGE_COLORS.navy} 55%, ${PAGE_COLORS.navyDeep} 100%)`,
               backgroundSize: "cover",
               backgroundPosition: heroPhotoOk ? `center, center, ${hero.backgroundPosition}` : "center",
