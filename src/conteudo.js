@@ -550,7 +550,7 @@ export const SITE_DATA = {
             { name: "Guilherme Giuntini", role: "Membro da Célula de Asset", course: "", photo: "/img/membros/guilherme-giuntini.jpg", linkedin: "https://www.linkedin.com/in/guilhermemoiagiuntini/", email: "" },
             { name: "João Ramos", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/joao-barros-ramos-092715327/", email: "" },
             { name: "Maitê Botelho", role: "Membro", course: "", photo: "/img/membros/maite-botelho.jpg", linkedin: "https://www.linkedin.com/in/mait%C3%AA-parrela-botelho-b48a42384/", email: "" },
-            { name: "Matheus Deconto", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.jpg", linkedin: "https://www.linkedin.com/in/mateus-deconto-azevedo-57668a44a/", email: "" },
+            { name: "Mateus Deconto Azevedo", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.jpg", linkedin: "https://www.linkedin.com/in/mateus-deconto-azevedo-57668a44a/", email: "" },
             { name: "Matheus Viana", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/matheus-de-andrade-viana/", email: "" },
             { name: "Mirela Mota", role: "Membro", course: "", photo: "/img/membros/mirela-mota.jpg", linkedin: "https://www.linkedin.com/in/mirela-mota-83381a381/", email: "" },
             { name: "Rafael Sinieghi", role: "Membro", course: "", photo: "/img/membros/rafael-sinieghi.jpg", linkedin: "https://www.linkedin.com/in/rafael-sinieghi-b8abab428/", email: "" },
