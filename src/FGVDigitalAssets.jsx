@@ -363,6 +363,13 @@ const PAGES_CSS = `
   .hm-dark { background: ${PAGE_COLORS.navy}; color: #fff; }
   .hm-dark .re-members-marca { color: #fff; }
   .hm-tier + .hm-tier { margin-top: 36px; }
+  .hm-partners .pg-container { max-width: 1480px; }
+  .hm-partners .hm-logos { gap: clamp(28px, 3.4vw, 48px) 0; margin: 8px auto 0; align-items: center; }
+  .hm-partners .hm-logos > li { width: 20%; display: flex; justify-content: center; }
+  @media (max-width: 1100px) { .hm-partners .hm-logos > li { width: 25%; } }
+  @media (max-width: 760px) { .hm-partners .hm-logos > li { width: 50%; } }
+  .hm-partners .hm-logo { display: flex; align-items: center; justify-content: center; height: 76px; padding: 0; background: none; border: 0; box-shadow: none; }
+  .hm-partners .hm-logo img { height: calc(44px * var(--logo-h, 1)); width: auto; max-width: 210px; object-fit: contain; }
   .hm-label { text-align: center; font-size: 15.3px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.65; margin-bottom: 16px !important; }
   .hm-logos { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
   .hm-logos > li { width: 200px; }
@@ -900,7 +907,7 @@ function PartnerLogo({ item }) {
       title={item.name}
       {...(linked ? { href: item.url, ...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {}) } : {})}
     >
-      {isSet(item.logo) ? <img src={item.logo} alt={item.name} loading="lazy" /> : <span>{item.name}</span>}
+      {isSet(item.logo) ? <img src={item.logo} alt={item.name} loading="lazy" style={item.h ? { "--logo-h": item.h } : undefined} /> : <span>{item.name}</span>}
     </Tag>
   );
 }
@@ -2369,15 +2376,12 @@ export default function App() {
           )}
 
           {/* === SEÇÃO: PARCEIROS === */}
-          {/* Faixa escura: logos com a mesma altura em caixas brancas. */}
-          <section id="parceiros" className="pg-block hm-dark scroll-mt-16">
+          {/* Fundo branco, só as logos, em fileiras centralizadas e com alturas equilibradas. */}
+          <section id="parceiros" className="pg-block hm-partners scroll-mt-16">
             <div className="pg-container">
               <PgTitle>{sponsors.title}</PgTitle>
               {visibleTiers.length > 0 && (
                 <>
-                  <div className="hm-intro">
-                    <p className="pg-lead">{sponsors.subtitle}</p>
-                  </div>
                   {visibleTiers.map((tier) => (
                     <div key={tier.id} className="hm-tier">
                       {visibleTiers.length > 1 && <p className="hm-label">{tier.label}</p>}

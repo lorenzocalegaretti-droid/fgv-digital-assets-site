@@ -180,25 +180,26 @@ export const SITE_DATA = {
   sponsors: {
     title: "Parceiros",
     subtitle: "Instituições que acompanham nossas células, nossos eventos e a formação dos membros.",
+    // Logos sem caixa, em fileiras centralizadas (como na página de parceiros da referência).
+    // `h` ajusta a altura de cada logo para todas parecerem do mesmo tamanho (1 = padrão).
     tiers: [
       {
-        id: "celulas",
-        label: "Parceiros das células",
+        id: "parceiros",
+        label: "Parceiros",
         items: [
-          { name: "Bradesco", logo: "", url: "" }, // Consultoria (2025.2 e 2026.1)
-          { name: "QR Asset Management", logo: "", url: "" }, // fundo da entidade (desde 2025.2)
-          { name: "BTG Pactual", logo: "", url: "" }, // Research (2026.1)
-          { name: "Mercado Bitcoin", logo: "", url: "" }, // mentorias de Research (2026.1)
-        ],
-      },
-      {
-        id: "ecossistema",
-        label: "Parceiros do ecossistema",
-        items: [
-          { name: "Ripple", logo: "", url: "" },
-          { name: "Binance", logo: "", url: "" },
-          { name: "Itaú BBA", logo: "", url: "" },
-          { name: "Blockchain.Rio", logo: "", url: "" },
+          { name: "Ripple", logo: "/img/parceiros/ripple.svg", url: "" },
+          { name: "Bradesco", logo: "/img/parceiros/bradesco.svg", url: "", h: 0.8 },
+          { name: "Brasil Bitcoin", logo: "/img/parceiros/brasil-bitcoin.svg", url: "" },
+          { name: "WeSearch", logo: "/img/parceiros/wesearch.png", url: "", h: 0.8 },
+          { name: "B3", logo: "/img/parceiros/b3.svg", url: "", h: 1.35 },
+          { name: "Hashdex", logo: "/img/parceiros/hashdex.svg", url: "" },
+          { name: "Vault Capital", logo: "/img/parceiros/vault-capital.png", url: "" },
+          { name: "Z-Invest", logo: "/img/parceiros/z-invest.png", url: "", h: 1.3 },
+          { name: "Binance", logo: "/img/parceiros/binance.svg", url: "", h: 0.85 },
+          { name: "BTG Pactual", logo: "/img/parceiros/btg-pactual.svg", url: "", h: 1.2 },
+          { name: "Itaú BBA", logo: "/img/parceiros/itau-bba.svg", url: "", h: 1.4 },
+          { name: "Blockchain.Rio", logo: "/img/parceiros/blockchain-rio.png", url: "", h: 0.8 },
+          { name: "QR Asset Management", logo: "/img/parceiros/qr-asset.svg", url: "", h: 1.05 },
         ],
       },
     ],
