@@ -86,7 +86,7 @@ export const SITE_DATA = {
     ],
     // A foto ocupa metade da tela, de ponta a ponta (vertical ou quadrada funciona melhor).
     // Sem foto, aparece uma arte com a rede de nós da marca.
-    photo: "", // ⚠️ foto real do grupo
+    photo: "/img/eventos/2026-09-itau-pedro-lorenzini.jpg", // grupo no bate-papo do Itaú (set/2026)
     photoCaption: "", // legenda opcional sobre a foto (ex.: "Gestão 2026.1")
     link: { label: "Conheça a nossa história", href: "#/sobre" },
   },
@@ -126,12 +126,20 @@ export const SITE_DATA = {
     },
     competitions: {
       title: "Competições",
-      photo: "", // ⚠️ foto de uma equipe em competição
-      photoCaption: "",
+      photo: "/img/competicoes/2024-datathon-campeoes.jpg", // equipe Crypto X Quant (post de 05/12/2024)
+      photoCaption: "Campeões do Datathon 2024: equipe Crypto X Quant",
       button: "Conheça as competições",
     },
-    research: { title: "Research em destaque", count: 3, button: "Ver todos os trabalhos" },
-    events: { title: "Últimos eventos", count: 3, button: "Ver todos os eventos" },
+    // Seção única "Competições e eventos" (como "CJE na mídia & eventos"): foto de fundo
+    // escurecida e um carrossel com a foto da competição e as fotos dos últimos eventos.
+    // A foto do Sobre nós não se repete aqui.
+    showcase: {
+      title: "Competições e eventos",
+      subtitle: "Bicampeões do Datathon de Moedas Digitais da FGV EESP",
+      backgroundImage: "/img/fundo/fgv-9-de-julho-aerea.jpg",
+      competitionKicker: "Competição",
+    },
+    events: { count: 4, button: "Ver todos os eventos" },
   },
 
   /* --- Depoimentos -----------------------------------------------------------

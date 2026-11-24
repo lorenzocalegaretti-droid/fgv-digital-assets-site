@@ -33,6 +33,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   ArrowUp,
+  ChevronLeft,
+  ChevronRight,
   Users,
   Mail,
   MapPin,
@@ -316,6 +318,22 @@ const PAGES_CSS = `
   .pg-btn--ghost:hover { background: rgba(255, 255, 255, 0.12); }
   .hm-intro { margin-bottom: clamp(32px, 4vw, 48px); }
   .hm-more { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: clamp(32px, 4vw, 48px); }
+  .hm-show { padding: clamp(56px, 7vw, 96px) 0; color: #fff; background-color: ${PAGE_COLORS.navy}; background-size: cover; background-position: center; }
+  .hm-show-title { text-align: center; color: #fff; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.1; }
+  .hm-show-sub { text-align: center; margin-top: 14px !important; font-size: clamp(17px, 1.6vw, 21px); opacity: 0.9; }
+  .hm-show-carousel { position: relative; margin-top: clamp(32px, 4vw, 52px); }
+  .hm-show-track { display: flex; gap: 24px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .hm-show-track::-webkit-scrollbar { display: none; }
+  .hm-show-slide { position: relative; flex: 0 0 calc((100% - 24px) / 2); margin: 0; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 4px; scroll-snap-align: start; background: ${PAGE_COLORS.navyDeep}; }
+  .hm-show-slide img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hm-show-slide figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 48px 22px 18px; display: flex; flex-direction: column; gap: 4px; background: linear-gradient(transparent, rgba(5, 14, 31, 0.85)); }
+  .hm-show-slide figcaption span { font-size: 14px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; opacity: 0.8; }
+  .hm-show-slide figcaption strong { font-size: clamp(17px, 1.5vw, 21px); line-height: 1.3; font-weight: 600; }
+  .hm-show-arrow { position: absolute; top: 50%; transform: translateY(-50%); width: 48px; height: 48px; display: grid; place-items: center; border: 0; border-radius: 50%; background: rgba(255, 255, 255, 0.92); color: ${PAGE_COLORS.navy}; cursor: pointer; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3); }
+  .hm-show-arrow--prev { left: -18px; } .hm-show-arrow--next { right: -18px; }
+  .hm-show-btn-outline { background: transparent; box-shadow: inset 0 0 0 1.5px #fff; }
+  .hm-show-btn-outline:hover { background: rgba(255, 255, 255, 0.12); }
+  @media (max-width: 760px) { .hm-show-slide { flex-basis: 86%; } .hm-show-arrow { display: none; } }
   .hm-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 26px; margin-top: 6px; }
 
   .hm-stats-band { background: ${PAGE_COLORS.navy}; color: #fff; padding: clamp(44px, 5vw, 72px) 0; }
@@ -1354,13 +1372,79 @@ function NetworkArt({ seed = 1 }) {
 /* Bloco de ponta a ponta: foto (ou arte) de um lado e painel de texto do outro.
    tone: "dark" (painel navy) | "light" (branco) | "band" (cinza claro).
    reverse: texto à esquerda e foto à direita. */
-function FullSplit({ id, tone = "dark", reverse = false, photo, photoAlt = "", caption, art, children, labelledBy }) {
+/* --- Competições e eventos (tela inicial) --- */
+function Showcase({ data, competition, events, competitionsButton, eventsButton }) {
+  const trackRef = useRef(null);
+  const slides = [
+    ...(isSet(competition.photo)
+      ? [{ key: "competicao", photo: competition.photo, kicker: data.competitionKicker, title: competition.photoCaption }]
+      : []),
+    ...events.map((ev) => ({ key: `${ev.date}-${ev.title}`, photo: ev.photo, kicker: parseDate(ev.date).long, title: ev.title })),
+  ];
+  const move = (dir) => {
+    const t = trackRef.current;
+    if (!t) return;
+    const slide = t.querySelector(".hm-show-slide");
+    const step = slide ? slide.getBoundingClientRect().width + 24 : t.clientWidth;
+    t.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+  return (
+    <section
+      id="competicoes-eventos"
+      className="hm-show scroll-mt-16"
+      aria-labelledby="competicoes-eventos-titulo"
+      style={isSet(data.backgroundImage) ? { backgroundImage: `linear-gradient(rgba(${PAGE_COLORS.navyRgb}, 0.82), rgba(${PAGE_COLORS.navyRgb}, 0.9)), url("${data.backgroundImage}")` } : undefined}
+    >
+      <div className="pg-container">
+        <h2 id="competicoes-eventos-titulo" className="hm-show-title pg-heading">{data.title}</h2>
+        {isSet(data.subtitle) && <p className="hm-show-sub">{data.subtitle}</p>}
+        {slides.length > 0 && (
+          <div className="hm-show-carousel">
+            <div className="hm-show-track" ref={trackRef}>
+              {slides.map((s) => (
+                <figure key={s.key} className="hm-show-slide">
+                  <img src={s.photo} alt={s.title} loading="lazy" />
+                  <figcaption>
+                    <span>{s.kicker}</span>
+                    <strong>{s.title}</strong>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            {slides.length > 2 && (
+              <>
+                <button type="button" className="hm-show-arrow hm-show-arrow--prev" onClick={() => move(-1)} aria-label="Foto anterior">
+                  <ChevronLeft className="h-7 w-7" aria-hidden="true" />
+                </button>
+                <button type="button" className="hm-show-arrow hm-show-arrow--next" onClick={() => move(1)} aria-label="Próxima foto">
+                  <ChevronRight className="h-7 w-7" aria-hidden="true" />
+                </button>
+              </>
+            )}
+          </div>
+        )}
+        <div className="hm-more">
+          <a className="pg-btn pg-btn--light" href="#/competicoes">
+            {competitionsButton}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+          <a className="pg-btn hm-show-btn-outline" href="#/eventos">
+            {eventsButton}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FullSplit({ id, tone = "dark", reverse = false, photo, photoAlt = "", photoPosition, caption, art, children, labelledBy }) {
   return (
     <section id={id} className={`fs fs--${tone}${reverse ? " fs--reverse" : ""} scroll-mt-16`} aria-labelledby={labelledBy}>
       <div className="fs-media">
         {isSet(photo) ? (
           <>
-            <img src={photo} alt={photoAlt} loading="lazy" />
+            <img src={photo} alt={photoAlt} loading="lazy" style={photoPosition ? { objectPosition: photoPosition } : undefined} />
             {isSet(caption) && <p className="fs-caption">{caption}</p>}
           </>
         ) : (
@@ -1842,7 +1926,6 @@ export default function App() {
     .map((s) => ({ ...s, value: isSet(s.value) ? s.value : s.auto && autoCounts[s.auto] > 0 ? String(autoCounts[s.auto]) : "" }))
     .filter((s) => s.value !== "");
 
-  const latestStudies = pages.research.groups.flatMap((g) => g.items).slice(0, highlights.research.count);
   const latestEvents = pages.events.groups
     .flatMap((g) => g.items)
     .sort((a, b) => b.date.localeCompare(a.date))
@@ -2223,39 +2306,6 @@ export default function App() {
             </div>
           </FullSplit>
 
-          {/* === SEÇÃO: COMPETIÇÕES === */}
-          {/* Foto à esquerda, painel cinza claro à direita (alterna com o bloco de Células). */}
-          <FullSplit
-            id="competicoes-destaque"
-            tone="band"
-            photo={highlights.competitions.photo}
-            photoAlt="Equipe da entidade em uma competição"
-            caption={highlights.competitions.photoCaption}
-            art={{ seed: 11 }}
-            labelledBy="competicoes-titulo"
-          >
-            <h2 id="competicoes-titulo" className="fs-title pg-heading">{highlights.competitions.title}</h2>
-            <p>{pages.competitions.intro}</p>
-            <ul className="fs-list">
-              {pages.competitions.items.map((c) => (
-                <li key={c.name}>
-                  <div>
-                    <span>
-                      <span className="fs-list-name">{c.name}</span>
-                      <span className="fs-list-note">{c.organizer}</span>
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ul>
-            <div className="fs-actions">
-              <a className="pg-btn" href="#/competicoes">
-                {highlights.competitions.button}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
-          </FullSplit>
-
           {/* === SEÇÃO: NÚMEROS === */}
           {/* Faixa navy com 4 a 6 contadores que sobem de 0 até o valor ao aparecer na tela. */}
           {statItems.length > 0 && (
@@ -2278,59 +2328,16 @@ export default function App() {
             </section>
           )}
 
-          {/* === SEÇÃO: RESEARCH EM DESTAQUE === */}
-          {/* Os estudos mais recentes da aba Research, no mesmo card da aba. */}
-          {latestStudies.length > 0 && (
-            <section id="research-destaque" className="pg-block">
-              <div className="pg-container">
-                <PgTitle>{highlights.research.title}</PgTitle>
-                <div className="hm-cards">
-                  {latestStudies.map((item) => (
-                    <ResearchCard key={item.title} item={item} labels={pages.research} />
-                  ))}
-                </div>
-                <div className="hm-more">
-                  <a className="pg-btn" href="#/research">
-                    {highlights.research.button}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* === SEÇÃO: ÚLTIMOS EVENTOS === */}
-          {/* Os eventos mais recentes da aba Eventos: foto, data, título e o início do texto. */}
-          {latestEvents.length > 0 && (
-            <section id="eventos-recentes" className="pg-block pg-band">
-              <div className="pg-container">
-                <PgTitle>{highlights.events.title}</PgTitle>
-                <div className="hm-cards">
-                  {latestEvents.map((ev) => {
-                    const d = parseDate(ev.date);
-                    return (
-                      <article key={`${ev.date}-${ev.title}`} className="rs-card">
-                        <PgPhoto src={ev.photo} alt={ev.title} />
-                        <div className="rs-body">
-                          <p className="rs-kicker">
-                            <time dateTime={ev.date}>{d.long}</time>
-                          </p>
-                          <h3 className="rs-title pg-heading">{ev.title}</h3>
-                          {ev.text[0] && <p className="rs-question hm-excerpt">{ev.text[0]}</p>}
-                        </div>
-                      </article>
-                    );
-                  })}
-                </div>
-                <div className="hm-more">
-                  <a className="pg-btn" href="#/eventos">
-                    {highlights.events.button}
-                    <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                  </a>
-                </div>
-              </div>
-            </section>
-          )}
+          {/* === SEÇÃO: COMPETIÇÕES E EVENTOS === */}
+          {/* Como "CJE na mídia & eventos": foto aérea da FGV escurecida ao fundo, título,
+              frase de destaque e carrossel com a competição e os últimos eventos. */}
+          <Showcase
+            data={highlights.showcase}
+            competition={highlights.competitions}
+            events={latestEvents.filter((ev) => isSet(ev.photo) && ev.photo !== about.photo)}
+            competitionsButton={highlights.competitions.button}
+            eventsButton={highlights.events.button}
+          />
 
           {/* === SEÇÃO: DEPOIMENTOS === */}
           {/* Professor, parceiro e alumni: foto redonda, cargo e empresa. Só aparece
@@ -2361,64 +2368,8 @@ export default function App() {
             </section>
           )}
 
-          {/* === SEÇÃO: FAIXA DO PROCESSO SELETIVO === */}
-          {/* Bloco de ponta a ponta: foto (ou arte) à esquerda, status, texto e botões à
-              direita. Aberto/encerrado vem de nav.selection. */}
-          <FullSplit
-            id="processo-seletivo-faixa"
-            tone="light"
-            photo={selectionBand.photo}
-            photoAlt="Candidatos no processo seletivo"
-            caption={selectionBand.photoCaption}
-            art={{ seed: 5, value: String(pages.selection.steps.length), label: selectionBand.artLabel }}
-            labelledBy="ps-titulo"
-          >
-            <p className={`hm-ps-status${selectionOpen ? " is-open" : ""}`}>
-              <i aria-hidden="true" />
-              {selectionOpen ? selectionBand.openLabel : selectionBand.closedLabel}
-              {selectionOpen && isSet(nav.selection.period) ? ` · ${nav.selection.period}` : ""}
-            </p>
-            <h2 id="ps-titulo" className="fs-title pg-heading">{selectionBand.title}</h2>
-            <p>{selectionOpen ? selectionBand.openText : selectionBand.closedText}</p>
-            <ol className="fs-list fs-steps">
-              {pages.selection.steps.map((st, i) => (
-                <li key={st.label}>
-                  <div>
-                    <span className="fs-list-name">
-                      <span className="fs-step-n">{String(i + 1).padStart(2, "0")}</span>
-                      {st.label}
-                    </span>
-                  </div>
-                </li>
-              ))}
-            </ol>
-            <div className="fs-actions">
-              {selectionOpen && (
-                <a
-                  className="pg-btn"
-                  href={nav.selection.url}
-                  {...(isExternal(nav.selection.url) ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                >
-                  {selectionBand.applyLabel}
-                  <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-              )}
-              <a className={selectionOpen ? "pg-textlink" : "pg-btn"} href="#/processo-seletivo">
-                {selectionBand.moreLabel}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
-              {!selectionOpen && newsletterMode !== "off" && (
-                <a className="pg-textlink" href="#newsletter">
-                  <Mail className="h-4 w-4" aria-hidden="true" />
-                  {selectionBand.notifyLabel}
-                </a>
-              )}
-            </div>
-          </FullSplit>
-
           {/* === SEÇÃO: PARCEIROS === */}
-          {/* Faixa escura: logos com a mesma altura em caixas brancas, colaborações
-              anteriores e o convite "Proponha um projeto" (leva à aba Contato). */}
+          {/* Faixa escura: logos com a mesma altura em caixas brancas. */}
           <section id="parceiros" className="pg-block hm-dark scroll-mt-16">
             <div className="pg-container">
               <PgTitle>{sponsors.title}</PgTitle>
@@ -2441,31 +2392,6 @@ export default function App() {
                   ))}
                 </>
               )}
-
-              {collabs.length > 0 && (
-                <div className="hm-collabs-wrap">
-                  <h3 className="hm-label">{ecosystem.title}</h3>
-                  <ul className="hm-collabs">
-                    {collabs.map((c) => (
-                      <li key={c.name}>
-                        <strong>{c.name}</strong>
-                        {(isSet(c.note) || SHOW_PLACEHOLDERS) && c.note && <span>{c.note}</span>}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className={`hm-invite${visibleTiers.length === 0 && collabs.length === 0 ? " hm-invite--solo" : ""}`}>
-                <div>
-                  <h3 className="pg-heading">{sponsors.invite.title}</h3>
-                  <p>{sponsors.invite.text}</p>
-                </div>
-                <a className="pg-btn pg-btn--light" href={sponsors.invite.href}>
-                  {sponsors.invite.label}
-                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
-                </a>
-              </div>
             </div>
           </section>
 
