@@ -65,7 +65,7 @@ export const SITE_DATA = {
   hero: {
     // Foto aérea da Av. 9 de Julho: prédio novo da FGV à esquerda e o MASP ao fundo.
     // Teste: trocar por uma foto mais ampla (drone) quando houver.
-    backgroundImage: "/img/hero/fgv-9-de-julho.jpg",
+    backgroundImage: "/img/hero/fgv-9-de-julho.webp",
     // Ponto de foco do corte: "center", "30% 50%"…
     backgroundPosition: "center",
     credit: { text: "", href: "" }, // ⚠️ crédito do fotógrafo, se souber a origem
@@ -86,7 +86,7 @@ export const SITE_DATA = {
     ],
     // A foto ocupa metade da tela, de ponta a ponta (vertical ou quadrada funciona melhor).
     // Sem foto, aparece uma arte com a rede de nós da marca.
-    photo: "/img/eventos/2026-09-itau-pedro-lorenzini.jpg", // grupo no bate-papo do Itaú (set/2026)
+    photo: "/img/eventos/2026-09-itau-pedro-lorenzini.webp", // grupo no bate-papo do Itaú (set/2026)
     photoCaption: "", // legenda opcional sobre a foto (ex.: "Gestão 2026.1")
     link: { label: "Conheça a nossa história", href: "#/sobre" },
   },
@@ -126,7 +126,7 @@ export const SITE_DATA = {
     },
     competitions: {
       title: "Competições",
-      photo: "/img/competicoes/2024-datathon-campeoes.jpg", // equipe Crypto X Quant (post de 05/12/2024)
+      photo: "/img/competicoes/2024-datathon-campeoes.webp", // equipe Crypto X Quant (post de 05/12/2024)
       photoCaption: "Campeões do Datathon 2024: equipe Crypto X Quant",
       button: "Conheça as competições",
     },
@@ -136,7 +136,7 @@ export const SITE_DATA = {
     showcase: {
       title: "Competições e eventos",
       subtitle: "Bicampeões do Datathon de Moedas Digitais da FGV EESP",
-      backgroundImage: "/img/fundo/fgv-9-de-julho-aerea.jpg",
+      backgroundImage: "/img/fundo/fgv-9-de-julho-aerea.webp",
       competitionKicker: "Competição",
     },
     events: { count: 4, button: "Ver todos os eventos" },
@@ -525,8 +525,8 @@ export const SITE_DATA = {
           // "triangulo": a primeira pessoa fica sozinha no topo e as outras duas lado a lado abaixo.
           layout: "triangulo",
           people: [
-            { name: "Pedro Giampietro", role: "Presidente", course: "", photo: "/img/membros/pedro-giampietro.jpg", linkedin: "https://www.linkedin.com/in/pedro-giampietro/", email: "" },
-            { name: "Felipe Souza", role: "Diretor Institucional", course: "", photo: "/img/membros/felipe-souza.jpg", linkedin: "https://www.linkedin.com/in/felipe-souza-santoro/", email: "" },
+            { name: "Pedro Giampietro", role: "Presidente", course: "", photo: "/img/membros/pedro-giampietro.webp", linkedin: "https://www.linkedin.com/in/pedro-giampietro/", email: "" },
+            { name: "Felipe Souza", role: "Diretor Institucional", course: "", photo: "/img/membros/felipe-souza.webp", linkedin: "https://www.linkedin.com/in/felipe-souza-santoro/", email: "" },
             { name: "Thales Haddad", role: "Diretor Acadêmico", course: "", photo: "", linkedin: "", email: "" },
           ],
         },
@@ -534,26 +534,26 @@ export const SITE_DATA = {
           title: "Coordenação",
           size: "md",
           people: [
-            { name: "Eduardo Holanda", role: "Coordenador da Célula de Consultoria", course: "", photo: "/img/membros/eduardo-holanda.jpg", linkedin: "https://www.linkedin.com/in/eduardo-holanda-152849327/", email: "" },
-            { name: "Lorenzo Calegaretti", role: "Coordenador da Célula de Asset", course: "", photo: "/img/membros/lorenzo-calegaretti.jpg", linkedin: "https://www.linkedin.com/in/lorenzo-calegaretti-8207ba295/", email: "" },
-            { name: "Giovanni Fava", role: "Coordenador da Célula de Challenges", course: "", photo: "/img/membros/giovanni-fava.jpg", linkedin: "https://www.linkedin.com/in/giovanni-fava-dias-melo/", email: "" },
-            { name: "Gabriel Cavasin", role: "Coordenador do Innovation Lab", course: "", photo: "/img/membros/gabriel-cavasin.jpg", linkedin: "https://www.linkedin.com/in/gabriel-cavasin-027843357/", email: "" },
-            { name: "Natanael Spilla", role: "Coordenador do Processo Trainee", course: "", photo: "/img/membros/natanael-spilla.jpg", linkedin: "https://www.linkedin.com/in/natanael-dalceno-spilla-neto-829ba93aa/", email: "" },
+            { name: "Eduardo Holanda", role: "Coordenador da Célula de Consultoria", course: "", photo: "/img/membros/eduardo-holanda.webp", linkedin: "https://www.linkedin.com/in/eduardo-holanda-152849327/", email: "" },
+            { name: "Lorenzo Calegaretti", role: "Coordenador da Célula de Asset", course: "", photo: "/img/membros/lorenzo-calegaretti.webp", linkedin: "https://www.linkedin.com/in/lorenzo-calegaretti-8207ba295/", email: "" },
+            { name: "Giovanni Fava", role: "Coordenador da Célula de Challenges", course: "", photo: "/img/membros/giovanni-fava.webp", linkedin: "https://www.linkedin.com/in/giovanni-fava-dias-melo/", email: "" },
+            { name: "Gabriel Cavasin", role: "Coordenador do Innovation Lab", course: "", photo: "/img/membros/gabriel-cavasin.webp", linkedin: "https://www.linkedin.com/in/gabriel-cavasin-027843357/", email: "" },
+            { name: "Natanael Spilla", role: "Coordenador do Processo Trainee", course: "", photo: "/img/membros/natanael-spilla.webp", linkedin: "https://www.linkedin.com/in/natanael-dalceno-spilla-neto-829ba93aa/", email: "" },
           ],
         },
         {
           title: "Membros",
           size: "md",
           people: [
-            { name: "André Brózios", role: "Membro", course: "", photo: "/img/membros/andre-brozios.jpg", linkedin: "https://www.linkedin.com/in/andr%C3%A9-br%C3%B3zios-90b96335b/", email: "" },
-            { name: "Bárbara Amorim", role: "Membro", course: "", photo: "/img/membros/barbara-amorim.jpg", linkedin: "", email: "" },
-            { name: "Guilherme Giuntini", role: "Membro da Célula de Asset", course: "", photo: "/img/membros/guilherme-giuntini.jpg", linkedin: "https://www.linkedin.com/in/guilhermemoiagiuntini/", email: "" },
+            { name: "André Brózios", role: "Membro", course: "", photo: "/img/membros/andre-brozios.webp", linkedin: "https://www.linkedin.com/in/andr%C3%A9-br%C3%B3zios-90b96335b/", email: "" },
+            { name: "Bárbara Amorim", role: "Membro", course: "", photo: "/img/membros/barbara-amorim.webp", linkedin: "", email: "" },
+            { name: "Guilherme Giuntini", role: "Membro da Célula de Asset", course: "", photo: "/img/membros/guilherme-giuntini.webp", linkedin: "https://www.linkedin.com/in/guilhermemoiagiuntini/", email: "" },
             { name: "João Ramos", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/joao-barros-ramos-092715327/", email: "" },
-            { name: "Maitê Botelho", role: "Membro", course: "", photo: "/img/membros/maite-botelho.jpg", linkedin: "https://www.linkedin.com/in/mait%C3%AA-parrela-botelho-b48a42384/", email: "" },
-            { name: "Mateus Deconto", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.jpg", linkedin: "https://www.linkedin.com/in/mateus-deconto-azevedo-57668a44a/", email: "" },
+            { name: "Maitê Botelho", role: "Membro", course: "", photo: "/img/membros/maite-botelho.webp", linkedin: "https://www.linkedin.com/in/mait%C3%AA-parrela-botelho-b48a42384/", email: "" },
+            { name: "Mateus Deconto", role: "Membro", course: "", photo: "/img/membros/matheus-deconto.webp", linkedin: "https://www.linkedin.com/in/mateus-deconto-azevedo-57668a44a/", email: "" },
             { name: "Matheus Viana", role: "Membro", course: "", photo: "", linkedin: "https://www.linkedin.com/in/matheus-de-andrade-viana/", email: "" },
-            { name: "Mirela Mota", role: "Membro", course: "", photo: "/img/membros/mirela-mota.jpg", linkedin: "https://www.linkedin.com/in/mirela-mota-83381a381/", email: "" },
-            { name: "Rafael Sinieghi", role: "Membro", course: "", photo: "/img/membros/rafael-sinieghi.jpg", linkedin: "https://www.linkedin.com/in/rafael-sinieghi-b8abab428/", email: "" },
+            { name: "Mirela Mota", role: "Membro", course: "", photo: "/img/membros/mirela-mota.webp", linkedin: "https://www.linkedin.com/in/mirela-mota-83381a381/", email: "" },
+            { name: "Rafael Sinieghi", role: "Membro", course: "", photo: "/img/membros/rafael-sinieghi.webp", linkedin: "https://www.linkedin.com/in/rafael-sinieghi-b8abab428/", email: "" },
           ],
         },
       ],
@@ -657,8 +657,8 @@ export const SITE_DATA = {
             {
               date: "2026-10-19",
               title: "Cryptoweek 2026.2",
-              photo: "/img/eventos/2026-10-cryptoweek-pagos-vault.jpg",
-              morePhotos: ["/img/eventos/2026-10-cryptoweek-wesearch.jpg"], // fotos extras viram miniaturas
+              photo: "/img/eventos/2026-10-cryptoweek-pagos-vault.webp",
+              morePhotos: ["/img/eventos/2026-10-cryptoweek-wesearch.webp"], // fotos extras viram miniaturas
               text: [
                 "De 19 a 22 de outubro, na FGV EESP. A abertura reuniu Carlos Akira Sato (PAGOS) e Gabriel Della Torre (Vault Capital) para falar do impacto da blockchain e dos ativos digitais.",
                 "No segundo dia, um painel com André Haro, Lucas Oliveira, Bruno Liman e Rafael Puerari, em parceria com a WeSearch, discutiu o que os ETFs mudaram no mercado cripto. O encerramento foi com Murillo Bargas, Head of Crypto do Inter.",
@@ -667,7 +667,7 @@ export const SITE_DATA = {
             {
               date: "2026-10-06",
               title: "Workshop: uso de tokenização no mercado financeiro",
-              photo: "/img/eventos/2026-10-workshop-b3.jpg",
+              photo: "/img/eventos/2026-10-workshop-b3.webp",
               text: [
                 "Em parceria com a B3 e a Z-Invest, como parte da World Investor Week. Eduardo Alexandre Marques Silva, head de digital assets da B3, explicou como a tokenização muda a emissão, a negociação e a liquidação de investimentos.",
               ],
@@ -675,7 +675,7 @@ export const SITE_DATA = {
             {
               date: "2026-09-16",
               title: "Bate-papo com Pedro Lorenzini (Itaú Unibanco)",
-              photo: "/img/eventos/2026-09-itau-pedro-lorenzini.jpg",
+              photo: "/img/eventos/2026-09-itau-pedro-lorenzini.webp",
               text: [
                 "Pedro Lorenzini, Global Markets Treasury & Latam Head do Itaú Unibanco, falou sobre tesouraria, estratégia de produtos e operações na América Latina. Agradecemos ao Itaú Unibanco e à Z-Invest pela recepção.",
               ],
