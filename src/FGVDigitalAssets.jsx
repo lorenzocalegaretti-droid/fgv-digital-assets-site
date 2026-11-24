@@ -92,15 +92,12 @@ const PAGES_CSS = `
   .re-members-grid--md { --cols: 5; }
   .re-members-grid > .re-member { flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap)) / var(--cols)); }
   .re-members-grid--lg > .re-member { max-width: 225px; }
+  .re-members-grid--lg .re-member-photo { max-width: 215px; }
   .re-member { min-width: 0; text-align: center; }
-  .re-member-photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 3px; background: ${PAGE_COLORS.photo}; display: grid; place-items: center; }
-  .re-member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; filter: saturate(0.9); transition: transform .5s, filter .5s; }
+  .re-member-photo { position: relative; width: 100%; max-width: 190px; margin: 0 auto; aspect-ratio: 1 / 1; overflow: hidden; border-radius: 50%; background: ${PAGE_COLORS.photo}; display: grid; place-items: center; }
+  .re-member-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; filter: saturate(0.9); transition: transform .5s, filter .5s; }
   .re-member:hover .re-member-photo img { transform: scale(1.03); filter: saturate(1); }
   .re-member-initials { font-size: 36px; font-weight: 600; letter-spacing: 0.04em; color: #7A8597; }
-  .re-member-selo { position: absolute; left: 0; bottom: 0; width: 30px; height: 30px; display: grid; place-items: center; background: ${PAGE_COLORS.navy}; color: #fff; border-top-right-radius: 3px; }
-  .re-member-selo svg { width: 17px; height: 17px; }
-  .re-members-grid--lg .re-member-selo { width: 34px; height: 34px; }
-  .re-members-grid--lg .re-member-selo svg { width: 19px; height: 19px; }
   .re-member-info { padding-top: 18px; display: flex; flex-direction: column; align-items: center; gap: 6.3px; }
   .re-member-name { font-size: 18.9px; font-weight: 700; line-height: 1.25; letter-spacing: -0.02em; color: ${PAGE_COLORS.navy}; }
   .re-members-grid--lg .re-member-name { font-size: 20.7px; }
@@ -119,8 +116,6 @@ const PAGES_CSS = `
     .re-member-info { padding-top: 13.5px; }
     .re-member-name { font-size: 17.1px; } .re-members-grid--lg .re-member-name { font-size: 18.9px; }
     .re-member-cargo, .re-members-grid--lg .re-member-cargo { font-size: 14.76px; }
-    .re-member-selo, .re-members-grid--lg .re-member-selo { width: 26px; height: 26px; }
-    .re-member-selo svg, .re-members-grid--lg .re-member-selo svg { width: 14px; height: 14px; }
   }
 
   /* --- Alumni --- */
@@ -1051,9 +1046,6 @@ function MembersPage({ data, photo }) {
                     ) : (
                       <span className="re-member-initials">{initials(p.name)}</span>
                     )}
-                    <span className="re-member-selo" aria-hidden="true">
-                      <BrandMark />
-                    </span>
                   </div>
                   <div className="re-member-info">
                     <h3 className="re-member-name">{p.name}</h3>
