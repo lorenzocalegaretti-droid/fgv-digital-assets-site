@@ -38,9 +38,6 @@ import {
   MapPin,
   CheckCircle2,
   Loader2,
-  Target,
-  Eye,
-  Gem,
 } from "lucide-react";
 
 /* Conteúdo (textos, fotos, links): src/conteudo.js */
@@ -73,13 +70,13 @@ const PAGE_COLORS = { navy: "#0A1A36", navyDeep: "#050E1F", navyRgb: "10, 26, 54
 const PAGES_CSS = `
   .pg { font-family: 'Source Sans 3', 'Source Sans Pro', ui-sans-serif, system-ui, sans-serif; font-size: 18px; line-height: 27px; color: ${PAGE_COLORS.navy}; }
   .pg h1, .pg h2, .pg h3, .pg p, .pg ul { margin: 0; }
-  .pg-heading { font-family: 'Montserrat', sans-serif; font-weight: 400; }
+  .pg-heading { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 400; }
 
   /* Abertura das páginas: foto com camada navy a 77% */
   .pg-hero { position: relative; display: flex; align-items: center; justify-content: center; min-height: max(480px, 74vh); padding: 104px 16px 40px; text-align: center; color: #fff; background-color: ${PAGE_COLORS.navy}; background-size: cover; background-position: center; }
   .pg-hero::before { content: ""; position: absolute; inset: 0; background: ${PAGE_COLORS.navy}; opacity: 0.77; }
   .pg-hero > div { position: relative; }
-  .pg-hero h1 { font-family: 'Montserrat', sans-serif; font-weight: 400; font-size: clamp(42px, 4.85vw, 69.84px); line-height: 1.056; letter-spacing: -0.02em; }
+  .pg-hero h1 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 400; font-size: clamp(42px, 4.85vw, 69.84px); line-height: 1.056; letter-spacing: -0.02em; }
   .pg-hero p { max-width: 429px; margin: 29px auto 0; font-size: 18px; line-height: 27px; text-align: justify; }
 
   .pg-section { background: #fff; padding: max(2.7vw, 24px) 0 calc(max(2.7vw, 24px) + 4vw); }
@@ -148,13 +145,13 @@ const PAGES_CSS = `
   .ps-step { display: grid; grid-template-columns: 99px minmax(0, 484px); column-gap: 11px; align-items: center; }
   .ps-step + .ps-step { margin-top: 12px; }
   .ps-num { display: flex; align-items: center; justify-content: flex-end; gap: 7px; color: ${PAGE_COLORS.navy}; }
-  .ps-num span { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 58px; line-height: 1; }
-  .ps-num sup { font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 30px; top: -0.75em; }
+  .ps-num span { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 58px; line-height: 1; }
+  .ps-num sup { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 30px; top: -0.75em; }
   .ps-num i { display: block; width: 2px; height: 58px; background: ${PAGE_COLORS.navy}; }
   .ps-step p { text-align: justify; }
   .ps-step strong { color: ${PAGE_COLORS.accent}; font-weight: 700; }
   .ps-cta-row { display: flex; justify-content: center; padding: 24px 0 35px; }
-  .ps-cta { display: inline-block; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 22.32px; line-height: 27px; color: #fff; background: ${PAGE_COLORS.accent}; border-radius: 300px; padding: 27px 39.6px; transition: background .2s; }
+  .ps-cta { display: inline-block; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 22.32px; line-height: 27px; color: #fff; background: ${PAGE_COLORS.accent}; border-radius: 300px; padding: 27px 39.6px; transition: background .2s; }
   .ps-cta:hover { background: ${PAGE_COLORS.accentHover}; }
   .ps-steps--end { padding-bottom: 56px; }
   .ps-cta-end .ps-cta-row { padding: 40px 0 0; }
@@ -230,13 +227,6 @@ const PAGES_CSS = `
   .ab-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(27px, 4vw, 56px); align-items: center; }
   .ab-text { display: flex; flex-direction: column; gap: 16px; }
   .ab-text p { line-height: 1.65; }
-  .ab-mvv { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 45px); }
-  .ab-mvv article { border-top: 2px solid ${PAGE_COLORS.navy}; padding-top: 22px; }
-  .ab-mvv h3 { font-size: 24px; line-height: 1.2; margin-bottom: 12px !important; }
-  .ab-mvv p { line-height: 1.6; opacity: 0.9; }
-  .ab-values { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 8px; }
-  .ab-values li { font-weight: 600; }
-  .ab-values li::before { content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 12px; background: ${PAGE_COLORS.accent}; vertical-align: middle; }
   .ab-timeline { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 3vw, 45px); }
   .ab-step { position: relative; padding-top: 30px; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.2); }
   .ab-step::before { content: ""; position: absolute; top: -8px; left: 0; width: 15px; height: 15px; border-radius: 50%; background: #fff; border: 2px solid ${PAGE_COLORS.accent}; }
@@ -251,7 +241,7 @@ const PAGES_CSS = `
   /* Células */
   .nu-cycle { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(20px, 2.4vw, 36px); counter-reset: nu; }
   .nu-cycle li { counter-increment: nu; }
-  .nu-cycle li::before { content: counter(nu); display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 16px; border-radius: 50%; background: ${PAGE_COLORS.navy}; color: #fff; font-family: 'Montserrat', sans-serif; font-size: 20px; }
+  .nu-cycle li::before { content: counter(nu); display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 16px; border-radius: 50%; background: ${PAGE_COLORS.navy}; color: #fff; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 20px; }
   .nu-cycle h3 { font-size: 19px; font-weight: 700; margin-bottom: 6px !important; }
   .nu-cycle p { font-size: 17px; line-height: 1.55; opacity: 0.85; }
   .nu-rows { display: flex; flex-direction: column; gap: clamp(40px, 5vw, 72px); }
@@ -322,7 +312,7 @@ const PAGES_CSS = `
   .ct-demo { margin-top: 14px !important; font-size: 14px; color: #92400E; }
 
   /* Sobre: frases de abertura (vieram da tela inicial) */
-  .ab-opening { max-width: 820px; margin: 0 auto clamp(48px, 6vw, 72px); display: flex; flex-direction: column; gap: 14px; text-align: center; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.5; }
+  .ab-opening { max-width: 820px; margin: 0 auto clamp(48px, 6vw, 72px); display: flex; flex-direction: column; gap: 14px; text-align: center; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.5; }
 
   /* --- Página inicial: blocos que resumem as abas --- */
   .pg-btn--light { background: #fff; color: ${PAGE_COLORS.navy}; }
@@ -337,7 +327,7 @@ const PAGES_CSS = `
   .hm-stats-title { text-align: center; font-size: 15.3px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; margin-bottom: clamp(24px, 3vw, 36px) !important; }
   .hm-stats { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; row-gap: 28px; }
   .hm-stat { flex: 1 1 0%; min-width: 0; padding: 4px 16px; text-align: center; }
-  .hm-stat strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(40px, 4.2vw, 58px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .hm-stat strong { display: block; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(40px, 4.2vw, 58px); line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
   .hm-stat > span { display: block; margin-top: 10px; font-size: 16.2px; line-height: 1.3; opacity: 0.78; }
   @media (min-width: 1024px) { .hm-stat + .hm-stat { border-left: 1px solid rgba(255, 255, 255, 0.16); } }
 
@@ -346,7 +336,7 @@ const PAGES_CSS = `
 
   .hm-quote { margin: 0; display: flex; flex-direction: column; gap: 22px; background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); border-radius: 14px; padding: 30px 28px 26px; }
   .hm-quote blockquote { margin: 0; font-size: 18px; line-height: 1.6; }
-  .hm-quote blockquote::before { content: "“"; display: block; height: 30px; font-family: 'Montserrat', sans-serif; font-size: 64px; line-height: 1; color: ${PAGE_COLORS.accent}; }
+  .hm-quote blockquote::before { content: "“"; display: block; height: 30px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 64px; line-height: 1; color: ${PAGE_COLORS.accent}; }
   .hm-quote figcaption { margin-top: auto; display: flex; align-items: center; gap: 14px; }
   .hm-avatar { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 50%; overflow: hidden; display: grid; place-items: center; background: ${PAGE_COLORS.photo}; color: #7A8597; font-weight: 600; }
   .hm-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -391,7 +381,7 @@ const PAGES_CSS = `
   .hm-news-small { font-size: 14px; opacity: 0.7; }
   .hm-news-ok { display: flex; align-items: flex-start; gap: 16px; }
   .hm-news-icon { flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: #1F7A45; color: #fff; }
-  .hm-news-ok-title { font-family: 'Montserrat', sans-serif; font-size: 24px; line-height: 1.25; margin-bottom: 6px !important; }
+  .hm-news-ok-title { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 24px; line-height: 1.25; margin-bottom: 6px !important; }
   .hm-linkbtn { margin-top: 12px; padding: 0; background: none; border: 0; cursor: pointer; font-family: inherit; font-size: inherit; }
 
   @media (max-width: 1023px) {
@@ -410,7 +400,7 @@ const PAGES_CSS = `
     .hm-news-form { flex-direction: column; }
   }
   @media (max-width: 767px) {
-    .ab-grid, .ab-mvv, .ab-timeline, .nu-areas, .ct-grid { grid-template-columns: minmax(0, 1fr); }
+    .ab-grid, .ab-timeline, .nu-areas, .ct-grid { grid-template-columns: minmax(0, 1fr); }
     .ab-timeline { gap: 36px; }
     .ct-fields { grid-template-columns: minmax(0, 1fr); }
     .pg-lead { font-size: 18px; }
@@ -433,14 +423,14 @@ const PAGES_CSS = `
   .fs-title::after { content: ""; display: block; width: 56px; height: 3px; margin-top: 18px; background: currentColor; opacity: 0.35; }
   .fs-inner > p { line-height: 1.65; }
   .fs--dark .fs-inner > p { opacity: 0.88; }
-  .fs-lead { font-family: 'Montserrat', sans-serif; font-size: clamp(20px, 1.7vw, 24px) !important; font-weight: 500; line-height: 1.35 !important; }
+  .fs-lead { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: clamp(20px, 1.7vw, 24px) !important; font-weight: 500; line-height: 1.35 !important; }
   .fs-list { list-style: none; padding: 0; margin: 4px 0 6px; border-top: 1px solid rgba(255, 255, 255, 0.16); }
   .fs--light .fs-list, .fs--band .fs-list { border-top-color: rgba(${PAGE_COLORS.navyRgb}, 0.14); }
   .fs-list li { border-bottom: 1px solid rgba(255, 255, 255, 0.16); }
   .fs--light .fs-list li, .fs--band .fs-list li { border-bottom-color: rgba(${PAGE_COLORS.navyRgb}, 0.14); }
   .fs-list a, .fs-list > li > div { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 0; color: inherit; }
   .fs-list a:hover .fs-list-name { text-decoration: underline; text-underline-offset: 4px; }
-  .fs-list-name { font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; }
+  .fs-list-name { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 600; font-size: 18px; }
   .fs-list-note { display: block; font-size: 15.3px; opacity: 0.7; margin-top: 2px; }
   .fs-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; margin-top: 8px; }
   .fs-media { position: relative; overflow: hidden; background: ${PAGE_COLORS.navyDeep}; }
@@ -448,7 +438,7 @@ const PAGES_CSS = `
   .fs-art { position: absolute; inset: 0; }
   .fs-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
   .fs-art-caption { position: absolute; left: clamp(20px, 3vw, 40px); bottom: clamp(20px, 3vw, 36px); right: clamp(20px, 3vw, 40px); color: #fff; }
-  .fs-art-caption strong { display: block; font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(56px, 7vw, 104px); line-height: 1; letter-spacing: -0.02em; }
+  .fs-art-caption strong { display: block; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(56px, 7vw, 104px); line-height: 1; letter-spacing: -0.02em; }
   .fs-art-caption span { display: block; margin-top: 10px; font-size: 15.3px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.7; }
   .fs-caption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 14px; font-size: 14px; font-style: italic; color: #fff; background: linear-gradient(transparent, rgba(5, 14, 31, 0.75)); }
 
@@ -460,24 +450,20 @@ const PAGES_CSS = `
   .fs-steps .fs-list-name { font-size: 17px; }
   .fs-steps > li > div { padding: 11px 0; }
 
-  .mv-band { background: #F3F5F8; border-bottom: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.08); }
-  .mv-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  .mv-item { padding: clamp(40px, 5vw, 72px) clamp(24px, 4vw, 64px); }
-  .mv-item + .mv-item { border-left: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
-  .mv-icon { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 50%; background: ${PAGE_COLORS.navy}; color: #fff; margin-bottom: 20px; }
-  .mv-item h3 { font-size: 24px; line-height: 1.2; margin-bottom: 12px !important; }
-  .mv-item p { line-height: 1.6; opacity: 0.88; max-width: 420px; }
-  .mv-values { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
-  .mv-values li { font-weight: 600; padding: 7px 16px; border-radius: 300px; background: #fff; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.16); }
-
+  /* Missão, visão e valores: três colunas sobre fundo branco; título centralizado com
+     um fio embaixo, texto justificado e valores em lista centralizada (referência FGV Finance) */
+  .mv-band { background: #fff; padding: clamp(48px, 6vw, 80px) 0; }
+  .mv-grid { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 8vw, 160px); justify-items: center; }
+  .mv-item { width: 100%; max-width: 360px; }
+  .mv-item h3 { font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.2; text-align: center; color: #111; padding-bottom: 10px; margin-bottom: 14px !important; border-bottom: 1px solid #333; }
+  .mv-item p { font-size: 19px; line-height: 28px; text-align: justify; hyphens: auto; color: #3d3d3d; }
+  .mv-values { list-style: none; padding: 0; margin: 0; text-align: center; font-size: 19px; line-height: 28px; color: #3d3d3d; }
   @media (max-width: 900px) {
     .fs { grid-template-columns: minmax(0, 1fr); min-height: 0; }
     .fs-media { min-height: 280px; }
     .fs--reverse .fs-media { order: 0; }
     .fs-inner { max-width: 640px; margin: 0 auto !important; }
-    .mv-grid { grid-template-columns: minmax(0, 1fr); }
-    .mv-item + .mv-item { border-left: 0; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
-    .mv-item { padding: 36px 4vw; }
+    .mv-grid { grid-template-columns: minmax(0, 1fr); gap: 40px; }
   }
 `;
 
@@ -489,13 +475,20 @@ function GlobalStyles() {
     <style>{`
       /* Duas famílias no site inteiro: Montserrat (títulos, menu, abertura) e Source Sans 3 (texto) */
       @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap');
+      /* G da marca: o G da Montserrat com a barra horizontal (desenho da diretoria). A fonte
+         public/fonts/montserrat-g-*.woff2 tem só a letra G; o resto do texto continua em Montserrat. */
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-300.woff2') format('woff2'); font-weight: 300; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-400.woff2') format('woff2'); font-weight: 400; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-500.woff2') format('woff2'); font-weight: 500; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-600.woff2') format('woff2'); font-weight: 600; font-display: swap; unicode-range: U+0047; }
+      @font-face { font-family: 'Montserrat G FGV'; src: url('/fonts/montserrat-g-700.woff2') format('woff2'); font-weight: 700; font-display: swap; unicode-range: U+0047; }
 
       html { scroll-behavior: smooth; }
       .fgv-root { font-family: 'Source Sans 3', 'Source Sans Pro', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; color: ${PAGE_COLORS.navy}; -webkit-font-smoothing: antialiased; }
       .fgv-root ::selection { background: #BFDBFE; color: ${PAGE_COLORS.navy}; }
 
       /* --- Navbar (navy) e botões de destaque (azul) --- */
-      .fgv-nav-link { font-family: 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; line-height: 25.6px; padding: 8px 7px; color: #fff; }
+      .fgv-nav-link { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 15px; font-weight: 300; line-height: 25.6px; padding: 8px 7px; color: #fff; }
       /* Menu de desktop: espaço entre as abas cresce com a largura da tela */
       @media (min-width: 1280px) { .fgv-nav-desk .fgv-nav-link { padding: 8px clamp(7px, calc((100vw - 1180px) / 22), 20px); } }
       .fgv-nav-cta { background: ${PAGE_COLORS.accent}; transition: background .2s; }
@@ -515,10 +508,10 @@ function GlobalStyles() {
       .ft-divider { border-color: rgba(255, 255, 255, 0.12); }
 
       /* Nome da marca no menu e no rodapé: mesma escrita da logo (Montserrat seminegrito, caixa-alta) */
-      .brand-word { font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.1; }
+      .brand-word { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.01em; line-height: 1.1; }
 
       /* --- Abertura (medidas da referência) --- */
-      .fgv-hero-text { font-family: 'Montserrat', sans-serif; font-size: 20px; font-weight: 300; line-height: 26px; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.45); }
+      .fgv-hero-text { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 20px; font-weight: 300; line-height: 26px; color: #fff; text-shadow: 0 1px 12px rgba(0,0,0,0.45); }
       /* Altura da abertura: tela cheia, conteúdo centrado na área abaixo da navbar */
       .fgv-hero { height: 100vh; min-height: 620px; padding-top: 64px; }
 
@@ -649,6 +642,29 @@ function LogoGlyph() {
         ))}
       </g>
     </>
+  );
+}
+
+/* Missão, visão e valores (página inicial e aba Sobre) */
+function MissionVisionValues({ pillars, id }) {
+  return (
+    <section id={id} className="mv-band" aria-label="Missão, visão e valores">
+      <div className="mv-grid">
+        {pillars.map((item) => (
+          <article key={item.title} className="mv-item">
+            <h3>{item.title}</h3>
+            {item.text && <p>{item.text}</p>}
+            {item.list && (
+              <ul className="mv-values">
+                {item.list.map((v) => (
+                  <li key={v}>{v}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -850,10 +866,10 @@ function HeroLogo({ src, alt }) {
       <svg x="70" y="0" width="160" height="160" viewBox={LOGO_VIEWBOX} color="#fff" aria-hidden="true">
         <LogoGlyph />
       </svg>
-      <text x="150" y="220" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="600" fontSize="48" letterSpacing="1">
+      <text x="150" y="220" textAnchor="middle" fill="#fff" fontFamily="'Montserrat G FGV', Montserrat, sans-serif" fontWeight="600" fontSize="48" letterSpacing="1">
         FGV
       </text>
-      <text x="150" y="254" textAnchor="middle" fill="#fff" fontFamily="Montserrat, sans-serif" fontWeight="600" fontSize="22" letterSpacing="0.6">
+      <text x="150" y="254" textAnchor="middle" fill="#fff" fontFamily="'Montserrat G FGV', Montserrat, sans-serif" fontWeight="600" fontSize="22" letterSpacing="0.6">
         DIGITAL ASSETS
       </text>
     </svg>
@@ -1412,25 +1428,7 @@ function AboutPage({ data, photo }) {
       </section>
 
       {/* === SEÇÃO: SOBRE — MISSÃO, VISÃO E VALORES === */}
-      <section className="pg-block pg-band">
-        <div className="pg-container">
-          <div className="ab-mvv">
-            {data.pillars.map((item) => (
-              <article key={item.title}>
-                <h3 className="pg-heading">{item.title}</h3>
-                {item.text && <p>{item.text}</p>}
-                {item.list && (
-                  <ul className="ab-values">
-                    {item.list.map((v) => (
-                      <li key={v}>{v}</li>
-                    ))}
-                  </ul>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <MissionVisionValues pillars={data.pillars} />
 
       {/* === SEÇÃO: SOBRE — TRAJETÓRIA === */}
       <section className="pg-block">
@@ -2191,31 +2189,9 @@ export default function App() {
           </FullSplit>
 
           {/* === SEÇÃO: MISSÃO, VISÃO E VALORES === */}
-          {/* Faixa clara de ponta a ponta com três colunas (como na FGV Finance e na CJE).
-              O texto vem de pages.about.pillars, o mesmo da aba Sobre. */}
-          <section id="missao" className="mv-band" aria-label="Missão, visão e valores">
-            <div className="mv-grid">
-              {pages.about.pillars.map((item, i) => {
-                const Icon = [Target, Eye, Gem][i] || Target;
-                return (
-                  <article key={item.title} className="mv-item">
-                    <span className="mv-icon" aria-hidden="true">
-                      <Icon className="h-5 w-5" />
-                    </span>
-                    <h3 className="pg-heading">{item.title}</h3>
-                    {item.text && <p>{item.text}</p>}
-                    {item.list && (
-                      <ul className="mv-values">
-                        {item.list.map((v) => (
-                          <li key={v}>{v}</li>
-                        ))}
-                      </ul>
-                    )}
-                  </article>
-                );
-              })}
-            </div>
-          </section>
+          {/* Três colunas no formato da FGV Finance. O texto vem de pages.about.pillars,
+              o mesmo da aba Sobre. */}
+          <MissionVisionValues id="missao" pillars={pages.about.pillars} />
 
           {/* === SEÇÃO: NÚCLEOS === */}
           {/* Um card curto por célula técnica, com link para os estudos da célula. */}
