@@ -281,6 +281,7 @@ export const SITE_DATA = {
      * abaixo de "Sobre nós". Texto do destaque "Sobre nós" do Instagram.
      * ----------------------------------------------------------------------- */
     about: {
+      enabled: false, // false esconde a aba Sobre, o link no menu e o "Conheça a nossa história"
       title: "Sobre",
       text: "Liga estudantil da FGV-SP voltada para digital finance, criptoativos e a nova infraestrutura financeira.",
       // Abertura do texto (antes ficava na tela inicial, sobre a foto do Viaduto do Chá)
@@ -470,21 +471,41 @@ export const SITE_DATA = {
 
     /* --- Competições (#/competicoes) ------------------------------------------ */
     competitions: {
+      // Layout como o da Insper Asset: abertura com caixa navy + cartão branco e,
+      // abaixo, uma faixa por competição (alternando branco e navy). Cada ano tem
+      // foto de um lado e texto do outro. Sem foto, aparece a arte de rede.
       title: "Competições",
-      text: "Desafios universitários em que nossos membros colocam em prática o que estudam sobre blockchain e criptoativos.",
-      intro:
-        "A célula de Challenges prepara os membros para hackathons, cases e desafios institucionais. Nossa principal competição é o Datathon de Moedas Digitais da FGV EESP, do qual somos bicampeões.",
+      heroTitle: "Competições Universitárias",
+      heading: "Nossas Participações",
+      text: "Desafios universitários nos quais os membros da FGV Digital Assets se destacaram.",
       items: [
         {
-          name: "Desafio de Dados (Datathon) de Moedas Digitais",
-          organizer: "FGV EESP",
-          photo: "",
-          description:
-            "Competição da FGV EESP sobre blockchain, criptoativos e inovações financeiras, aberta a universitários de todo o Brasil e, desde a 6ª edição, também de Portugal, com a Nova SBE. As equipes têm poucos dias para resolver um problema real proposto pela organização.",
-          results: [
-            { year: "2025", result: "Apoiadora da 6ª edição, ao lado de Ripple (UBRI), GV Code e USP-UBRI", team: "" },
-            { year: "2024", result: "Campeã da 5ª edição, entre 20 equipes (Crypto X Quant, com a FGV Quant)", team: "André Togni, Bernardo Rubin, Francisco Zipman e Leonardo Ono" },
-            { year: "2021", result: "Campeã da 2ª edição, organizada com a Hashdex (prêmio de R$ 8 mil)", team: "Trabalho: Estratégia de investimento não-direcional utilizando opções de criptoativos" },
+          name: "Datathon de Moedas Digitais",
+          entries: [
+            {
+              title: "2025 - Apoiadores",
+              photo: "",
+              paragraphs: [
+                "Em 2025, a FGV Digital Assets apoiou a 6ª edição do Desafio de Dados (Datathon) de Moedas Digitais da FGV EESP, ao lado de Ripple (UBRI), GV Code e USP-UBRI.",
+                "A competição reúne universitários de todo o Brasil e, a partir dessa edição, também de Portugal, com a Nova SBE. As equipes têm poucos dias para resolver um problema real sobre blockchain, criptoativos e inovações financeiras.",
+              ],
+            },
+            {
+              title: "2024 - Campeões",
+              photo: "/img/competicoes/2024-datathon-campeoes.webp",
+              paragraphs: [
+                "Em 2024, os membros André Togni, Bernardo Rubin, Francisco Zipman e Leonardo Ono formaram a Crypto X Quant, em parceria com a FGV Quant.",
+                "A equipe venceu a 5ª edição do Datathon de Moedas Digitais da FGV EESP, se destacando entre as 20 equipes participantes.",
+              ],
+            },
+            {
+              title: "2021 - Campeões",
+              photo: "",
+              paragraphs: [
+                "Em 2021, a FGV Digital Assets venceu a 2ª edição do Datathon de Moedas Digitais, organizada pela FGV EESP em parceria com a Hashdex, com prêmio de R$ 8 mil.",
+                "A equipe desenvolveu uma estratégia de investimento não-direcional utilizando opções de criptoativos.",
+              ],
+            },
           ],
         },
       ],

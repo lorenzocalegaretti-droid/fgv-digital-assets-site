@@ -275,12 +275,36 @@ const PAGES_CSS = `
   .rs-empty { text-align: center; opacity: 0.7; padding: 32px 0; }
   .rs-disclaimer { max-width: 760px; margin: clamp(40px, 5vw, 64px) auto 0 !important; padding-top: 20px; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.14); text-align: center; font-size: 15.3px; opacity: 0.65; }
 
-  /* Competições */
-  .cp-results { list-style: none; padding: 0; margin-top: 6px; }
-  .cp-results li { display: flex; gap: 16px; align-items: center; padding: 14px 0; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
-  .cp-year { flex: 0 0 auto; display: grid; place-items: center; width: 64px; height: 40px; background: ${PAGE_COLORS.navy}; color: #fff; border-radius: 2px; font-weight: 600; font-size: 17px; }
-  .cp-result { font-weight: 700; line-height: 1.3; }
-  .cp-team { font-size: 15.3px; line-height: 1.4; opacity: 0.7; }
+  /* Competições (formato da Insper Asset) */
+  .cp-hero { position: relative; padding: 104px 0 clamp(48px, 6.5vw, 100px); background-color: ${PAGE_COLORS.navy}; background-size: cover; background-position: center; }
+  .cp-hero::before { content: ""; position: absolute; inset: 0; background: ${PAGE_COLORS.navy}; opacity: 0.5; }
+  .cp-hero-inner { position: relative; margin: 0 6.25vw 0 5.2vw; }
+  .cp-hero-box { background: ${PAGE_COLORS.navyDeep}; color: #fff; display: flex; align-items: center; justify-content: center; padding: 48px 24px; text-align: center; }
+  .cp-hero-box h1 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(32px, 3.26vw, 50px); line-height: 1.24; }
+  .cp-hero-card { background: #fff; color: #0D2F5E; padding: 36px 24px 44px; }
+  .cp-hero-card h2 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(34px, 3.65vw, 56px); line-height: 1.22; }
+  .cp-hero-card p { margin-top: 26px; max-width: 560px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.8; }
+  @media (min-width: 1024px) {
+    .cp-hero-inner { height: 466px; }
+    .cp-hero-box { position: absolute; left: 0; top: 0; width: 63%; height: 362px; padding: 0; justify-content: flex-start; }
+    .cp-hero-box h1 { width: 58.5%; }
+    .cp-hero-card { position: absolute; right: 0; top: 70px; width: 63%; height: 396px; padding: 56px 11% 0 10.2%; }
+  }
+  .cp-sec { padding: clamp(40px, 3.6vw, 56px) 16px clamp(64px, 5.2vw, 80px); background: #fff; color: #061535; }
+  .cp-sec--navy { background: #1F3561; color: #fff; }
+  .cp-sec > .cp-sec-title { max-width: 700px; margin: 0 auto clamp(48px, 7vw, 110px); font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(30px, 2.93vw, 45px); line-height: 1.22; letter-spacing: 0.01em; text-align: center; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
+  .cp-entries { max-width: 1036px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(48px, 5vw, 76px); }
+  .cp-entry { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
+  .cp-photo { aspect-ratio: 480 / 321; overflow: hidden; background: ${PAGE_COLORS.navy}; }
+  .cp-photo img, .cp-photo svg { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .cp-sec .cp-text h3 { margin-bottom: 26px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-style: italic; font-weight: 400; font-size: clamp(28px, 2.6vw, 40px); line-height: 1.2; letter-spacing: 0.01em; text-align: center; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+  .cp-text p { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 18px; line-height: 1.3; letter-spacing: 0.01em; text-align: justify; color: #445068; }
+  .cp-sec--navy .cp-text p { color: rgba(255, 255, 255, 0.92); }
+  .cp-text p + p { margin-top: 23px; }
+  @media (min-width: 768px) {
+    .cp-entry { grid-template-columns: 480fr 508fr; gap: 48px; }
+    .cp-entry:nth-child(even) .cp-photo { order: 2; }
+  }
 
   /* Contato */
   /* Contato no estilo do InFinance: tudo centralizado, campos só com linha embaixo */
@@ -568,11 +592,15 @@ function GlobalStyles() {
       .pg-swap--in .pg-hero h1 { animation: pg-title .95s cubic-bezier(.16, 1, .3, 1) .1s both; }
       .pg-swap--in .pg-hero p { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .34s both; }
       .pg-swap--in .pg > :not(:first-child) { animation: pg-rise .8s cubic-bezier(.16, 1, .3, 1) .45s both; }
+      .pg-swap--in .cp-hero::before { animation: pg-veil 1.2s ease-out both; }
+      .pg-swap--in .cp-hero-box h1 { animation: pg-title .95s cubic-bezier(.16, 1, .3, 1) .1s both; }
+      .pg-swap--in .cp-hero-card { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .3s both; }
       .pg-swap--in .fgv-hero-logo { animation: pg-logo 1s cubic-bezier(.16, 1, .3, 1) .08s both; }
       .pg-swap--in .fgv-hero-text { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .38s both; }
       @media (prefers-reduced-motion: reduce) {
         .pg-swap--out, .pg-swap--in .pg-hero::before, .pg-swap--in .pg-hero h1, .pg-swap--in .pg-hero p,
-        .pg-swap--in .pg > :not(:first-child), .pg-swap--in .fgv-hero-logo, .pg-swap--in .fgv-hero-text { animation: none; }
+        .pg-swap--in .pg > :not(:first-child), .pg-swap--in .fgv-hero-logo, .pg-swap--in .fgv-hero-text,
+        .pg-swap--in .cp-hero::before, .pg-swap--in .cp-hero-box h1, .pg-swap--in .cp-hero-card { animation: none; }
       }
       @keyframes fgv-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
       .fgv-fade-in { animation: fgv-fade-in .45s ease both; }
@@ -627,8 +655,9 @@ function useImageAvailable(src) {
 
 /* Rota simples por hash: cada aba é "#/nome". "#/equipe" (antiga página) leva a "Sobre". */
 const RESEARCH_ON = SITE_DATA.pages.research.enabled !== false;
+const ABOUT_ON = SITE_DATA.pages.about.enabled !== false;
 const ROUTES = ["sobre", "celulas", "research", "competicoes", "eventos", "membros", "alumni", "processo-seletivo", "contato"].filter(
-  (r) => r !== "research" || RESEARCH_ON
+  (r) => (r !== "research" || RESEARCH_ON) && (r !== "sobre" || ABOUT_ON)
 );
 const ROUTE_ALIASES = { equipe: "sobre", nucleos: "celulas" };
 function useRoute() {
@@ -1756,39 +1785,48 @@ function ResearchPage({ data, photo }) {
   );
 }
 
-/* --- Competições (#/competicoes) --- */
+/* --- Competições (#/competicoes) ---
+   No formato da Insper Asset: abertura com caixa navy (título) e cartão branco por
+   cima (subtítulo e frase); depois uma faixa por competição, alternando branco e
+   navy, com os anos em foto + texto, alternando o lado da foto. */
 function CompetitionsPage({ data, photo }) {
   return (
     <main className="pg">
-      <PageHero title={data.title} text={data.text} photo={photo} />
-      <section className="pg-block">
-        <div className="pg-container">
-          <p className="pg-lead">{data.intro}</p>
-          <div className="nu-rows" style={{ marginTop: "clamp(48px, 6vw, 72px)" }}>
-            {data.items.map((c) => (
-              <article key={c.name} className="re-evento nu-row">
-                <PgPhoto src={c.photo} alt={c.name} />
-                <div className="re-evento-corpo">
-                  <p className="pg-kicker">{c.organizer}</p>
-                  <h3 className="pg-row-title pg-heading">{c.name}</h3>
-                  <p style={{ lineHeight: 1.6 }}>{c.description}</p>
-                  <ul className="cp-results">
-                    {c.results.map((r, i) => (
-                      <li key={`${r.year}-${i}`}>
-                        <span className="cp-year">{r.year}</span>
-                        <div>
-                          <p className="cp-result">{r.result}</p>
-                          <p className="cp-team">{r.team}</p>
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
+      <section className="cp-hero" style={photo ? { backgroundImage: `url("${photo}")` } : undefined}>
+        <div className="cp-hero-inner">
+          <div className="cp-hero-box">
+            <h1>{data.heroTitle || data.title}</h1>
+          </div>
+          <div className="cp-hero-card">
+            <h2>{data.heading}</h2>
+            {data.text && <p>{data.text}</p>}
+          </div>
+        </div>
+      </section>
+      {data.items.map((c, ci) => (
+        <section key={c.name} className={`cp-sec${ci % 2 ? " cp-sec--navy" : ""}`} aria-label={c.name}>
+          <h2 className="cp-sec-title">{c.name}</h2>
+          <div className="cp-entries">
+            {c.entries.map((e, ei) => (
+              <article key={e.title} className="cp-entry">
+                <div className="cp-photo">
+                  {isSet(e.photo) ? (
+                    <img src={e.photo} alt={`${c.name}, ${e.title}`} loading="lazy" />
+                  ) : (
+                    <NetworkArt seed={ci * 5 + ei + 2} />
+                  )}
+                </div>
+                <div className="cp-text">
+                  <h3>{e.title}</h3>
+                  {e.paragraphs.map((p, i) => (
+                    <p key={i}>{p}</p>
+                  ))}
                 </div>
               </article>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
     </main>
   );
 }
@@ -1957,7 +1995,9 @@ export default function App() {
   const newsletterCta = newsletterMode !== "off" ? nav.newsletterButton : null;
   // Link ativo: a aba da rota atual; "Início" na página inicial
   const isActive = (href) => (route === "home" ? href === "#inicio" : href === `#/${route}`);
-  const navLinks = nav.links.filter((l) => l.href !== "#/research" || RESEARCH_ON);
+  const navLinks = nav.links.filter(
+    (l) => (l.href !== "#/research" || RESEARCH_ON) && (l.href !== "#/sobre" || ABOUT_ON)
+  );
   const activeSocials = nav.socials.filter((s) => isSet(s.href));
 
   // Números: valor manual ou contagem do que já está cadastrado nas abas
@@ -2307,10 +2347,12 @@ export default function App() {
                   <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               )}
-              <a className="pg-textlink" href={about.link.href}>
-                {about.link.label}
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
-              </a>
+              {ABOUT_ON && (
+                <a className="pg-textlink" href={about.link.href}>
+                  {about.link.label}
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </a>
+              )}
             </div>
           </FullSplit>
 
