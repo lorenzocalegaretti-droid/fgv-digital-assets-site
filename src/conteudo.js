@@ -79,10 +79,10 @@ export const SITE_DATA = {
   // O botão "Apresentação institucional (PDF)" usa pages.about.deck e só aparece com o PDF preenchido.
   about: {
     title: "Sobre nós",
-    lead: "A liga estudantil de criptoativos e ativos digitais da FGV-SP, desde 2021.",
+    lead: "A liga de ativos digitais da FGV em São Paulo.",
     paragraphs: [
-      "Somos a FGV Digital Assets, antiga FGV Crypto: entidade estudantil fundada em 2021 por alunos da FGV-SP para capacitar e profissionalizar seus membros no universo dos criptoativos e da tecnologia blockchain.",
-      "Reunimos graduandos de todos os cursos da FGV-SP em células com projetos práticos, organizamos a Cryptoweek a cada semestre e trabalhamos com parceiros como Bradesco, BTG Pactual, QR Asset Management e Ripple.",
+      "A FGV Digital Assets surgiu em 2021 como FGV Crypto, por iniciativa de estudantes da Fundação Getulio Vargas. Reunimos graduandos de diferentes cursos para estudar o mercado de criptoativos e as aplicações da tecnologia blockchain no sistema financeiro.",
+      "Em nossas células de pesquisa e projetos, os membros analisam protocolos, constroem modelos financeiros e investigam temas como crédito descentralizado, stablecoins e tokenização de ativos. Também organizamos a CryptoWeek, uma semana de encontros que leva à comunidade acadêmica as discussões sobre tecnologia e mercado que orientam o trabalho da entidade.",
     ],
     // A foto ocupa metade da tela, de ponta a ponta (vertical ou quadrada funciona melhor).
     // Sem foto, aparece uma arte com a rede de nós da marca.
