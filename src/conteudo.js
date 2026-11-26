@@ -350,7 +350,7 @@ export const SITE_DATA = {
         {
           name: "Asset",
           short: "Research e gestão do fundo da entidade",
-          partner: "QR Asset Management",
+          partner: "",
           photo: "",
           description:
             "Integra research e gestão de fundo: análise de ativos, teses de investimento (Buy, Hold e Sell) e gestão de uma carteira real, com decisões baseadas em dados e modelagem financeira. Em 2026.1, a pesquisa teve parceria com o BTG Pactual e mentorias do Mercado Bitcoin.",
@@ -471,40 +471,69 @@ export const SITE_DATA = {
 
     /* --- Competições (#/competicoes) ------------------------------------------ */
     competitions: {
-      // Layout como o da Insper Asset: abertura com caixa navy + cartão branco e,
-      // abaixo, uma faixa por competição (alternando branco e navy). Cada ano tem
-      // foto de um lado e texto do outro. Sem foto, aparece a arte de rede.
+      // Uma faixa por competição (alternando branco e navy). Cada participação tem
+      // foto de um lado e, do outro, "competição + ano", o resultado em caixa alta,
+      // o texto e a linha "Membros - ...". Sem foto, aparece a arte de rede.
+      //
+      // Para incluir uma competição, copie o modelo abaixo para dentro de `items`
+      // (a ordem da lista é a ordem na página; a mais recente primeiro):
+      //   {
+      //     name: "Nome da competição",
+      //     entries: [
+      //       {
+      //         year: "2026",
+      //         result: "Campeões",            // ex.: Campeões, Vice-campeões, Finalistas
+      //         photo: "/img/competicoes/arquivo.webp",
+      //         paragraphs: ["Primeiro parágrafo.", "Segundo parágrafo."],
+      //         members: "Nome Sobrenome e Nome Sobrenome",
+      //       },
+      //     ],
+      //   },
       title: "Competições",
-      heroTitle: "Competições Universitárias",
-      heading: "Nossas Participações",
       text: "Desafios universitários nos quais os membros da FGV Digital Assets se destacaram.",
       items: [
         {
           name: "Datathon de Moedas Digitais",
           entries: [
             {
-              title: "2025 - Apoiadores",
+              year: "2026",
+              result: "Finalistas",
+              photo: "",
+              paragraphs: [
+                "Em 2026, a equipe FGV Crypto ficou entre as cinco finalistas do 7º Desafio de Dados (Datathon) de Moedas Digitais, promovido pela FGV EESP em parceria com o Centro de Estudos FGV Digital Finance e a Ripple.",
+                "Aberta a equipes de graduação de todo o Brasil, a competição deu dez dias para que cada grupo desenvolvesse uma solução baseada em dados para um problema real do ecossistema de criptoativos. A FGV Digital Assets também apoiou esta edição, ao lado da USP-UBRI.",
+              ],
+              members: "",
+            },
+            {
+              year: "2025",
+              result: "Apoiadores",
               photo: "",
               paragraphs: [
                 "Em 2025, a FGV Digital Assets apoiou a 6ª edição do Desafio de Dados (Datathon) de Moedas Digitais da FGV EESP, ao lado de Ripple (UBRI), GV Code e USP-UBRI.",
-                "A competição reúne universitários de todo o Brasil e, a partir dessa edição, também de Portugal, com a Nova SBE. As equipes têm poucos dias para resolver um problema real sobre blockchain, criptoativos e inovações financeiras.",
+                "O Datathon reúne universitários de todo o Brasil e, a partir dessa edição, também de Portugal, com a Nova SBE. As equipes têm poucos dias para resolver um problema real sobre blockchain, criptoativos e inovações financeiras.",
               ],
+              members: "",
             },
             {
-              title: "2024 - Campeões",
+              year: "2024",
+              result: "Campeões",
               photo: "/img/competicoes/2024-datathon-campeoes.webp",
               paragraphs: [
-                "Em 2024, os membros André Togni, Bernardo Rubin, Francisco Zipman e Leonardo Ono formaram a Crypto X Quant, em parceria com a FGV Quant.",
-                "A equipe venceu a 5ª edição do Datathon de Moedas Digitais da FGV EESP, se destacando entre as 20 equipes participantes.",
+                "Em 2024, a equipe Crypto X Quant, formada em parceria com a FGV Quant, se sagrou campeã da 5ª edição do Datathon de Moedas Digitais, superando outras 19 equipes.",
+                "O Datathon é uma competição da FGV EESP sobre blockchain, criptoativos e inovações financeiras, em que as equipes têm poucos dias para resolver um problema real proposto pela organização.",
               ],
+              members: "André Togni, Bernardo Rubin, Francisco Zipman e Leonardo Ono",
             },
             {
-              title: "2021 - Campeões",
+              year: "2021",
+              result: "Campeões",
               photo: "",
               paragraphs: [
-                "Em 2021, a FGV Digital Assets venceu a 2ª edição do Datathon de Moedas Digitais, organizada pela FGV EESP em parceria com a Hashdex, com prêmio de R$ 8 mil.",
+                "Em 2021, a FGV Digital Assets se sagrou campeã da 2ª edição do Datathon de Moedas Digitais, organizada pela FGV EESP em parceria com a Hashdex, com prêmio de R$ 8 mil.",
                 "A equipe desenvolveu uma estratégia de investimento não-direcional utilizando opções de criptoativos.",
               ],
+              members: "",
             },
           ],
         },
@@ -703,9 +732,11 @@ export const SITE_DATA = {
             {
               date: "2026-09-16",
               title: "Bate-papo com Pedro Lorenzini (Itaú Unibanco)",
-              photo: "/img/eventos/2026-09-itau-pedro-lorenzini.webp",
+              photo: "/img/eventos/2026-09-itau-pedro-lorenzini-inteli.webp", // membros da FGV Crypto e da Inteli Finance
+              morePhotos: ["/img/eventos/2026-09-itau-pedro-lorenzini.webp"],
               text: [
-                "Pedro Lorenzini, Global Markets Treasury & Latam Head do Itaú Unibanco, falou sobre tesouraria, estratégia de produtos e operações na América Latina. Agradecemos ao Itaú Unibanco e à Z-Invest pela recepção.",
+                "Oportunidade exclusiva para os membros da FGV Crypto e da Inteli Finance de conversar com Pedro Lorenzini, uma das principais lideranças do Itaú Unibanco, onde é Global Markets Treasury & Latam Head.",
+                "A conversa passou por tesouraria, estratégia de produtos e operações na América Latina. Agradecemos ao Itaú Unibanco e à Z-Invest pela recepção.",
               ],
             },
           ],

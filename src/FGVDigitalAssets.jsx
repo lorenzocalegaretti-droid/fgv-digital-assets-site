@@ -179,6 +179,21 @@ const PAGES_CSS = `
   }
 
   /* --- Eventos --- */
+  /* Eventos: base da lista abaixo (.re-*), com data na foto, foto alternando de lado,
+     data por extenso em azul e semestre maior */
+  .ev-list .re-eventos-semestre { gap: 22px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: clamp(30px, 2.6vw, 40px); letter-spacing: -0.01em; }
+  .ev-list .re-eventos-semestre::after { background: rgba(${PAGE_COLORS.navyRgb}, 0.22); }
+  .ev-list .re-eventos-lista { gap: clamp(44px, 4.5vw, 72px); }
+  .ev-list .re-evento-foto, .ev-list .re-evento-thumb { border-radius: 0; }
+  .ev-tag { position: absolute; z-index: 1; top: 14px; left: 14px; display: flex; flex-direction: column; align-items: center; min-width: 58px; padding: 9px 10px 8px; background: #fff; color: ${PAGE_COLORS.navy}; border-radius: 0; line-height: 1; box-shadow: 0 6px 18px rgba(5, 14, 31, 0.18); }
+  .ev-tag strong { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 24px; font-weight: 600; }
+  .ev-tag span { margin-top: 5px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; }
+  .ev-list .re-evento-quando { font-size: 13.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: ${PAGE_COLORS.navy}; opacity: 0.6; }
+  .ev-list .re-evento-corpo { padding-left: 22px; border-left: 2px solid rgba(${PAGE_COLORS.navyRgb}, 0.12); }
+  @media (min-width: 768px) {
+    .ev-list .re-evento:nth-child(even) { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+    .ev-list .re-evento:nth-child(even) > :first-child { order: 2; }
+  }
   .re-eventos { max-width: 1360px; margin: 0 auto; padding: 0 clamp(16px, 3vw, 48px); color: ${PAGE_COLORS.navy}; }
   .re-eventos-grupo + .re-eventos-grupo { margin-top: clamp(49.5px, 4.5vw, 72px); }
   .re-eventos-semestre { display: flex; align-items: center; gap: 18px; margin: 0 0 clamp(22.5px, 2.5vw, 31.5px) !important; font-size: 18px; font-weight: 600; line-height: 1.2; letter-spacing: 0.02em; }
@@ -275,34 +290,24 @@ const PAGES_CSS = `
   .rs-empty { text-align: center; opacity: 0.7; padding: 32px 0; }
   .rs-disclaimer { max-width: 760px; margin: clamp(40px, 5vw, 64px) auto 0 !important; padding-top: 20px; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.14); text-align: center; font-size: 15.3px; opacity: 0.65; }
 
-  /* Competições (formato da Insper Asset) */
-  .cp-hero { position: relative; padding: 104px 0 clamp(48px, 6.5vw, 100px); background-color: ${PAGE_COLORS.navy}; background-size: cover; background-position: center; }
-  .cp-hero::before { content: ""; position: absolute; inset: 0; background: ${PAGE_COLORS.navy}; opacity: 0.5; }
-  .cp-hero-inner { position: relative; margin: 0 6.25vw 0 5.2vw; }
-  .cp-hero-box { background: ${PAGE_COLORS.navyDeep}; color: #fff; display: flex; align-items: center; justify-content: center; padding: 48px 24px; text-align: center; }
-  .cp-hero-box h1 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(32px, 3.26vw, 50px); line-height: 1.24; }
-  .cp-hero-card { background: #fff; color: #0D2F5E; padding: 36px 24px 44px; }
-  .cp-hero-card h2 { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(34px, 3.65vw, 56px); line-height: 1.22; }
-  .cp-hero-card p { margin-top: 26px; max-width: 560px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: clamp(17px, 1.3vw, 20px); line-height: 1.8; }
-  @media (min-width: 1024px) {
-    .cp-hero-inner { height: 466px; }
-    .cp-hero-box { position: absolute; left: 0; top: 0; width: 63%; height: 362px; padding: 0; justify-content: flex-start; }
-    .cp-hero-box h1 { width: 58.5%; }
-    .cp-hero-card { position: absolute; right: 0; top: 70px; width: 63%; height: 396px; padding: 56px 11% 0 10.2%; }
-  }
-  .cp-sec { padding: clamp(40px, 3.6vw, 56px) 16px clamp(64px, 5.2vw, 80px); background: #fff; color: #061535; }
+  /* Competições: faixas por competição, anos em foto + texto */
+  .cp-sec { padding: clamp(40px, 3.6vw, 56px) 16px clamp(64px, 5.2vw, 80px); background: #fff; color: #111; }
   .cp-sec--navy { background: #1F3561; color: #fff; }
-  .cp-sec > .cp-sec-title { max-width: 700px; margin: 0 auto clamp(48px, 7vw, 110px); font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(30px, 2.93vw, 45px); line-height: 1.22; letter-spacing: 0.01em; text-align: center; text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 6px; }
-  .cp-entries { max-width: 1036px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(48px, 5vw, 76px); }
+  .cp-sec > .cp-sec-title { max-width: 900px; margin: 0 auto clamp(40px, 6vw, 96px); font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(30px, 2.93vw, 45px); line-height: 1.22; text-align: center; }
+  .cp-entries { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: clamp(56px, 6vw, 96px); }
   .cp-entry { display: grid; grid-template-columns: 1fr; gap: 28px; align-items: center; }
-  .cp-photo { aspect-ratio: 480 / 321; overflow: hidden; background: ${PAGE_COLORS.navy}; }
+  .cp-photo { aspect-ratio: 550 / 372; overflow: hidden; background: ${PAGE_COLORS.navy}; }
   .cp-photo img, .cp-photo svg { width: 100%; height: 100%; object-fit: cover; display: block; }
-  .cp-sec .cp-text h3 { margin-bottom: 26px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-style: italic; font-weight: 400; font-size: clamp(28px, 2.6vw, 40px); line-height: 1.2; letter-spacing: 0.01em; text-align: center; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
-  .cp-text p { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 18px; line-height: 1.3; letter-spacing: 0.01em; text-align: justify; color: #445068; }
+  .cp-sec .cp-text h3 { margin: 0 auto 14px !important; padding-bottom: 14px; max-width: 500px; border-bottom: 1px solid currentColor; text-align: center; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; line-height: 1.25; }
+  .cp-h-name { display: block; font-style: italic; font-weight: 700; font-size: clamp(24px, 2.2vw, 34px); }
+  .cp-h-result { display: block; margin-top: 6px; font-weight: 700; font-size: clamp(26px, 2.4vw, 36px); text-transform: uppercase; }
+  .cp-text { max-width: 555px; width: 100%; justify-self: center; }
+  .cp-text p { padding: 0 2px; font-size: 18px; line-height: 1.55; text-align: justify; hyphens: manual; color: #3d3d3d; }
   .cp-sec--navy .cp-text p { color: rgba(255, 255, 255, 0.92); }
-  .cp-text p + p { margin-top: 23px; }
+  .cp-text p + p { margin-top: 22px; }
+  .cp-members { text-align: left !important; }
   @media (min-width: 768px) {
-    .cp-entry { grid-template-columns: 480fr 508fr; gap: 48px; }
+    .cp-entry { grid-template-columns: 550fr 555fr; gap: 56px; }
     .cp-entry:nth-child(even) .cp-photo { order: 2; }
   }
 
@@ -510,12 +515,12 @@ const PAGES_CSS = `
 
   /* Missão, visão e valores: três colunas sobre fundo branco; título centralizado com
      um fio embaixo, texto justificado e valores em lista centralizada (referência FGV Finance) */
-  .mv-band { background: #fff; padding: clamp(48px, 6vw, 80px) 0; }
+  .mv-band { background: #fff; padding: clamp(28px, 3vw, 32px) 0; }
   .mv-grid { max-width: 1440px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 64px); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(32px, 8vw, 160px); justify-items: center; }
   .mv-item { width: 100%; max-width: 360px; }
-  .mv-item h3 { font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.2; text-align: center; color: #111; padding-bottom: 10px; margin-bottom: 14px !important; border-bottom: 1px solid #333; }
-  .mv-item p { font-size: 19px; line-height: 28px; text-align: justify; hyphens: auto; color: #3d3d3d; }
-  .mv-values { list-style: none; padding: 0; margin: 0; text-align: center; font-size: 19px; line-height: 28px; color: #3d3d3d; }
+  .mv-item h3 { font-family: 'Source Sans 3', 'Source Sans Pro', sans-serif; font-weight: 700; font-size: 26px; line-height: 1.2; text-align: center; color: #111; padding-bottom: 6px; margin-bottom: 8px !important; border-bottom: 1px solid #333; }
+  .mv-item p { font-size: 19px; line-height: 24px; text-align: justify; hyphens: auto; color: #3d3d3d; }
+  .mv-values { list-style: none; padding: 0; margin: 0; text-align: center; font-size: 19px; line-height: 24px; color: #3d3d3d; }
   @media (max-width: 900px) {
     .fs { grid-template-columns: minmax(0, 1fr); min-height: 0; }
     .fs-media { min-height: 280px; }
@@ -592,15 +597,11 @@ function GlobalStyles() {
       .pg-swap--in .pg-hero h1 { animation: pg-title .95s cubic-bezier(.16, 1, .3, 1) .1s both; }
       .pg-swap--in .pg-hero p { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .34s both; }
       .pg-swap--in .pg > :not(:first-child) { animation: pg-rise .8s cubic-bezier(.16, 1, .3, 1) .45s both; }
-      .pg-swap--in .cp-hero::before { animation: pg-veil 1.2s ease-out both; }
-      .pg-swap--in .cp-hero-box h1 { animation: pg-title .95s cubic-bezier(.16, 1, .3, 1) .1s both; }
-      .pg-swap--in .cp-hero-card { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .3s both; }
       .pg-swap--in .fgv-hero-logo { animation: pg-logo 1s cubic-bezier(.16, 1, .3, 1) .08s both; }
       .pg-swap--in .fgv-hero-text { animation: pg-rise .85s cubic-bezier(.16, 1, .3, 1) .38s both; }
       @media (prefers-reduced-motion: reduce) {
         .pg-swap--out, .pg-swap--in .pg-hero::before, .pg-swap--in .pg-hero h1, .pg-swap--in .pg-hero p,
-        .pg-swap--in .pg > :not(:first-child), .pg-swap--in .fgv-hero-logo, .pg-swap--in .fgv-hero-text,
-        .pg-swap--in .cp-hero::before, .pg-swap--in .cp-hero-box h1, .pg-swap--in .cp-hero-card { animation: none; }
+        .pg-swap--in .pg > :not(:first-child), .pg-swap--in .fgv-hero-logo, .pg-swap--in .fgv-hero-text { animation: none; }
       }
       @keyframes fgv-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
       .fgv-fade-in { animation: fgv-fade-in .45s ease both; }
@@ -1330,12 +1331,13 @@ function SelectionPage({ data, photo, selection, labels, notify }) {
 /* --- Eventos --- */
 // Foto principal (ev.photo) e fotos extras (ev.morePhotos). Com mais de uma, aparecem
 // miniaturas clicáveis abaixo da foto.
-function EventGallery({ ev }) {
+function EventGallery({ ev, badge }) {
   const photos = [ev.photo, ...(ev.morePhotos || [])].filter((src) => isSet(src));
   const [current, setCurrent] = useState(0);
   return (
     <div>
       <div className="re-evento-foto">
+        {badge}
         {photos.length > 0 ? (
           <img src={photos[current]} alt={`${ev.title}: foto ${current + 1} de ${photos.length}`} loading="lazy" />
         ) : (
@@ -1369,7 +1371,9 @@ function EventsPage({ data, photo }) {
     <main className="pg">
       <PageHero title={data.title} text={data.text} photo={photo} />
       <section className="pg-section">
-        <div className="re-eventos">
+        {/* Lista por semestre: a data fica numa etiqueta sobre a foto, a foto alterna de
+            lado a cada evento e a data por extenso vira uma linha azul acima do título. */}
+        <div className="re-eventos ev-list">
           {data.groups.map((group) => (
             <section key={group.semester} className="re-eventos-grupo">
               <h2 className="re-eventos-semestre">{group.semester}</h2>
@@ -1378,12 +1382,16 @@ function EventsPage({ data, photo }) {
                   const d = parseDate(ev.date);
                   return (
                     <article key={`${ev.date}-${ev.title}`} className="re-evento">
-                      <EventGallery ev={ev} />
+                      <EventGallery
+                        ev={ev}
+                        badge={
+                          <span className="ev-tag" aria-hidden="true">
+                            <strong>{String(d.d).padStart(2, "0")}</strong>
+                            <span>{d.short}</span>
+                          </span>
+                        }
+                      />
                       <div className="re-evento-info">
-                        <div className="re-evento-dia" aria-hidden="true">
-                          <strong>{String(d.d).padStart(2, "0")}</strong>
-                          <span>{d.short}</span>
-                        </div>
                         <div className="re-evento-corpo">
                           <p className="re-evento-quando">
                             <time dateTime={ev.date}>{d.long}</time>
@@ -1786,41 +1794,36 @@ function ResearchPage({ data, photo }) {
 }
 
 /* --- Competições (#/competicoes) ---
-   No formato da Insper Asset: abertura com caixa navy (título) e cartão branco por
-   cima (subtítulo e frase); depois uma faixa por competição, alternando branco e
-   navy, com os anos em foto + texto, alternando o lado da foto. */
+   Abertura igual à das outras abas; depois uma faixa por competição (nome em
+   negrito). Cada participação tem foto de um lado e, do outro, "competição + ano"
+   em itálico, o resultado em caixa alta, um fio, o texto e a linha de membros
+   (formato do Time Acadêmico do FGV Finance). A foto alterna de lado. */
 function CompetitionsPage({ data, photo }) {
   return (
     <main className="pg">
-      <section className="cp-hero" style={photo ? { backgroundImage: `url("${photo}")` } : undefined}>
-        <div className="cp-hero-inner">
-          <div className="cp-hero-box">
-            <h1>{data.heroTitle || data.title}</h1>
-          </div>
-          <div className="cp-hero-card">
-            <h2>{data.heading}</h2>
-            {data.text && <p>{data.text}</p>}
-          </div>
-        </div>
-      </section>
+      <PageHero title={data.title} text={data.text} photo={photo} />
       {data.items.map((c, ci) => (
         <section key={c.name} className={`cp-sec${ci % 2 ? " cp-sec--navy" : ""}`} aria-label={c.name}>
           <h2 className="cp-sec-title">{c.name}</h2>
           <div className="cp-entries">
             {c.entries.map((e, ei) => (
-              <article key={e.title} className="cp-entry">
+              <article key={`${e.year}-${e.result}`} className="cp-entry">
                 <div className="cp-photo">
                   {isSet(e.photo) ? (
-                    <img src={e.photo} alt={`${c.name}, ${e.title}`} loading="lazy" />
+                    <img src={e.photo} alt={`${c.name} ${e.year}: ${e.result}`} loading="lazy" />
                   ) : (
                     <NetworkArt seed={ci * 5 + ei + 2} />
                   )}
                 </div>
                 <div className="cp-text">
-                  <h3>{e.title}</h3>
+                  <h3>
+                    <span className="cp-h-name">{c.name} {e.year}</span>
+                    <span className="cp-h-result">{e.result}</span>
+                  </h3>
                   {e.paragraphs.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
+                  {isSet(e.members) && <p className="cp-members">Membros - {e.members}</p>}
                 </div>
               </article>
             ))}
