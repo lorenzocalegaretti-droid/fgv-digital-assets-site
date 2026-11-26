@@ -116,8 +116,8 @@ export const SITE_DATA = {
     nucleos: {
       title: "Células",
       paragraphs: [
-        "Os membros são organizados em células, cada uma responsável por um projeto prático no mercado de ativos digitais.",
-        "Os projetos têm reuniões semanais e contato direto com o mercado, com parceiros como Bradesco, QR Asset Management e BTG Pactual.",
+        "Os membros são organizados em células de trabalho a cada semestre, cada uma responsável por um projeto em uma área do mercado de ativos digitais.",
+        "Ao longo do semestre, as células desenvolvem um trabalho próximo ao do dia a dia do mercado: análise de protocolos, research e gestão de carteira, cases e competições e protótipos de novos produtos. Os projetos têm reuniões semanais e contam com o acompanhamento de instituições do mercado, o que garante uma imersão completa e contato direto com profissionais da área.",
       ],
       artLabel: "células", // legenda do número na arte (quando não há foto)
       photo: "", // ⚠️ foto de uma célula trabalhando ou apresentando
@@ -263,8 +263,7 @@ export const SITE_DATA = {
       "Liga estudantil da FGV-SP voltada para digital finance e criptoativos, fundada em 2021 como FGV Crypto.",
     location: "São Paulo • FGV-SP",
     address: "Rua Dr. Plínio Barreto, 365 — Bela Vista", // endereço do perfil do Instagram (FGV EESP)
-    legal:
-      "Entidade estudantil da FGV-SP. Conteúdo de caráter educacional e acadêmico; não constitui recomendação de investimento.",
+    legal: "", // frase opcional no canto do rodapé (vazio = não aparece)
     privacy: { label: "Política de privacidade", href: "" }, // ⚠️ link da política; aparece quando preenchido
   },
 
@@ -617,52 +616,109 @@ export const SITE_DATA = {
     },
 
     /* --- Alumni -------------------------------------------------------------
-     * Ex-membros do post de 07/09/2026. role: cargo que tiveram na entidade (opcional);
-     * position e company: cargo e empresa atuais. A lista de empresas e o resumo
-     * "X alumni em Y empresas" são calculados automaticamente.
+     * Ex-membros da FGV Crypto. role: cargo que tiveram na entidade (opcional);
+     * position e company: cargo e empresa atuais (ou o último trabalho que aparece no
+     * LinkedIn). Sem empresa, o card mostra só o cargo na entidade. A lista de empresas
+     * e o resumo "X alumni em Y empresas" são calculados automaticamente.
+     * Lista do post de 07/09/2026 + busca no LinkedIn (nov/2026). Quem só passou pelo
+     * trainee ficou de fora. A ordem na página é alfabética.
+     * ⚠️ Ao incluir alguém, inclua o cargo em inglês na mesma posição em conteudo.en.js.
      * ----------------------------------------------------------------------- */
     alumni: {
       title: "Alumni",
       text: "Nossos ex-membros estão em gestoras, bancos e empresas do mercado financeiro e de ativos digitais.",
       sectionTitle: "Onde nossos alumni estão",
       people: [
-        { name: "Vinícius Ebel", role: "Ex-presidente", position: "Portfolio Manager", company: "Bloxs", linkedin: "" },
-        { name: "Lucas Afonso", role: "Ex-vice-presidente", position: "Investment Analyst", company: "Nexa Finance", linkedin: "" },
-        { name: "Daniel Neves", role: "Ex-diretor institucional", position: "Portfolio Management Analyst", company: "Blackhill Investments", linkedin: "" },
-        { name: "Raquel Sanches", role: "Ex-diretora institucional", position: "Analista de M&A", company: "Ártica", linkedin: "" },
-        { name: "Luiza Porto", role: "", position: "Wealth Management Analyst", company: "Galapagos Capital", linkedin: "" },
-        { name: "Bruno Catelli", role: "", position: "Infrastructure Private Equity Analyst", company: "Kinea Investimentos", linkedin: "" },
-        { name: "Pedro Alves", role: "", position: "Wealth Management Operations Analyst", company: "BTG Pactual", linkedin: "" },
-        { name: "Alexandre Saraiva", role: "", position: "Consultor Pleno", company: "Volix", linkedin: "" },
+        { name: "Vinícius Ebel", role: "Ex-presidente", position: "Portfolio Manager", company: "Bloxs", linkedin: "https://www.linkedin.com/in/vinicius-ebel/" },
+        { name: "Lucas Afonso", role: "Cofundador e ex-vice-presidente", position: "Investment Analyst", company: "Nexa Finance", linkedin: "https://www.linkedin.com/in/lucas-rocha-afonso-a2b3111a7/" },
+        { name: "Daniel Neves", role: "Ex-diretor institucional", position: "Portfolio Management Analyst", company: "Blackhill Investments", linkedin: "https://www.linkedin.com/in/daniel-neves-5641a3217/" },
+        { name: "Raquel Sanches", role: "Ex-diretora institucional", position: "Analista de M&A", company: "Ártica", linkedin: "https://www.linkedin.com/in/raquel-sanches-8a968420a/" },
+        { name: "Luiza Porto", role: "", position: "Wealth Management Analyst", company: "Galapagos Capital", linkedin: "https://www.linkedin.com/in/luiza-peres-nogueira-porto-2baba5222/" },
+        { name: "Bruno Catelli", role: "Ex-membro", position: "Infrastructure Private Equity Analyst", company: "Kinea Investimentos", linkedin: "https://www.linkedin.com/in/brunocatelli/" },
+        { name: "Pedro Alves", role: "Ex-membro da célula de DeFi", position: "Wealth Management Operations Analyst", company: "BTG Pactual", linkedin: "https://www.linkedin.com/in/pedro-corr%C3%AAa-alves/" },
+        { name: "Alexandre Saraiva", role: "Cofundador", position: "Consultor Pleno", company: "Volix", linkedin: "https://www.linkedin.com/in/alexandre-saraiva-3915b0183/" },
+        { name: "Francisco Hansen", role: "Cofundador e ex-presidente", position: "Data Analyst", company: "Dcide", linkedin: "https://www.linkedin.com/in/hansenfran/" },
+        { name: "Juliano Miranda Filetti", role: "Ex-presidente", position: "Co-Founder", company: "Opéro", linkedin: "https://www.linkedin.com/in/juliano-miranda-filetti/" },
+        { name: "Antonio Lobo", role: "Ex-presidente", position: "Estagiário", company: "BlockBR", linkedin: "https://www.linkedin.com/in/antoniolobo0107/" },
+        { name: "André Togni", role: "Ex-presidente", position: "Iniciação Científica (FAPESP)", company: "FGV", linkedin: "https://www.linkedin.com/in/andretognibarros/" },
+        { name: "Paulo Moraes", role: "Ex-diretor institucional (vice-presidente)", position: "Equity Research Intern", company: "XP Inc.", linkedin: "https://www.linkedin.com/in/pauloviniciusmoraes/" },
+        { name: "João Vitor Campos Garcia", role: "Ex-diretor institucional", position: "DCM Intern", company: "Mercado Bitcoin", linkedin: "https://www.linkedin.com/in/joao-vitor-campos-garcia/" },
+        { name: "Davi Monteiro", role: "Ex-diretor institucional", position: "", company: "", linkedin: "https://www.linkedin.com/in/davi-monteiro-406b013b7/" },
+        { name: "Pedro Benassi", role: "Ex-diretor acadêmico", position: "Fixed Income & Derivatives Trader Intern", company: "Warren Investimentos", linkedin: "https://www.linkedin.com/in/pedro-benassi-10401a307/" },
+        { name: "Bernardo Rubin", role: "Ex-diretor acadêmico", position: "Business Analyst Intern", company: "Kearney", linkedin: "https://www.linkedin.com/in/bernardo-rubin/" },
+        { name: "Cecilia Cerantola", role: "Ex-diretora de gestão de membros", position: "Data Analyst", company: "Stealth AI Startup", linkedin: "https://www.linkedin.com/in/cecilia-cerantola-0a660524a/" },
+        { name: "Paulo Eduardo Calil de Carvalho", role: "Ex-diretor de integração", position: "Estagiário de Supply", company: "GPA", linkedin: "https://www.linkedin.com/in/paulo-eduardo-calil-de-carvalho/" },
+        { name: "Luigi Mercuri Zovico", role: "Ex-coordenador da célula do fundo", position: "", company: "", linkedin: "https://www.linkedin.com/in/luigi-mercuri-zovico-a7862b37a/" },
+        { name: "Heitor Siqueira", role: "Ex-coordenador da célula de DeFi", position: "", company: "", linkedin: "https://www.linkedin.com/in/heitor-siqueira-6785a5268/" },
+        { name: "Lucas Ackermann Bottura", role: "Ex-coordenador comercial", position: "", company: "", linkedin: "https://www.linkedin.com/in/lucas-ackermann-bottura/" },
+        { name: "Bruna Badaró", role: "Ex-coordenadora de Layers", position: "Expansion Manager", company: "Badaró Metalúrgica", linkedin: "https://www.linkedin.com/in/brunabadaro/" },
+        { name: "Sabina Goldstein", role: "Ex-coordenadora comercial e de comunicação", position: "Sales Intern", company: "Nexa Finance", linkedin: "https://www.linkedin.com/in/sabina-goldstein-1658312b1/" },
+        { name: "Victor Avanci Ribeiro de Britto", role: "Ex-coordenador de gestão de membros", position: "Business Intelligence", company: "BBS Capital Partners", linkedin: "https://www.linkedin.com/in/victor-avanci-ribeiro-de-britto-b5b8b7350/" },
+        { name: "Mannuela Ferraz", role: "Ex-coordenadora de projetos do fundo", position: "Estagiária de verão", company: "Banco ABC Brasil", linkedin: "https://www.linkedin.com/in/mannuela-ferraz/" },
+        { name: "Ricardo Araujo", role: "Ex-coordenador comercial", position: "Relationship Management Assistant", company: "Bradesco", linkedin: "https://www.linkedin.com/in/ricardolmaraujo/" },
+        { name: "Leonardo Botelho", role: "Ex-coordenador comercial e de comunicação", position: "", company: "", linkedin: "https://www.linkedin.com/in/leonardo-botelho-522688212/" },
+        { name: "Leonardo Ono", role: "Ex-coordenador", position: "Estagiário de gestão de riscos", company: "Absolute Investimentos", linkedin: "https://www.linkedin.com/in/leonardohaono/" },
+        { name: "Francisco Bueno", role: "Ex-membro da célula de Consultoria", position: "Management Consulting Analyst", company: "Accenture", linkedin: "https://www.linkedin.com/in/francisco-bueno-/" },
+        { name: "Samuel Gomes", role: "Ex-membro da célula de DeFi", position: "Intern", company: "Crédit Agricole CIB", linkedin: "https://www.linkedin.com/in/samuel-gomes-aa65a0289/" },
+        { name: "Gabriel Martins", role: "Ex-membro de Research", position: "", company: "", linkedin: "https://www.linkedin.com/in/gabriel-martins-767470120/" },
+        { name: "Gabriel Pellegrini", role: "Ex-membro da célula do fundo", position: "Equity Research Intern", company: "XP Inc.", linkedin: "https://www.linkedin.com/in/gabriel-pellegrini-6b4461346/" },
+        { name: "Enzo Corsini Reigada", role: "Ex-membro", position: "Analista de FP&A Pleno", company: "Dotz", linkedin: "https://www.linkedin.com/in/enzo-corsini-reigada/" },
+        { name: "Oruam Vieira", role: "Ex-membro da célula de Research", position: "", company: "", linkedin: "https://www.linkedin.com/in/oruam-vieira-918676332/" },
+        { name: "Vinícius Araújo", role: "Ex-membro da célula do fundo", position: "", company: "", linkedin: "https://www.linkedin.com/in/vin%C3%ADciusara%C3%BAjop/" },
+        { name: "Martin Bisconcin Mendes", role: "Ex-membro", position: "FX & Derivatives Sales Intern", company: "Citi", linkedin: "https://www.linkedin.com/in/martinbisconcin/" },
+        { name: "Eric Benelli van Deursen", role: "Ex-membro", position: "Analyst", company: "Lift Capital", linkedin: "https://www.linkedin.com/in/eric-benelli-van-deursen/" },
+        { name: "Paulo Augusto Ayroza Galvão", role: "Ex-membro da célula do fundo", position: "", company: "", linkedin: "https://www.linkedin.com/in/paulo-augusto-ayroza-galv%C3%A3o-50042b301/" },
+        { name: "Frederico Catharino", role: "Ex-membro da célula de investimentos", position: "M&A", company: "JK Capital", linkedin: "https://www.linkedin.com/in/frederico-catharino/" },
+        { name: "Diego Constantine", role: "Ex-membro da célula de Consultoria", position: "Estudante de intercâmbio", company: "Copenhagen Business School", linkedin: "https://www.linkedin.com/in/diego-constantine/" },
+        { name: "João Victor Teixeira", role: "Ex-membro da área comercial", position: "Analista de Negócios Júnior", company: "Banco PAN", linkedin: "https://www.linkedin.com/in/joaovmteixeira/" },
+        { name: "Gustavo Campos", role: "Ex-pesquisador", position: "Estagiário", company: "Íntegra Associados", linkedin: "https://www.linkedin.com/in/gustavalves/" },
+        { name: "Rafael Yamamoto", role: "Ex-membro da célula de Research", position: "", company: "", linkedin: "https://www.linkedin.com/in/rafael-yamamoto-640056381/" },
+        { name: "Leonardo Santana de Faria", role: "Ex-membro de DeFi", position: "", company: "", linkedin: "https://www.linkedin.com/in/-leonardo-faria/" },
+        { name: "Bernardo Castro Ongaratto", role: "Ex-membro", position: "", company: "", linkedin: "https://www.linkedin.com/in/bernardo-ongaratto/" },
       ],
     },
 
-    /* --- Processo Seletivo ---------------------------------------------------- */
+    /* --- Processo Seletivo ----------------------------------------------------
+     * Formato da aba da CJE: texto de apresentação, as 3 fases numeradas e a faixa
+     * "Datas importantes". A faixa de datas só aparece com pelo menos uma data
+     * preenchida (ex.: "23/08" ou "24-26"). Atualizem a cada semestre.
+     * ----------------------------------------------------------------------- */
     selection: {
       title: "Processo Seletivo",
-      text: "O processo seletivo acontece duas vezes por ano e tem 3 fases, seguidas do programa trainee. Buscamos graduandos de todos os cursos da FGV-SP interessados em blockchain, criptoativos e mercado financeiro.",
+      text: "", // a abertura mostra só o título; a apresentação vem logo abaixo (intro)
+      intro: {
+        before: "O ",
+        strong: "Processo Seletivo da FGV Digital Assets",
+        after: " acontece duas vezes por ano e é aberto a graduandos de todos os cursos da FGV-SP. Buscamos alunos interessados em blockchain, criptoativos e mercado financeiro, que compartilhem os valores da entidade.",
+      },
       // Faixa de status logo abaixo da abertura. Aberto/encerrado vem de nav.selection
       // (open, period, url); os rótulos vêm de selectionBand.
       closedNote: "A próxima seleção abre no início do semestre, em fevereiro ou em agosto.",
       notifyLabel: "Receber o aviso por e-mail", // aparece quando a newsletter está ativa
+      stepsIntro: { before: "O processo é composto por ", strong: "três fases" },
       steps: [
         {
           label: "Prova estilo GMAT",
-          text: "Prova de múltipla escolha no padrão GMAT, com questões de raciocínio lógico, tomada de decisão e atualidades.",
+          text: "Exame de múltipla escolha no padrão GMAT, com questões de raciocínio lógico, tomada de decisão e atualidades do cenário global.",
         },
         {
           label: "Dinâmica em grupo",
-          text: "Em equipe, os candidatos resolvem um case de digital finance e propõem soluções para desafios reais do mercado financeiro.",
+          text: "Em equipe, os candidatos resolvem um case de digital finance e propõem soluções tecnológicas para desafios reais do mercado financeiro. A fase avalia trabalho em equipe e visão de negócios.",
         },
         {
           label: "Entrevistas técnica e de perfil",
-          text: "Conversa para conhecer as habilidades do candidato e o alinhamento com a cultura da entidade. Antes, enviamos um material de apoio completo para a preparação.",
-        },
-        {
-          label: "Programa Trainee",
-          text: "Os aprovados passam por um ciclo de formação que termina com uma apresentação final. Em 2025.1, os trainees analisaram um token e apresentaram o trabalho no escritório da Ripple.",
+          text: "Entrevistas para conhecer as habilidades práticas do candidato e o alinhamento com a cultura da entidade. Os candidatos recebem com antecedência um material de apoio para a preparação.",
         },
       ],
+      afterSteps:
+        "Os aprovados entram no programa trainee, um ciclo de formação que termina com uma apresentação final. Em 2025.1, os trainees analisaram um token e apresentaram o trabalho no escritório da Ripple.",
+      datesTitle: "Datas importantes",
+      // ⚠️ Preencham as datas do próximo processo. Vazio = a faixa não aparece.
+      dates: {
+        registration: { date: "", label: "Fim das inscrições" },
+        phases: ["", "", ""], // 1ª, 2ª e 3ª fase
+        result: { date: "", label: "Resultado do Processo Seletivo" },
+      },
       cta: "Clique aqui para se inscrever!", // aparece no meio e no fim da página quando nav.selection.open = true e há url
       faqTitle: "Perguntas frequentes:",
       faq: [

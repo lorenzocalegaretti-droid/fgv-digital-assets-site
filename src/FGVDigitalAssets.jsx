@@ -44,6 +44,7 @@ import {
 
 /* Conteúdo (textos, fotos, links): src/conteudo.js */
 import { SITE_DATA } from "./conteudo.js";
+import { SITE_DATA_EN } from "./conteudo.en.js";
 
 /* ============================================================================
  * CONSTANTES (as cores ficam em PAGE_COLORS, logo abaixo)
@@ -140,27 +141,41 @@ const PAGES_CSS = `
   @media (max-width: 600px) { .re-alumni-lista { grid-template-columns: minmax(0, 1fr); } }
 
   /* --- Processo Seletivo --- */
-  .ps-wrap { max-width: 649px; margin: 0 auto; padding: 0 16px; box-sizing: content-box; }
-  .ps-steps { padding: 61px 0 0; }
-  .ps-step { display: grid; grid-template-columns: 99px minmax(0, 484px); column-gap: 11px; align-items: center; }
-  .ps-step + .ps-step { margin-top: 12px; }
-  .ps-num { display: flex; align-items: center; justify-content: flex-end; gap: 7px; color: ${PAGE_COLORS.navy}; }
-  .ps-num span { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 58px; line-height: 1; }
-  .ps-num sup { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 30px; top: -0.75em; }
-  .ps-num i { display: block; width: 2px; height: 58px; background: ${PAGE_COLORS.navy}; }
-  .ps-step p { text-align: justify; }
-  .ps-step strong { color: ${PAGE_COLORS.accent}; font-weight: 700; }
-  .ps-cta-row { display: flex; justify-content: center; padding: 24px 0 35px; }
-  .ps-cta { display: inline-block; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 300; font-size: 22.32px; line-height: 27px; color: #fff; background: ${PAGE_COLORS.accent}; border-radius: 300px; padding: 27px 39.6px; transition: background .2s; }
-  .ps-cta:hover { background: ${PAGE_COLORS.accentHover}; }
-  .ps-steps--end { padding-bottom: 56px; }
+  /* Processo Seletivo no formato da CJE */
+  .ps-wrap { max-width: 833px; margin: 0 auto; padding: 0 16px; box-sizing: content-box; }
+  .ps-main { background: #fff; padding-top: clamp(36px, 3.5vw, 48px); }
+  .pg .ps-intro { margin: 0 !important; padding-bottom: 6px; border-bottom: 2px solid ${PAGE_COLORS.navy}; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 18px; line-height: 1.33; color: #333; }
+  .ps-intro strong, .ps-steps-intro strong { font-weight: 700; color: ${PAGE_COLORS.navy}; }
+  .pg .ps-steps-intro { margin: 0 !important; padding: 20px 0 12px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 18px; color: #333; }
+  .ps-steps-band { background: #F7F8FA; padding: 14px 0 clamp(48px, 5vw, 64px); }
+  .ps-steps { display: flex; flex-direction: column; gap: clamp(32px, 3.4vw, 46px); }
+  .ps-step { display: grid; grid-template-columns: 82px minmax(0, 1fr); column-gap: 14px; align-items: center; }
+  .ps-num { display: flex; align-items: stretch; justify-content: flex-end; gap: 10px; color: ${PAGE_COLORS.navy}; }
+  .ps-num span { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: 76px; line-height: 1; letter-spacing: -0.04em; }
+  .ps-num sup { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: 38px; top: -0.85em; margin-left: 2px; letter-spacing: 0; }
+  .ps-num i { display: block; flex: 0 0 2px; width: 2px; min-height: 82px; background: ${PAGE_COLORS.navy}; }
+  .pg .ps-step p { margin: 0 !important; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 16px; line-height: 1.3; text-align: justify; color: #333; }
+  .ps-step strong { color: ${PAGE_COLORS.navy}; font-weight: 700; }
+  .pg .ps-after { margin: clamp(32px, 3.4vw, 46px) 0 0 !important; padding-left: 106px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 15px; line-height: 1.45; color: #555; }
+  .ps-cta-row { display: flex; justify-content: center; padding: 24px 0 4px; }
+  .ps-cta { display: inline-block; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.2; color: #fff; background: ${PAGE_COLORS.navy}; border-radius: 2px; padding: 17px 30px; transition: background .2s; }
+  .ps-cta:hover { background: ${PAGE_COLORS.accent}; }
   .ps-cta-end .ps-cta-row { padding: 40px 0 0; }
+  .ps-dates { background: ${PAGE_COLORS.navy}; color: #fff; padding: clamp(40px, 4vw, 56px) 16px clamp(48px, 5vw, 64px); text-align: center; }
+  .pg .ps-dates h2 { margin: 0 0 22px !important; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: clamp(26px, 2.2vw, 32px); }
+  .ps-date { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .ps-date--solo { margin: 0 auto; }
+  .ps-circle { display: grid; place-items: center; width: 84px; height: 84px; border: 4px solid #fff; border-radius: 50%; background: ${PAGE_COLORS.navy}; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 16px; position: relative; z-index: 1; }
+  .ps-date-label { font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 17px; line-height: 1.5; max-width: 180px; }
+  .ps-date-row { list-style: none; margin: 28px auto; padding: 0; max-width: 820px; display: flex; justify-content: space-between; position: relative; }
+  .ps-date-row::before { content: ""; position: absolute; top: 42px; left: 12%; right: 12%; height: 1px; background: rgba(255, 255, 255, 0.7); }
+  .ps-date-row .ps-date { flex: 1 1 0; }
   .ps-status { background: #EEF2FA; border-bottom: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.08); }
   .ps-status-inner { max-width: 1120px; margin: 0 auto; padding: 16px 4vw; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 24px; text-align: center; }
   .ps-status-text { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 10px; font-size: 17px; line-height: 1.4; }
   .ps-status-text i { flex: 0 0 10px; width: 10px; height: 10px; border-radius: 50%; background: #94A3B8; }
   .ps-status.is-open .ps-status-text i { background: #22C55E; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.2); }
-  .ps-status .pg-btn { padding: 10px 20px; font-size: 15.3px; }
+  .ps-status .pg-btn { padding: 12px 20px; font-size: 12.5px; }
   .ps-faq { background: ${PAGE_COLORS.faq}; padding: 60px 0 72px; }
   .ps-faq h3 { font-size: clamp(30px, 2.69vw, 38.736px); line-height: 1.1424; letter-spacing: -0.02em; margin-bottom: 23px !important; }
   .ps-acc-item { border-top: 2px solid rgba(${PAGE_COLORS.navyRgb}, 0.61); }
@@ -172,8 +187,13 @@ const PAGES_CSS = `
   .ps-acc-item.is-open .ps-plus::after { transform: rotate(0deg); }
   .ps-acc-panel { padding: 0 40px 30px 0; }
   @media (max-width: 640px) {
-    .ps-step { grid-template-columns: 64px minmax(0, 1fr); }
-    .ps-num span { font-size: 42px; } .ps-num sup { font-size: 22px; } .ps-num i { height: 44px; }
+    .ps-step { grid-template-columns: 58px minmax(0, 1fr); }
+    .ps-num span { font-size: 48px; } .ps-num sup { font-size: 24px; } .ps-num i { min-height: 56px; }
+    .pg .ps-after { padding-left: 0; }
+    .pg .ps-step p { text-align: left; }
+    .ps-circle { width: 68px; height: 68px; font-size: 14px; border-width: 3px; }
+    .ps-date-row::before { top: 34px; }
+    .ps-date-label { font-size: 14px; }
     .ps-step p { text-align: left; }
     .ps-cta { font-size: 19px; padding: 20px 30px; }
   }
@@ -231,8 +251,15 @@ const PAGES_CSS = `
   .pg-band { background: #F3F5F8; }
   .pg-container { max-width: 1120px; margin: 0 auto; padding: 0 4vw; }
   .pg-lead { max-width: 760px; margin: 0 auto !important; text-align: center; font-size: 19px; line-height: 1.6; opacity: 0.9; }
-  .pg-btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 16px; line-height: 1.2; color: #fff; background: ${PAGE_COLORS.accent}; border-radius: 300px; padding: 14px 26px; transition: background .2s; }
+  .fgv-lang { display: flex; align-items: center; gap: 2px; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-size: 13px; letter-spacing: 0.08em; color: rgba(255, 255, 255, 0.35); }
+  .fgv-lang button { padding: 6px 5px; font: inherit; color: rgba(255, 255, 255, 0.55); background: none; border: 0; cursor: pointer; transition: color .2s; }
+  .fgv-lang button:hover { color: #fff; }
+  .fgv-lang button[aria-pressed="true"] { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 6px; text-decoration-thickness: 1px; }
+  .fgv-lang button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+  .pg-btn { display: inline-flex; align-items: center; gap: 12px; font-weight: 700; font-size: 13.5px; line-height: 1.2; letter-spacing: 0.12em; text-transform: uppercase; color: #fff; background: ${PAGE_COLORS.accent}; border-radius: 2px; padding: 16px 28px; transition: background .2s, color .2s; }
   .pg-btn:hover { background: ${PAGE_COLORS.accentHover}; }
+  .pg-btn svg { transition: transform .2s; }
+  .pg-btn:hover svg { transform: translateX(3px); }
   .pg-textlink { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; color: ${PAGE_COLORS.accent}; }
   .pg-textlink:hover { text-decoration: underline; }
   .pg-row-title { font-size: clamp(26px, 2.4vw, 34px); line-height: 1.2; }
@@ -654,6 +681,151 @@ function useImageAvailable(src) {
   return ok;
 }
 
+/* ============================================================================
+ * IDIOMA (botão PT | EN do menu)
+ * Os textos de conteúdo vêm de conteudo.js (PT) ou conteudo.en.js (EN, por cima
+ * do PT). Os poucos textos fixos do layout ficam em UI, abaixo.
+ * ========================================================================== */
+let LANG = "pt";
+const LANG_KEY = "fgvda-lang";
+const UI = {
+  pt: {
+    langGroup: "Idioma do site",
+    mainNav: "Navegação principal",
+    openMenu: "Abrir menu",
+    closeMenu: "Fechar menu",
+    footerNav: "Links do rodapé",
+    footerNavTitle: "Navegação",
+    footerContact: "Contato",
+    talkToUs: "Fale conosco",
+    rights: "Todos os direitos reservados.",
+    backTop: "Voltar ao topo",
+    mvv: "Missão, visão e valores",
+    linkedinOf: (n) => `LinkedIn de ${n}`,
+    emailOf: (n) => `E-mail de ${n}`,
+    alumniSummary: (a, c) => `${a} alumni em ${c} empresas`,
+    ordinal: () => "a",
+    phaseLabel: (n) => `${n}ª Fase`,
+    photoOf: (title, i, n) => `${title}: foto ${i} de ${n}`,
+    viewPhoto: (i, n) => `Ver foto ${i} de ${n}`,
+    prevPhoto: "Foto anterior",
+    nextPhoto: "Próxima foto",
+    membersOf: (b) => `Membros da ${b}`,
+    cellOf: (n) => `Célula de ${n}`,
+    cellOfBrand: (b) => `Célula da ${b}`,
+    filterByCell: "Filtrar por célula",
+    noStudies: "Nenhum estudo publicado por esta célula ainda.",
+    membersPrefix: "Membros",
+    formInvalid: "Preencha seu nome e um e-mail válido.",
+    formAria: (b) => `Fale com a ${b}`,
+    fieldName: "Nome *",
+    fieldEmail: "Email *",
+    fieldMessage: "Mensagem",
+    sending: "Enviando…",
+    mapChoose: "Escolha o endereço no mapa",
+    mapTitle: (q) => `Mapa: ${q}`,
+    mapLang: "pt-BR",
+    contactSubject: (n) => `Contato pelo site — ${n}`,
+    contactName: "Nome",
+    newsletterSubject: "Inscrição na newsletter",
+    newsletterBody: (b, e) => `Quero receber a newsletter da ${b} no e-mail: ${e}`,
+  },
+  en: {
+    langGroup: "Site language",
+    mainNav: "Main navigation",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+    footerNav: "Footer links",
+    footerNavTitle: "Navigation",
+    footerContact: "Contact",
+    talkToUs: "Get in touch",
+    rights: "All rights reserved.",
+    backTop: "Back to top",
+    mvv: "Mission, vision and values",
+    linkedinOf: (n) => `${n} on LinkedIn`,
+    emailOf: (n) => `Email ${n}`,
+    alumniSummary: (a, c) => `${a} alumni at ${c} companies`,
+    phaseLabel: (n) => `Stage ${n}`,
+    ordinal: (n) => (n % 10 === 1 && n % 100 !== 11 ? "st" : n % 10 === 2 && n % 100 !== 12 ? "nd" : n % 10 === 3 && n % 100 !== 13 ? "rd" : "th"),
+    photoOf: (title, i, n) => `${title}: photo ${i} of ${n}`,
+    viewPhoto: (i, n) => `View photo ${i} of ${n}`,
+    prevPhoto: "Previous photo",
+    nextPhoto: "Next photo",
+    membersOf: (b) => `${b} members`,
+    cellOf: (n) => `${n} team`,
+    cellOfBrand: (b) => `A ${b} team`,
+    filterByCell: "Filter by team",
+    noStudies: "No work published by this team yet.",
+    membersPrefix: "Members",
+    formInvalid: "Please enter your name and a valid email.",
+    formAria: (b) => `Contact ${b}`,
+    fieldName: "Name *",
+    fieldEmail: "Email *",
+    fieldMessage: "Message",
+    sending: "Sending…",
+    mapChoose: "Choose the address on the map",
+    mapTitle: (q) => `Map: ${q}`,
+    mapLang: "en",
+    contactSubject: (n) => `Website contact — ${n}`,
+    contactName: "Name",
+    newsletterSubject: "Newsletter subscription",
+    newsletterBody: (b, e) => `I would like to receive the ${b} newsletter at: ${e}`,
+  },
+};
+const t = (key, ...args) => {
+  const v = UI[LANG][key] ?? UI.pt[key];
+  return typeof v === "function" ? v(...args) : v;
+};
+// Junta a tradução por cima do conteúdo em português (listas casadas pela posição)
+function mergeDeep(base, over) {
+  if (over === undefined || over === null) return base;
+  if (Array.isArray(base)) return Array.isArray(over) ? base.map((b, i) => mergeDeep(b, over[i])) : base;
+  if (base && typeof base === "object") {
+    const out = { ...base };
+    Object.keys(over).forEach((k) => {
+      out[k] = mergeDeep(base[k], over[k]);
+    });
+    return out;
+  }
+  return over;
+}
+const DATA_EN = mergeDeep(SITE_DATA, SITE_DATA_EN);
+function useLang() {
+  const [lang, setLangState] = useState(() => {
+    try {
+      return window.localStorage.getItem(LANG_KEY) === "en" ? "en" : "pt";
+    } catch (e) {
+      return "pt";
+    }
+  });
+  const setLang = (l) => {
+    setLangState(l);
+    try {
+      window.localStorage.setItem(LANG_KEY, l);
+    } catch (e) {
+      /* sem armazenamento: vale só nesta visita */
+    }
+  };
+  useEffect(() => {
+    document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+  }, [lang]);
+  return [lang, setLang];
+}
+/* Seletor PT | EN */
+function LangToggle({ lang, setLang, className = "" }) {
+  return (
+    <div className={`fgv-lang ${className}`} role="group" aria-label={t("langGroup")}>
+      <button type="button" lang="pt-BR" aria-pressed={lang === "pt"} onClick={() => setLang("pt")} title="Português">
+        PT
+      </button>
+      <span aria-hidden="true">|</span>
+      <button type="button" lang="en" aria-pressed={lang === "en"} onClick={() => setLang("en")} title="English">
+        EN
+      </button>
+    </div>
+  );
+}
+
 /* Rota simples por hash: cada aba é "#/nome". "#/equipe" (antiga página) leva a "Sobre". */
 const RESEARCH_ON = SITE_DATA.pages.research.enabled !== false;
 const ABOUT_ON = SITE_DATA.pages.about.enabled !== false;
@@ -762,7 +934,7 @@ function LogoGlyph() {
 /* Missão, visão e valores (página inicial e aba Sobre) */
 function MissionVisionValues({ pillars, id }) {
   return (
-    <section id={id} className="mv-band" aria-label="Missão, visão e valores">
+    <section id={id} className="mv-band" aria-label={t("mvv")}>
       <div className="mv-grid">
         {pillars.map((item) => (
           <article key={item.title} className="mv-item">
@@ -1092,8 +1264,10 @@ function SocialIcon({ id, className = "h-4 w-4" }) {
  * PÁGINAS INTERNAS (layout de fgvrealestate.com)
  * ========================================================================== */
 const MONTHS = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho", "agosto", "setembro", "outubro", "novembro", "dezembro"];
+const MONTHS_EN = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 const parseDate = (iso) => {
   const [y, m, d] = String(iso).split("-").map(Number);
+  if (LANG === "en") return { y, m, d, short: MONTHS_EN[m - 1].slice(0, 3), long: `${MONTHS_EN[m - 1]} ${d}, ${y}` };
   return { y, m, d, short: MONTHS[m - 1].slice(0, 3), long: `${d} de ${MONTHS[m - 1]} de ${y}` };
 };
 const initials = (name) =>
@@ -1171,10 +1345,10 @@ function MembersPage({ data, photo }) {
                     <p className="re-member-cargo">{p.role}</p>
                     {isSet(p.course) && <p className="re-member-curso">{p.course}</p>}
                     <div className="re-member-links">
-                      <IconButton href={p.linkedin} label={`LinkedIn de ${p.name}`}>
+                      <IconButton href={p.linkedin} label={t("linkedinOf", p.name)}>
                         <LinkedInIcon />
                       </IconButton>
-                      <IconButton href={isSet(p.email) ? `mailto:${p.email}` : ""} label={`E-mail de ${p.name}`}>
+                      <IconButton href={isSet(p.email) ? `mailto:${p.email}` : ""} label={t("emailOf", p.name)}>
                         <Mail strokeWidth={2} />
                       </IconButton>
                     </div>
@@ -1192,7 +1366,7 @@ function MembersPage({ data, photo }) {
 /* --- Alumni --- */
 function AlumniPage({ data, photo }) {
   // empresas ordenadas por número de alumni e depois em ordem alfabética
-  const counts = data.people.reduce((acc, p) => ({ ...acc, [p.company]: (acc[p.company] || 0) + 1 }), {});
+  const counts = data.people.filter((p) => isSet(p.company)).reduce((acc, p) => ({ ...acc, [p.company]: (acc[p.company] || 0) + 1 }), {});
   const companies = Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b, "pt-BR"));
   const people = [...data.people].sort((a, b) => a.name.localeCompare(b.name, "pt-BR"));
   return (
@@ -1203,7 +1377,7 @@ function AlumniPage({ data, photo }) {
           <section className="re-alumni-onde">
             <h2 className="re-alumni-titulo pg-heading">{data.sectionTitle}</h2>
             <p className="re-alumni-resumo">
-              {data.people.length} alumni em {companies.length} empresas
+              {t("alumniSummary", data.people.length, companies.length)}
             </p>
             <ul className="re-alumni-empresas">
               {companies.map((c) => (
@@ -1217,9 +1391,11 @@ function AlumniPage({ data, photo }) {
                 <div className="re-alumnus-info">
                   {isSet(p.role) && <p className="re-alumnus-papel">{p.role}</p>}
                   <h3 className="re-alumnus-nome">{p.name}</h3>
-                  <p className="re-alumnus-empresa">{[p.position, p.company].filter((v) => isSet(v)).join(" · ")}</p>
+                  {(isSet(p.position) || isSet(p.company)) && (
+                    <p className="re-alumnus-empresa">{[p.position, p.company].filter((v) => isSet(v)).join(" · ")}</p>
+                  )}
                 </div>
-                <IconButton href={p.linkedin} label={`LinkedIn de ${p.name}`}>
+                <IconButton href={p.linkedin} label={t("linkedinOf", p.name)}>
                   <LinkedInIcon />
                 </IconButton>
               </article>
@@ -1271,28 +1447,75 @@ function SelectionPage({ data, photo, selection, labels, notify }) {
         </div>
       </div>
 
-      {/* === SEÇÃO: PROCESSO SELETIVO — ETAPAS === */}
-      <section style={{ background: "#fff" }}>
+      {/* === SEÇÃO: PROCESSO SELETIVO — APRESENTAÇÃO E FASES (formato da CJE) === */}
+      <section className="ps-main">
         <div className="ps-wrap">
-          <div className={`ps-steps${regOpen ? "" : " ps-steps--end"}`}>
-            {data.steps.map((step, i) => (
-              <div key={step.label} className="ps-step">
-                <div className="ps-num" aria-hidden="true">
-                  <span>
-                    {i + 1}
-                    <sup>a</sup>
-                  </span>
-                  <i />
-                </div>
-                <p>
-                  <strong>{step.label}:</strong> {step.text}
-                </p>
-              </div>
-            ))}
-          </div>
+          {data.intro && (
+            <p className="ps-intro">
+              {data.intro.before}
+              <strong>{data.intro.strong}</strong>
+              {data.intro.after}
+            </p>
+          )}
         </div>
         {regOpen && cta}
+        <div className="ps-wrap">
+          {data.stepsIntro && (
+            <p className="ps-steps-intro">
+              {data.stepsIntro.before}
+              <strong>{data.stepsIntro.strong}</strong>:
+            </p>
+          )}
+        </div>
+        <div className="ps-steps-band">
+          <div className="ps-wrap">
+            <div className="ps-steps">
+              {data.steps.map((step, i) => (
+                <div key={step.label} className="ps-step">
+                  <div className="ps-num" aria-hidden="true">
+                    <span>
+                      {i + 1}
+                      <sup>{t("ordinal", i + 1)}</sup>
+                    </span>
+                    <i />
+                  </div>
+                  <p>
+                    <strong>{step.label}:</strong> {step.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+            {isSet(data.afterSteps) && <p className="ps-after">{data.afterSteps}</p>}
+          </div>
+        </div>
       </section>
+
+      {/* === SEÇÃO: PROCESSO SELETIVO — DATAS IMPORTANTES (só com datas preenchidas) === */}
+      {data.dates && [data.dates.registration?.date, ...(data.dates.phases || []), data.dates.result?.date].some((d) => isSet(d)) && (
+        <section className="ps-dates" aria-labelledby="ps-dates-title">
+          <h2 id="ps-dates-title">{data.datesTitle}</h2>
+          {isSet(data.dates.registration?.date) && (
+            <div className="ps-date ps-date--solo">
+              <span className="ps-circle">{data.dates.registration.date}</span>
+              <span className="ps-date-label">{data.dates.registration.label}</span>
+            </div>
+          )}
+          <ol className="ps-date-row">
+            {(data.dates.phases || []).map((d, i) => (
+              <li key={i} className="ps-date">
+                <span className="ps-circle">{isSet(d) ? d : "—"}</span>
+                <span className="ps-date-label">{t("phaseLabel", i + 1)}</span>
+              </li>
+            ))}
+          </ol>
+          {isSet(data.dates.result?.date) && (
+            <div className="ps-date ps-date--solo">
+              <span className="ps-circle">{data.dates.result.date}</span>
+              <span className="ps-date-label">{data.dates.result.label}</span>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* === SEÇÃO: PROCESSO SELETIVO — PERGUNTAS FREQUENTES === */}
       <section className="ps-faq">
@@ -1339,7 +1562,7 @@ function EventGallery({ ev, badge }) {
       <div className="re-evento-foto">
         {badge}
         {photos.length > 0 ? (
-          <img src={photos[current]} alt={`${ev.title}: foto ${current + 1} de ${photos.length}`} loading="lazy" />
+          <img src={photos[current]} alt={t("photoOf", ev.title, current + 1, photos.length)} loading="lazy" />
         ) : (
           <span className="re-evento-sem-foto" aria-hidden="true">
             <BrandMark />
@@ -1354,7 +1577,7 @@ function EventGallery({ ev, badge }) {
               type="button"
               className="re-evento-thumb"
               aria-pressed={i === current}
-              aria-label={`Ver foto ${i + 1} de ${photos.length}`}
+              aria-label={t("viewPhoto", i + 1, photos.length)}
               onClick={() => setCurrent(i)}
             >
               <img src={src} alt="" loading="lazy" />
@@ -1521,10 +1744,10 @@ function Showcase({ data, competition, events, competitionsButton, eventsButton 
             </div>
             {slides.length > 2 && (
               <>
-                <button type="button" className="hm-show-arrow hm-show-arrow--prev" onClick={() => move(-1)} aria-label="Foto anterior">
+                <button type="button" className="hm-show-arrow hm-show-arrow--prev" onClick={() => move(-1)} aria-label={t("prevPhoto")}>
                   <ChevronLeft className="h-7 w-7" aria-hidden="true" />
                 </button>
-                <button type="button" className="hm-show-arrow hm-show-arrow--next" onClick={() => move(1)} aria-label="Próxima foto">
+                <button type="button" className="hm-show-arrow hm-show-arrow--next" onClick={() => move(1)} aria-label={t("nextPhoto")}>
                   <ChevronRight className="h-7 w-7" aria-hidden="true" />
                 </button>
               </>
@@ -1593,7 +1816,7 @@ function AboutPage({ data, photo }) {
           )}
           <PgTitle>{data.sectionTitle}</PgTitle>
           <div className="ab-grid">
-            <PgPhoto src={data.photo} alt={`Membros da ${SITE_DATA.brand.name}`} />
+            <PgPhoto src={data.photo} alt={t("membersOf", SITE_DATA.brand.name)} />
             <div className="ab-text">
               {data.paragraphs.map((p, i) => (
                 <p key={i}>{p}</p>
@@ -1662,7 +1885,7 @@ function NucleosPage({ data, photo }) {
           <div className="nu-rows">
             {data.technical.map((n) => (
               <article key={n.name} id={`nucleo-${n.name}`} className="re-evento nu-row">
-                <PgPhoto src={n.photo} alt={`Célula de ${n.name}`} />
+                <PgPhoto src={n.photo} alt={t("cellOf", n.name)} />
                 <div className="re-evento-corpo">
                   {isSet(n.partner) && <p className="pg-kicker">{data.partnerLabel} {n.partner}</p>}
                   <h3 className="pg-row-title pg-heading">{n.name}</h3>
@@ -1764,7 +1987,7 @@ function ResearchPage({ data, photo }) {
       <section className="pg-block">
         <div className="re-eventos">
           {nucleos.length > 2 && (
-            <div className="rs-chips" role="group" aria-label="Filtrar por célula">
+            <div className="rs-chips" role="group" aria-label={t("filterByCell")}>
               {nucleos.map((n) => (
                 <button key={n} type="button" className="rs-chip" aria-pressed={filter === n} onClick={() => setFilter(n)}>
                   {n}
@@ -1773,7 +1996,7 @@ function ResearchPage({ data, photo }) {
             </div>
           )}
 
-          {groups.length === 0 && <p className="rs-empty">Nenhum estudo publicado por esta célula ainda.</p>}
+          {groups.length === 0 && <p className="rs-empty">{t("noStudies")}</p>}
 
           {groups.map((group) => (
             <section key={group.semester} className="re-eventos-grupo">
@@ -1823,7 +2046,7 @@ function CompetitionsPage({ data, photo }) {
                   {e.paragraphs.map((p, i) => (
                     <p key={i}>{p}</p>
                   ))}
-                  {isSet(e.members) && <p className="cp-members">Membros - {e.members}</p>}
+                  {isSet(e.members) && <p className="cp-members">{t("membersPrefix")} - {e.members}</p>}
                 </div>
               </article>
             ))}
@@ -1852,8 +2075,8 @@ function ContactPage({ data, photo, mode, email, brandName }) {
       return;
     }
     if (mode === "mailto") {
-      const subject = encodeURIComponent(`Contato pelo site — ${form.nome.trim()}`);
-      const body = encodeURIComponent(`Nome: ${form.nome}\nE-mail: ${form.email}\n\n${form.mensagem}`);
+      const subject = encodeURIComponent(t("contactSubject", form.nome.trim()));
+      const body = encodeURIComponent(`${t("contactName")}: ${form.nome}\nE-mail: ${form.email}\n\n${form.mensagem}`);
       window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
       setStatus("mailto");
       return;
@@ -1880,7 +2103,7 @@ function ContactPage({ data, photo, mode, email, brandName }) {
   const showForm = mode !== "off";
   const message =
     status === "invalid"
-      ? { cls: "is-error", text: "Preencha seu nome e um e-mail válido." }
+      ? { cls: "is-error", text: t("formInvalid") }
       : status === "error"
       ? { cls: "is-error", text: data.error }
       : status === "sent"
@@ -1910,24 +2133,24 @@ function ContactPage({ data, photo, mode, email, brandName }) {
             </div>
 
             {showForm && (
-              <form onSubmit={onSubmit} noValidate aria-label={`Fale com a ${brandName}`}>
+              <form onSubmit={onSubmit} noValidate aria-label={t("formAria", brandName)}>
                 <div className="ct-fields">
                   <div className="ct-field">
-                    <label htmlFor="ct-nome">Nome *</label>
+                    <label htmlFor="ct-nome">{t("fieldName")}</label>
                     <input id="ct-nome" type="text" autoComplete="name" required value={form.nome} onChange={update("nome")} />
                   </div>
                   <div className="ct-field">
-                    <label htmlFor="ct-email">Email *</label>
+                    <label htmlFor="ct-email">{t("fieldEmail")}</label>
                     <input id="ct-email" type="email" inputMode="email" autoComplete="email" required value={form.email} onChange={update("email")} />
                   </div>
                   <div className="ct-field">
-                    <label htmlFor="ct-mensagem">Mensagem</label>
+                    <label htmlFor="ct-mensagem">{t("fieldMessage")}</label>
                     <textarea id="ct-mensagem" rows={3} value={form.mensagem} onChange={update("mensagem")} />
                   </div>
                 </div>
                 <div className="ct-actions">
                   <button type="submit" className="ct-submit" disabled={status === "loading"}>
-                    {status === "loading" ? "Enviando…" : data.button}
+                    {status === "loading" ? t("sending") : data.button}
                   </button>
                   <p className={`ct-msg ${message ? message.cls : ""}`} role="status" aria-live="polite">
                     {message ? message.text : ""}
@@ -1950,7 +2173,7 @@ function ContactPage({ data, photo, mode, email, brandName }) {
               {data.addressLine2}
             </h2>
             {addresses.length > 1 && (
-              <div className="ct-map-tabs" role="group" aria-label="Escolha o endereço no mapa">
+              <div className="ct-map-tabs" role="group" aria-label={t("mapChoose")}>
                 {addresses.map((a, i) => (
                   <button key={a.label} type="button" className="ct-map-tab" aria-pressed={i === place} onClick={() => setPlace(i)}>
                     {a.label}
@@ -1961,8 +2184,8 @@ function ContactPage({ data, photo, mode, email, brandName }) {
             <iframe
               key={current.query}
               className="ct-map-frame"
-              title={`Mapa: ${current.query}`}
-              src={`https://maps.google.com/maps?q=${encodeURIComponent(current.query)}&z=15&hl=pt-BR&output=embed`}
+              title={t("mapTitle", current.query)}
+              src={`https://maps.google.com/maps?q=${encodeURIComponent(current.query)}&z=15&hl=${t("mapLang")}&output=embed`}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -1985,8 +2208,11 @@ export default function App() {
   const reduceMotion = usePrefersReducedMotion();
   const route = useRoute();
   const [shownRoute, pagePhase] = usePageTransition(route);
+  const [lang, setLang] = useLang();
+  LANG = lang; // os textos fixos (t) e as datas seguem o idioma escolhido
 
-  const { brand, nav, hero, about, stats, highlights, testimonials, selectionBand, sponsors, ecosystem, newsletter, footer, pages } = SITE_DATA;
+  const { brand, nav, hero, about, stats, highlights, testimonials, selectionBand, sponsors, ecosystem, newsletter, footer, pages } =
+    lang === "en" ? DATA_EN : SITE_DATA;
 
   /* --- Estado derivado: o que está preenchido e pode aparecer ------------- */
   const heroPhotoOk = useImageAvailable(isSet(hero.backgroundImage) ? hero.backgroundImage : "");
@@ -2082,8 +2308,8 @@ export default function App() {
       return;
     }
     if (newsletterMode === "mailto") {
-      const subject = encodeURIComponent("Inscrição na newsletter");
-      const body = encodeURIComponent(`Quero receber a newsletter da ${brand.name} no e-mail: ${value}`);
+      const subject = encodeURIComponent(t("newsletterSubject"));
+      const body = encodeURIComponent(t("newsletterBody", brand.name, value));
       window.location.href = `mailto:${brand.email}?subject=${subject}&body=${body}`;
       setSubmittedEmail(value);
       setStatus("mailto");
@@ -2119,7 +2345,7 @@ export default function App() {
       {/* Barra fixa em navy (cor principal da marca). Marca e nome juntos à esquerda;
           à direita, apenas canais ativos e o botão da newsletter. */}
       <header className="fixed inset-x-0 top-0 z-50" style={{ background: PAGE_COLORS.navy, boxShadow: "0 10px 20px 0 rgba(0, 0, 0, 0.08)" }}>
-        <nav className="flex items-center px-3 sm:px-4" style={{ minHeight: 64 }} aria-label="Navegação principal">
+        <nav className="flex items-center px-3 sm:px-4" style={{ minHeight: 64 }} aria-label={t("mainNav")}>
           <a
             href="#inicio"
             className="flex items-center gap-3 py-1 text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white"
@@ -2155,6 +2381,7 @@ export default function App() {
           </ul>
 
           <div className="ml-auto hidden items-center xl:flex">
+            <LangToggle lang={lang} setLang={setLang} className="mr-2" />
             <ul className="flex items-center">
               {activeSocials.map((s) => (
                 <li key={s.id}>
@@ -2181,12 +2408,15 @@ export default function App() {
             )}
           </div>
 
+          <div className="ml-auto xl:hidden">
+            <LangToggle lang={lang} setLang={setLang} />
+          </div>
           <button
             type="button"
-            className="ml-auto inline-flex items-center justify-center rounded px-3 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white xl:hidden"
+            className="ml-1 inline-flex items-center justify-center rounded px-3 py-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-white xl:hidden"
             style={{ color: "rgba(255, 255, 255, 0.7)" }}
             onClick={() => setMenuOpen((v) => !v)}
-            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-label={menuOpen ? t("closeMenu") : t("openMenu")}
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
           >
@@ -2329,7 +2559,7 @@ export default function App() {
             id="quem-somos"
             tone="light"
             photo={about.photo}
-            photoAlt={`Membros da ${brand.name}`}
+            photoAlt={t("membersOf", brand.name)}
             caption={about.photoCaption}
             art={{ seed: 3 }}
             labelledBy="quem-somos-titulo"
@@ -2373,7 +2603,7 @@ export default function App() {
             reverse
             compact
             photo={highlights.nucleos.photo}
-            photoAlt={`Célula da ${brand.name}`}
+            photoAlt={t("cellOfBrand", brand.name)}
             caption={highlights.nucleos.photoCaption}
             art={{ seed: 7, value: String(pages.nucleos.technical.length), label: highlights.nucleos.artLabel }}
             labelledBy="nucleos-titulo"
@@ -2382,19 +2612,6 @@ export default function App() {
             {highlights.nucleos.paragraphs.map((p, i) => (
               <p key={i}>{p}</p>
             ))}
-            <ul className="fs-list">
-              {pages.nucleos.technical.map((n) => (
-                <li key={n.name}>
-                  <a href="#/celulas">
-                    <span>
-                      <span className="fs-list-name">{n.name}</span>
-                      <span className="fs-list-note">{n.short || n.description}</span>
-                    </span>
-                    <ArrowRight className="h-4 w-4 shrink-0" aria-hidden="true" />
-                  </a>
-                </li>
-              ))}
-            </ul>
             <div className="fs-actions">
               <a className="pg-btn pg-btn--light" href="#/celulas">
                 {highlights.nucleos.button}
@@ -2596,8 +2813,8 @@ export default function App() {
             )}
           </div>
 
-          <nav aria-label="Links do rodapé">
-            <p className="ft-label">Navegação</p>
+          <nav aria-label={t("footerNav")}>
+            <p className="ft-label">{t("footerNavTitle")}</p>
             <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-[15px]">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -2613,7 +2830,7 @@ export default function App() {
           </nav>
 
           <div>
-            <p className="ft-label">Contato</p>
+            <p className="ft-label">{t("footerContact")}</p>
             <ul className="mt-5 space-y-4 text-[15px]">
               <li className="flex gap-3">
                 <MapPin className="ft-icon mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
@@ -2632,7 +2849,7 @@ export default function App() {
               )}
               <li>
                 <a href="#/contato" className="ft-strong inline-flex items-center gap-2 font-semibold">
-                  Fale conosco
+                  {t("talkToUs")}
                   <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </a>
               </li>
@@ -2643,7 +2860,7 @@ export default function App() {
         <div className="ft-divider border-t">
           <div className={`${CONTAINER} flex flex-col gap-3 py-6 text-[13.5px] md:flex-row md:items-center md:justify-between`}>
             <p>
-              © {year} {brand.name} ({brand.formerName}). Todos os direitos reservados.
+              © {year} {brand.name} ({brand.formerName}). {t("rights")}
               {isSet(footer.privacy.href) && (
                 <>
                   {" · "}
@@ -2653,7 +2870,7 @@ export default function App() {
                 </>
               )}
             </p>
-            <p className="max-w-xl md:text-right">{footer.legal}</p>
+            {isSet(footer.legal) && <p className="max-w-xl md:text-right">{footer.legal}</p>}
           </div>
         </div>
       </footer>
@@ -2667,7 +2884,7 @@ export default function App() {
             window.scrollTo({ top: 0, behavior: "smooth" });
           }
         }}
-        aria-label="Voltar ao topo"
+        aria-label={t("backTop")}
         className={`fixed bottom-5 right-5 z-40 flex h-11 w-11 transform items-center justify-center fgv-to-top rounded-full text-white shadow-lg transition-all duration-300 ${
           showTop ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
         }`}
