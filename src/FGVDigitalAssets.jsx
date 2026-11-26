@@ -40,6 +40,7 @@ import {
   MapPin,
   CheckCircle2,
   Loader2,
+  Download,
 } from "lucide-react";
 
 /* Conteúdo (textos, fotos, links): src/conteudo.js */
@@ -333,6 +334,15 @@ const PAGES_CSS = `
   .cp-sec--navy .cp-text p { color: rgba(255, 255, 255, 0.92); }
   .cp-text p + p { margin-top: 22px; }
   .cp-members { text-align: left !important; }
+  .cp-teams { margin-top: 22px; padding-top: 16px; border-top: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.15); }
+  .pg .cp-teams-label { margin: 0 0 10px !important; font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; text-align: left; opacity: 0.6; }
+  .cp-teams ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .cp-teams li { display: flex; flex-direction: column; gap: 2px; font-size: 17px; line-height: 1.4; color: #3d3d3d; }
+  .cp-team-link { display: inline-flex; align-items: center; gap: 8px; align-self: flex-start; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 700; font-size: 19px; color: ${PAGE_COLORS.navy}; text-decoration: underline; text-underline-offset: 5px; text-decoration-thickness: 1px; }
+  .cp-team-link:hover { color: ${PAGE_COLORS.accent}; }
+  .cp-sec--navy .cp-teams { border-top-color: rgba(255, 255, 255, 0.25); }
+  .cp-sec--navy .cp-teams li { color: rgba(255, 255, 255, 0.9); }
+  .cp-sec--navy .cp-team-link { color: #fff; }
   @media (min-width: 768px) {
     .cp-entry { grid-template-columns: 550fr 555fr; gap: 56px; }
     .cp-entry:nth-child(even) .cp-photo { order: 2; }
@@ -716,6 +726,7 @@ const UI = {
     filterByCell: "Filtrar por célula",
     noStudies: "Nenhum estudo publicado por esta célula ainda.",
     membersPrefix: "Membros",
+    downloadSlides: (n) => `Baixar os slides da equipe ${n} (PDF)`,
     formInvalid: "Preencha seu nome e um e-mail válido.",
     formAria: (b) => `Fale com a ${b}`,
     fieldName: "Nome *",
@@ -757,6 +768,7 @@ const UI = {
     filterByCell: "Filter by team",
     noStudies: "No work published by this team yet.",
     membersPrefix: "Members",
+    downloadSlides: (n) => `Download the ${n} team's slides (PDF)`,
     formInvalid: "Please enter your name and a valid email.",
     formAria: (b) => `Contact ${b}`,
     fieldName: "Name *",
@@ -2047,6 +2059,26 @@ function CompetitionsPage({ data, photo }) {
                     <p key={i}>{p}</p>
                   ))}
                   {isSet(e.members) && <p className="cp-members">{t("membersPrefix")} - {e.members}</p>}
+                  {e.teams && e.teams.length > 0 && (
+                    <div className="cp-teams">
+                      {isSet(data.teamsLabel) && <p className="cp-teams-label">{data.teamsLabel}</p>}
+                      <ul>
+                        {e.teams.map((tm) => (
+                          <li key={tm.name}>
+                            {isSet(tm.file) ? (
+                              <a href={tm.file} download className="cp-team-link" title={t("downloadSlides", tm.name)}>
+                                {tm.name}
+                                <Download className="h-4 w-4" aria-hidden="true" />
+                              </a>
+                            ) : (
+                              <strong>{tm.name}</strong>
+                            )}
+                            {isSet(tm.members) && <span>{tm.members}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
                 </div>
               </article>
             ))}

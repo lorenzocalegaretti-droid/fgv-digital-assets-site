@@ -209,7 +209,24 @@ export const SITE_DATA_EN = {
     competitions: {
       title: "Competitions",
       text: "University challenges in which FGV Digital Assets members have stood out.",
+      teamsLabel: "Finalist teams",
       items: [
+        {
+          name: "Hashdex University Challenge",
+          entries: [
+            {
+              result: "Finalists",
+              paragraphs: [
+                "In 2026, two FGV Digital Assets teams were selected for the final of the Hashathon, a university challenge organized by Hashdex.",
+                "Each team built an overview of the crypto market, covering ETFs, DeFi, tokenization, stablecoins and regulation, and developed an applied case. Click a team's name to download its slides.",
+              ],
+              teams: [
+                { members: "Lorenzo Calegaretti, Tiago Luiz and Davi Melo" },
+                { members: "Felipe Santoro, Giovanni Fava and João Barros" },
+              ],
+            },
+          ],
+        },
         {
           name: "Digital Currencies Datathon",
           entries: [

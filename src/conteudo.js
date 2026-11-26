@@ -485,12 +485,34 @@ export const SITE_DATA = {
       //         photo: "/img/competicoes/arquivo.webp",
       //         paragraphs: ["Primeiro parágrafo.", "Segundo parágrafo."],
       //         members: "Nome Sobrenome e Nome Sobrenome",
+      //         // opcional: equipes com link para baixar os slides (PDF em public/docs)
+      //         teams: [{ name: "Equipe", file: "/docs/arquivo.pdf", members: "Nome, Nome e Nome" }],
       //       },
       //     ],
       //   },
       title: "Competições",
       text: "Desafios universitários nos quais os membros da FGV Digital Assets se destacaram.",
+      teamsLabel: "Equipes finalistas", // título da lista de equipes (com os slides para baixar)
       items: [
+        {
+          name: "Hashdex University Challenge",
+          entries: [
+            {
+              year: "2026",
+              result: "Finalistas",
+              photo: "",
+              paragraphs: [
+                "Em 2026, duas equipes da FGV Digital Assets foram selecionadas para a final do Hashathon, desafio universitário organizado pela Hashdex.",
+                "Cada equipe montou um panorama do mercado cripto, com ETFs, DeFi, tokenização, stablecoins e regulação, e desenvolveu um case aplicado. Clique no nome da equipe para baixar os slides.",
+              ],
+              members: "",
+              teams: [
+                { name: "Lusitanos", file: "/docs/hashathon-2026-lusitanos.pdf", members: "Lorenzo Calegaretti, Tiago Luiz e Davi Melo" },
+                { name: "Bizantinos", file: "/docs/hashathon-2026-bizantinos.pdf", members: "Felipe Santoro, Giovanni Fava e João Barros" },
+              ],
+            },
+          ],
+        },
         {
           name: "Datathon de Moedas Digitais",
           entries: [
