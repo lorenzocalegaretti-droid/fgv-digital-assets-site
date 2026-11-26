@@ -364,7 +364,7 @@ const PAGES_CSS = `
   .ct-field textarea { resize: vertical; min-height: 72px; }
   .ct-field input:focus, .ct-field textarea:focus { border-bottom-color: ${PAGE_COLORS.accent}; }
   .ct-actions { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 28px; }
-  .ct-submit { font-family: inherit; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; min-width: 226px; padding: 10px 32px; border: 0; border-radius: 999px; background: ${PAGE_COLORS.navy}; color: #fff; cursor: pointer; transition: background .2s; }
+  .ct-submit { font-family: inherit; font-size: 15px; letter-spacing: 0.02em; text-transform: uppercase; min-width: 226px; padding: 10px 32px; border: 0; border-radius: 2px; background: ${PAGE_COLORS.navy}; color: #fff; cursor: pointer; transition: background .2s; }
   .ct-submit:hover { background: ${PAGE_COLORS.accent}; }
   .ct-submit:disabled { opacity: 0.6; cursor: progress; }
   .ct-msg { font-size: 16px; line-height: 1.4; text-align: center; min-height: 1px; }
@@ -376,7 +376,7 @@ const PAGES_CSS = `
   .ct-place-inner { max-width: 1045px; margin: 0 auto; }
   .ct-place h2 { text-align: center; font-family: 'Montserrat G FGV', 'Montserrat', sans-serif; font-weight: 500; font-size: clamp(20px, 2vw, 28px); line-height: 1.4; color: ${PAGE_COLORS.navy}; }
   .ct-map-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 22px 0 18px; }
-  .ct-map-tab { font-family: inherit; font-size: 15px; padding: 8px 18px; border-radius: 999px; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.3); background: #fff; color: ${PAGE_COLORS.navy}; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+  .ct-map-tab { font-family: inherit; font-size: 15px; padding: 8px 18px; border-radius: 2px; border: 1px solid rgba(${PAGE_COLORS.navyRgb}, 0.3); background: #fff; color: ${PAGE_COLORS.navy}; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
   .ct-map-tab:hover { border-color: ${PAGE_COLORS.navy}; }
   .ct-map-tab[aria-pressed="true"] { background: ${PAGE_COLORS.navy}; border-color: ${PAGE_COLORS.navy}; color: #fff; }
   .ct-map-frame { width: 100%; height: clamp(272px, 32vw, 416px); border: 0; display: block; background: #E3E3E3; }
@@ -726,7 +726,7 @@ const UI = {
     filterByCell: "Filtrar por célula",
     noStudies: "Nenhum estudo publicado por esta célula ainda.",
     membersPrefix: "Membros",
-    downloadSlides: (n) => `Baixar os slides da equipe ${n} (PDF)`,
+    downloadSlides: (n) => `Baixar os slides: ${n} (PDF)`,
     formInvalid: "Preencha seu nome e um e-mail válido.",
     formAria: (b) => `Fale com a ${b}`,
     fieldName: "Nome *",
@@ -768,7 +768,7 @@ const UI = {
     filterByCell: "Filter by team",
     noStudies: "No work published by this team yet.",
     membersPrefix: "Members",
-    downloadSlides: (n) => `Download the ${n} team's slides (PDF)`,
+    downloadSlides: (n) => `Download the slides: ${n} (PDF)`,
     formInvalid: "Please enter your name and a valid email.",
     formAria: (b) => `Contact ${b}`,
     fieldName: "Name *",
@@ -2061,7 +2061,7 @@ function CompetitionsPage({ data, photo }) {
                   {isSet(e.members) && <p className="cp-members">{t("membersPrefix")} - {e.members}</p>}
                   {e.teams && e.teams.length > 0 && (
                     <div className="cp-teams">
-                      {isSet(data.teamsLabel) && <p className="cp-teams-label">{data.teamsLabel}</p>}
+                      {isSet(e.teamsLabel || data.teamsLabel) && <p className="cp-teams-label">{e.teamsLabel || data.teamsLabel}</p>}
                       <ul>
                         {e.teams.map((tm) => (
                           <li key={tm.name}>
@@ -2273,8 +2273,11 @@ export default function App() {
     .map((s) => ({ ...s, value: isSet(s.value) ? s.value : s.auto && autoCounts[s.auto] > 0 ? String(autoCounts[s.auto]) : "" }))
     .filter((s) => s.value !== "");
 
+  // Carrossel "Competições e eventos": os eventos mais recentes que têm foto
+  // (a foto do Sobre nós não se repete), até highlights.events.count
   const latestEvents = pages.events.groups
     .flatMap((g) => g.items)
+    .filter((ev) => isSet(ev.photo) && ev.photo !== about.photo)
     .sort((a, b) => b.date.localeCompare(a.date))
     .slice(0, highlights.events.count);
   const quotes = testimonials.items.filter((q) => SHOW_PLACEHOLDERS || (isSet(q.name) && isSet(q.quote)));
@@ -2635,6 +2638,7 @@ export default function App() {
             reverse
             compact
             photo={highlights.nucleos.photo}
+            photoPosition={highlights.nucleos.photoPosition}
             photoAlt={t("cellOfBrand", brand.name)}
             caption={highlights.nucleos.photoCaption}
             art={{ seed: 7, value: String(pages.nucleos.technical.length), label: highlights.nucleos.artLabel }}
@@ -2680,7 +2684,7 @@ export default function App() {
           <Showcase
             data={highlights.showcase}
             competition={highlights.competitions}
-            events={latestEvents.filter((ev) => isSet(ev.photo) && ev.photo !== about.photo)}
+            events={latestEvents}
             competitionsButton={highlights.competitions.button}
             eventsButton={highlights.events.button}
           />

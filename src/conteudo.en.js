@@ -65,6 +65,7 @@ export const SITE_DATA_EN = {
         "Throughout the semester, the teams do work close to the day-to-day of the market: protocol analysis, research and portfolio management, cases and competitions, and prototypes of new products. Projects meet weekly and are followed by market institutions, which gives members full immersion and direct contact with professionals in the field.",
       ],
       artLabel: "teams",
+      photoCaption: "Roadshow at Brasil Bitcoin",
       button: "Meet the teams",
     },
     competitions: {
@@ -235,7 +236,10 @@ export const SITE_DATA_EN = {
               paragraphs: [
                 "In 2026, the FGV Crypto team was one of the five finalists of the 7th Digital Currencies Data Challenge (Datathon), held by FGV EESP in partnership with the FGV Digital Finance Research Center and Ripple.",
                 "Open to undergraduate teams from all over Brazil, the competition gave each group ten days to build a data-driven solution to a real problem in the crypto-asset ecosystem. FGV Digital Assets also supported this edition, alongside USP-UBRI.",
+                "In Projeto Excedente, the team investigated whether curtailed renewable energy in Brazil is enough to pay for Bitcoin mining, using data from power plants in the Northeast.",
               ],
+              teamsLabel: "Presented work",
+              teams: [{ name: "Projeto Excedente", members: "Is curtailed renewable energy enough to pay for Bitcoin mining?" }],
             },
             {
               result: "Supporters",

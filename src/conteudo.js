@@ -120,8 +120,9 @@ export const SITE_DATA = {
         "Ao longo do semestre, as células desenvolvem um trabalho próximo ao do dia a dia do mercado: análise de protocolos, research e gestão de carteira, cases e competições e protótipos de novos produtos. Os projetos têm reuniões semanais e contam com o acompanhamento de instituições do mercado, o que garante uma imersão completa e contato direto com profissionais da área.",
       ],
       artLabel: "células", // legenda do número na arte (quando não há foto)
-      photo: "", // ⚠️ foto de uma célula trabalhando ou apresentando
-      photoCaption: "", // ex.: "Apresentação final da célula de Consultoria no Bradesco"
+      photo: "/img/celulas/celula-reuniao.webp", // reunião de célula com a plataforma de negociação no telão
+      photoPosition: "50% 65%", // enquadramento: o 2º número mexe a foto (maior = mostra mais a parte de baixo)
+      photoCaption: "Roadshow na Brasil Bitcoin", // legenda no canto inferior esquerdo da foto
       button: "Conheça as células",
     },
     competitions: {
@@ -139,7 +140,7 @@ export const SITE_DATA = {
       backgroundImage: "/img/fundo/fgv-9-de-julho-aerea.webp",
       competitionKicker: "Competição",
     },
-    events: { count: 4, button: "Ver todos os eventos" },
+    events: { count: 8, button: "Ver todos os eventos" }, // até 8 eventos com foto no carrossel
   },
 
   /* --- Depoimentos -----------------------------------------------------------
@@ -523,8 +524,13 @@ export const SITE_DATA = {
               paragraphs: [
                 "Em 2026, a equipe FGV Crypto ficou entre as cinco finalistas do 7º Desafio de Dados (Datathon) de Moedas Digitais, promovido pela FGV EESP em parceria com o Centro de Estudos FGV Digital Finance e a Ripple.",
                 "Aberta a equipes de graduação de todo o Brasil, a competição deu dez dias para que cada grupo desenvolvesse uma solução baseada em dados para um problema real do ecossistema de criptoativos. A FGV Digital Assets também apoiou esta edição, ao lado da USP-UBRI.",
+                "No Projeto Excedente, a equipe investigou se a energia renovável cortada no Brasil é suficiente para remunerar a mineração de Bitcoin, com dados de usinas do Nordeste.",
               ],
               members: "",
+              teamsLabel: "Trabalho apresentado",
+              teams: [
+                { name: "Projeto Excedente", file: "/docs/datathon-2026-projeto-excedente.pdf", members: "Energia renovável cortada é suficiente para remunerar a mineração de Bitcoin?" },
+              ],
             },
             {
               year: "2025",
@@ -833,7 +839,7 @@ export const SITE_DATA = {
             {
               date: "2026-05-11",
               title: "Cryptoweek 2026.1",
-              photo: "",
+              photo: "/img/eventos/2026-05-cryptoweek-hashdex.webp", // palestra da Hashdex (foto clareada, sem retoques)
               text: [
                 "De 11 a 15 de maio, no Auditório da FGV EESP: Igor Carneiro (Vault Capital), Thiago Mello (Head of Crypto do Itaú), Lucas Rocha e Mathias Dal Ri (Nexa Finance), Pedro Lapenta (Director of Yield Strategies da Hashdex) e Rita Casolato (Compliance e Risco da Liqi Digital Assets).",
                 "Os temas foram da construção de uma gestora cripto à estratégia de ativos digitais do maior banco do país, yield em cripto e as novas regras do Banco Central e da CVM.",
